@@ -1,0 +1,35 @@
+@import '../styles/colors';
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: $dim-transparent;
+    z-index: 9999;
+
+    .modal {
+        width: 500px;
+        max-width: 100vw;
+        background-color: white;
+        
+        img {
+            width: 100%;
+        }
+
+        .modal-content {
+            margin: 16px;
+
+            b {
+                display: block;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
