@@ -1,0 +1,57 @@
+@import '../styles/breaks';
+@import '../styles/colors';
+
+.classification-view {
+    display: flex;
+
+    @media screen and (max-width: $break-small) {
+        flex-direction: column;
+    } 
+
+    .classification-target {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $dark;
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        img {
+            max-width: 100%;
+
+            &.loading {
+                opacity: 0;
+            }
+        }
+    }
+
+    .classification-options {
+        flex: 0 1 500px;
+        padding: 16px;
+
+        .classification-option {
+            display: flex;
+            margin: 8px 0;
+            height: 40px;
+
+            .button-select {
+                flex: 1;
+                margin-right: 8px;
+                height: 100%;
+            }
+
+            .button-help {
+                flex: 0 1;
+                height: 100%;
+            }
+        }
+    }
+}
