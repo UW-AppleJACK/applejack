@@ -5,6 +5,8 @@ import './Storyteller.scss';
 const STORYTELLER_COOKIE = 'storytellerCookie';
 // Unix epoch time 32-bit int limit
 const COOKIE_EXP = '2038-01-19T03:14:08+00:00';
+// Keys to save to cookies
+const STATE_KEYS_SAVE = ['testCounter'];
 
 let cookies = null;
 
@@ -21,7 +23,13 @@ class Storyteller extends React.Component {
 
     saveStateToCookie() {
         cookies = cookies || new Cookies();
-        cookies.set(STORYTELLER_COOKIE, this.state, {
+        
+        const stateToSave = {};
+        STATE_KEYS_SAVE.forEach(key => {
+            stateToSave[key] = this.state[key];
+        });
+
+        cookies.set(STORYTELLER_COOKIE, stateToSave, {
             path: '/',
             expires: new Date(COOKIE_EXP),
         });
