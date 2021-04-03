@@ -1,14 +1,32 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
+import ComicView from './ComicView/ComicView';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
 // Unix epoch time 32-bit int limit
 const COOKIE_EXP = '2038-01-19T03:14:08+00:00';
 // Keys to save to cookies
-const STATE_KEYS_SAVE = ['testCounter'];
+const STATE_KEYS_SAVE = [];
 
 let cookies = null;
+
+const TEST = [
+    {
+        type: 'sprite',
+        image: 'strawberry',
+        x: 40,
+        y: 40,
+        size: 20,
+    },
+    {
+        type: 'sprite',
+        image: 'strawberry',
+        x: 80,
+        y: 80,
+        size: 5.3,
+    },
+];
 
 class Storyteller extends React.Component {
     constructor(props) {
@@ -23,7 +41,7 @@ class Storyteller extends React.Component {
 
     saveStateToCookie() {
         cookies = cookies || new Cookies();
-        
+
         const stateToSave = {};
         STATE_KEYS_SAVE.forEach(key => {
             stateToSave[key] = this.state[key];
@@ -37,7 +55,6 @@ class Storyteller extends React.Component {
 
     getDefaultState() {
         return {
-            testCounter: 0,
             currentScene: '',
             sceneHistory: [],
             complete: [],
@@ -47,11 +64,8 @@ class Storyteller extends React.Component {
     render() {
         return (
             <div id="storyteller" style={{ textAlign: 'center' }}>
-                <div>{this.state.testCounter}</div>
-                <button onClick={() => this.setState({ testCounter: this.state.testCounter + 1 })}>Increment</button>
-                <div>
-                    <button onClick={this.loadStateFromCookie.bind(this)}>Load</button>
-                    <button onClick={this.saveStateToCookie.bind(this)}>Save</button>
+                <div id="storyteller-view">
+                    <ComicView elements={TEST} />
                 </div>
             </div>
         );

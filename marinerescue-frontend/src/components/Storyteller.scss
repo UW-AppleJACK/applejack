@@ -1,0 +1,17 @@
+@import '../styles/colors';
+$view-size: #{"min(100vw, 100vh)"};
+
+#storyteller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: $dark;
+
+    #storyteller-view {
+        width: $view-size;
+        height: $view-size;
+        background-color: white;
+    }
+}
