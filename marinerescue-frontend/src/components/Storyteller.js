@@ -1,3 +1,6 @@
+// Storyteller: Keeps track of game state, manages save/load, and displays current scene
+// See documentation in /docs/StorytellerDataFormat.md
+
 import React from 'react';
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView/ComicView';
@@ -7,7 +10,7 @@ const STORYTELLER_COOKIE = 'storytellerCookie';
 // Unix epoch time 32-bit int limit
 const COOKIE_EXP = '2038-01-19T03:14:08+00:00';
 // Keys to save to cookies
-const STATE_KEYS_SAVE = ['currentScene', 'sceneHistory'];
+const STATE_KEYS_SAVE = ['stateFormatVersion', 'currentScene', 'sceneHistory', 'complete'];
 
 let cookies = null;
 
@@ -106,19 +109,23 @@ class Storyteller extends React.Component {
         this.state = this.getDefaultState();
     }
 
+    // Get default game state
     getDefaultState() {
         return {
+            stateFormatVersion: 0,
             currentScene: 'testScene/0',
             sceneHistory: [],
             complete: [],
         };
     }
 
+    // Load game state from cookies
     loadStateFromCookie() {
         cookies = cookies || new Cookies();
         this.setState(cookies.get(STORYTELLER_COOKIE));
     }
 
+    // Save game state to cookies
     saveStateToCookie() {
         cookies = cookies || new Cookies();
 
@@ -133,12 +140,14 @@ class Storyteller extends React.Component {
         });
     }
 
+    // Get [sceneName, sceneFrame] for the current state of the game
     getParsedSceneAttrs() {
         const [sceneName, sceneFrameRaw] = this.state.currentScene.split('/');
         const sceneFrame = parseInt(sceneFrameRaw);
         return [sceneName, sceneFrame];
     }
 
+    // Go back in the game history
     toPrev() {
         this.setState({
             currentScene: this.state.sceneHistory[this.state.sceneHistory.length - 1],
@@ -146,6 +155,7 @@ class Storyteller extends React.Component {
         });
     }
 
+    // Go to the next frame or scene
     toNext() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
 
@@ -166,6 +176,7 @@ class Storyteller extends React.Component {
         }
     }
 
+    // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
         const currentScene = TEST2[sceneName];
@@ -176,6 +187,7 @@ class Storyteller extends React.Component {
         };
     }
 
+    // Render load/save UI
     renderStateTools() {
         return (
             <>
@@ -189,6 +201,7 @@ class Storyteller extends React.Component {
         );
     }
 
+    // Render navigation UI
     renderNavigation() {
         return (
             <>

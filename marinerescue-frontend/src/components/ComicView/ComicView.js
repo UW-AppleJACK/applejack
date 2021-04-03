@@ -17,6 +17,7 @@ class ComicView extends React.Component {
         return className;
     }
 
+    // Get parsed elements in current frae
     getElements() {
         return this.props.frame.map(element => ({
             ...element,
@@ -25,6 +26,7 @@ class ComicView extends React.Component {
         }));
     }
 
+    // Render an element as a sprite
     renderSprite(element, idx) {
         const classes = {
             'flip-x': !!element.flipX,
@@ -46,6 +48,7 @@ class ComicView extends React.Component {
         )
     }
 
+    // Render an element
     renderElement(element, idx) {
         if (element.type === ELEMENT_TYPE_SPRITE) {
             return this.renderSprite(element, idx);
