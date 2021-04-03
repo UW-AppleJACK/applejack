@@ -19,6 +19,7 @@ const TEST2 = {
         frames: [
             [
                 {
+                    id: 1,
                     type: 'sprite',
                     image: 'strawberry',
                     x: 40,
@@ -30,24 +31,25 @@ const TEST2 = {
                     image: 'strawberry',
                     x: 80,
                     y: 80,
-                    size: 5.3,
+                    size: 8.3,
                     flipX: true,
                 },
             ],
             [
                 {
+                    id: 1,
                     type: 'sprite',
                     image: 'strawberry',
                     x: 20,
                     y: 20,
-                    size: 20,
+                    size: 40,
                 },
                 {
                     type: 'sprite',
                     image: 'strawberry',
                     x: 80,
                     y: 80,
-                    size: 5.3,
+                    size: 8.3,
                     flipX: true,
                 },
             ],
@@ -60,6 +62,7 @@ const TEST2 = {
         frames: [
             [
                 {
+                    id: 1,
                     type: 'sprite',
                     image: 'strawberry',
                     x: 40,
@@ -71,12 +74,13 @@ const TEST2 = {
                     image: 'strawberry',
                     x: 80,
                     y: 80,
-                    size: 5.3,
+                    size: 8.3,
                     flipX: true,
                 },
             ],
             [
                 {
+                    id: 1,
                     type: 'sprite',
                     image: 'strawberry',
                     x: 20,
@@ -86,9 +90,9 @@ const TEST2 = {
                 {
                     type: 'sprite',
                     image: 'strawberry',
-                    x: 80,
+                    x: 30,
                     y: 80,
-                    size: 5.3,
+                    size: 8.3,
                     flipX: true,
                 },
             ],
@@ -166,6 +170,7 @@ class Storyteller extends React.Component {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
         const currentScene = TEST2[sceneName];
         return {
+            sceneName,
             background: currentScene.background,
             frame: currentScene.frames[sceneFrame],
         };
@@ -204,7 +209,10 @@ class Storyteller extends React.Component {
         return (
             <div id="storyteller" style={{ textAlign: 'center' }}>
                 <div id="storyteller-view">
-                    <ComicView background={this.getCurrentComicViewData().background} frame={this.getCurrentComicViewData().frame} />
+                    <ComicView
+                        sceneName={this.getCurrentComicViewData().sceneName}
+                        background={this.getCurrentComicViewData().background}
+                        frame={this.getCurrentComicViewData().frame} />
                 </div>
                 {this.renderStateTools()}
                 {this.renderNavigation()}

@@ -4,6 +4,13 @@
     width: 100%;
     background-size: cover;
 
+    // Allow transitions for sprites with IDs
+    .comic-view-sprite {
+        &[id] {
+            transition: 250ms all;
+        }
+    }
+
     .comic-view-sprite {
         position: absolute;
 

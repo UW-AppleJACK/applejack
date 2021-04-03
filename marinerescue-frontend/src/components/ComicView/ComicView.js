@@ -29,9 +29,11 @@ class ComicView extends React.Component {
         const classes = {
             'flip-x': !!element.flipX,
         };
+        const id = !!element.id ? `assigned-${this.props.sceneName}-${element.id}` : null;
         return (
             <img
                 className={this.toClassName(classes, 'comic-view-sprite')}
+                id={id}
                 style={{
                     left: element.x,
                     top: element.y,
@@ -39,7 +41,7 @@ class ComicView extends React.Component {
                 }}
                 alt=""
                 src={`/sprites/sprite-${element.image}.png`}
-                key={idx}
+                key={id || idx}
             />
         )
     }
