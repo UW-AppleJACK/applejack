@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Cookies from 'universal-cookie';
-import ComicView from './ComicView/ComicView';
+import ComicView from './ComicView';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
