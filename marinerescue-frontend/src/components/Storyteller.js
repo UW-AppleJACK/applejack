@@ -25,6 +25,7 @@ const TEST = [
         x: 80,
         y: 80,
         size: 5.3,
+        flipX: true,
     },
 ];
 

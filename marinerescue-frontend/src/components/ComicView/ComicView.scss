@@ -5,5 +5,9 @@
 
     .comic-view-sprite {
         position: absolute;
+
+        &.flip-x {
+            transform: scaleX(-1);
+        }
     }
 }
