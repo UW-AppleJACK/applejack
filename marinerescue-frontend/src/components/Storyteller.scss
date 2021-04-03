@@ -10,10 +10,7 @@ $storyteller-btn-margin: 16px;
     width: 100vw;
     height: 100vh;
     background-color: $dark;
-
-    img {
-        user-select: none;
-    }
+    user-select: none;
 
     #storyteller-view {
         width: $view-size;

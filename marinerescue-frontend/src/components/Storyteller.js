@@ -4,6 +4,7 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView';
+import minigames from './minigames';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
@@ -61,7 +62,7 @@ const TEST2 = {
     testScene2: {
         type: 'comic',
         background: 'test-2',
-        nextScene: 'testScene',
+        nextScene: 'testMinigame',
         frames: [
             [
                 {
@@ -100,7 +101,12 @@ const TEST2 = {
                 },
             ],
         ]
-    }
+    },
+    testMinigame: {
+        type: 'minigame',
+        nextScene: 'testScene',
+        minigame: 'DemoMinigame',
+    },
 }
 
 class Storyteller extends React.Component {
@@ -157,34 +163,68 @@ class Storyteller extends React.Component {
 
     // Go to the next frame or scene
     toNext() {
-        const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
+        const [oldSceneName, oldSceneFrame] = this.getParsedSceneAttrs();
+        let newSceneName;
 
         this.setState({
             sceneHistory: [...this.state.sceneHistory, this.state.currentScene],
         });
 
-        if (sceneFrame + 1 < TEST2[sceneName].frames.length) {
+        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < TEST2[oldSceneName].frames.length) {
             this.setState({
-                currentScene: `${sceneName}/${sceneFrame + 1}`,
+                currentScene: `${oldSceneName}/${oldSceneFrame + 1}`,
             });
         }
         else {
-            const newSceneName = TEST2[sceneName].nextScene;
+            newSceneName = TEST2[oldSceneName].nextScene;
             this.setState({
                 currentScene: `${newSceneName}/0`,
             });
         }
+
+        // Clear history before and after minigames to avoid weird UX
+        if (TEST2[oldSceneName].type === 'minigame' || (!!newSceneName && TEST2[newSceneName].type === 'minigame')) {
+            this.setState({
+                sceneHistory: [],
+            });
+        }
+    }
+
+    // Get current game scene
+    getCurrentScene() {
+        const [sceneName] = this.getParsedSceneAttrs();
+        return TEST2[sceneName];
     }
 
     // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
-        const currentScene = TEST2[sceneName];
+        const currentScene = this.getCurrentScene();
         return {
             sceneName,
             background: currentScene.background,
             frame: currentScene.frames[sceneFrame],
         };
+    }
+
+    // Render Storytelling view (either comic or minigame)
+    renderStorytellerView() {
+        const currentScene = this.getCurrentScene();
+        if (currentScene.type === 'comic') {
+            return (
+                <ComicView
+                    sceneName={this.getCurrentComicViewData().sceneName}
+                    background={this.getCurrentComicViewData().background}
+                    frame={this.getCurrentComicViewData().frame} />
+            );
+        }
+        else if (currentScene.type === 'minigame') {
+            const MinigameTag = minigames[currentScene.minigame];
+            return <MinigameTag toNext={this.toNext.bind(this)} />;
+        }
+        else {
+            return <div></div>;
+        }
     }
 
     // Render load/save UI
@@ -211,9 +251,12 @@ class Storyteller extends React.Component {
                         <span className="material-icons-outlined">west</span>
                     </button>
                 }
-                <button className="storyteller-page-turn storyteller-page-next" onClick={this.toNext.bind(this)}>
-                    <span className="material-icons-outlined">east</span>
-                </button>
+                {
+                    this.getCurrentScene().type !== 'minigame' &&
+                    <button className="storyteller-page-turn storyteller-page-next" onClick={this.toNext.bind(this)}>
+                        <span className="material-icons-outlined">east</span>
+                    </button>
+                }
             </>
         );
     }
@@ -222,10 +265,7 @@ class Storyteller extends React.Component {
         return (
             <div id="storyteller" style={{ textAlign: 'center' }}>
                 <div id="storyteller-view">
-                    <ComicView
-                        sceneName={this.getCurrentComicViewData().sceneName}
-                        background={this.getCurrentComicViewData().background}
-                        frame={this.getCurrentComicViewData().frame} />
+                    {this.renderStorytellerView()}
                 </div>
                 {this.renderStateTools()}
                 {this.renderNavigation()}
