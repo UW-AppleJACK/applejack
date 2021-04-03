@@ -1,5 +1,7 @@
 @import '../styles/colors';
 $view-size: #{"min(100vw, 100vh)"};
+$storyteller-btn-size: 64px;
+$storyteller-btn-margin: 16px;
 
 #storyteller {
     display: flex;
@@ -9,9 +11,40 @@ $view-size: #{"min(100vw, 100vh)"};
     height: 100vh;
     background-color: $dark;
 
+    img {
+        user-select: none;
+    }
+
     #storyteller-view {
         width: $view-size;
         height: $view-size;
         background-color: white;
+    }
+
+    .storyteller-page-turn,
+    .storyteller-save,
+    .storyteller-load {
+        position: fixed;
+        bottom: $storyteller-btn-margin;
+        width: $storyteller-btn-size;
+        height: $storyteller-btn-size;
+
+        &.storyteller-load {
+            left: $storyteller-btn-margin;
+            bottom: #{2 * $storyteller-btn-size + 3 * $storyteller-btn-margin};
+        }
+
+        &.storyteller-save {
+            left: $storyteller-btn-margin;
+            bottom: #{1 * $storyteller-btn-size + 2 * $storyteller-btn-margin};
+        }
+
+        &.storyteller-page-prev {
+            left: $storyteller-btn-margin;
+        }
+
+        &.storyteller-page-next {
+            right: $storyteller-btn-margin;
+        }
     }
 }

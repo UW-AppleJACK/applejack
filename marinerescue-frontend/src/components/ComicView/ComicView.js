@@ -18,7 +18,7 @@ class ComicView extends React.Component {
     }
 
     getElements() {
-        return this.props.elements.map(element => ({
+        return this.props.frame.map(element => ({
             ...element,
             x: `${element.x}%`,
             y: `${element.y}%`,
@@ -38,7 +38,7 @@ class ComicView extends React.Component {
                     width: `${element.size}%`,
                 }}
                 alt=""
-                src={`/sprites/${element.image}.png`}
+                src={`/sprites/sprite-${element.image}.png`}
                 key={idx}
             />
         )
@@ -53,7 +53,9 @@ class ComicView extends React.Component {
 
     render() {
         return (
-            <div className="comic-view">
+            <div className="comic-view" style={{
+                backgroundImage: `url("/sprites/bg-${this.props.background}.png")`
+            }}>
                 {this.getElements().map((element, idx) => this.renderElement(element, idx))}
             </div>
         );
