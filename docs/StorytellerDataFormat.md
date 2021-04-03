@@ -31,7 +31,8 @@ A scene is an object that looks like this:
     type: 'comic',
     background: 'test-2',
     nextScene: 'testScene',
-    frames: [ ... ]
+    baseFrame: [ ... ]
+    frames: [ [...], [...], ... ]
 }
 ```
 
@@ -40,6 +41,7 @@ A scene is an object that looks like this:
 * `type`: The scene type (either `comic` or `minigame`).
 * `background`: Background to be displayed if this scene is a comic. All backgrounds are in the `/marinerescue-frontend/public/sprites/` directory with `bg-` prefix.
 * `nextScene`: Scene to change to after this scene is complete.
+* `baseFrame`: A base frame that is prepended to every frame in the scene.
 * `frames`: All the frames in the scene.
 
 ## Frame Data Format

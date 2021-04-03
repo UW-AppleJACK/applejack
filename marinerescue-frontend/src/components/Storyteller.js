@@ -20,6 +20,15 @@ const TEST2 = {
         type: 'comic',
         background: 'test-1',
         nextScene: 'testScene2',
+        baseFrame: [
+            {
+                type: 'sprite',
+                image: 'strawberry',
+                x: 5,
+                y: 5,
+                size: 8,
+            },
+        ],
         frames: [
             [
                 {
@@ -203,7 +212,10 @@ class Storyteller extends React.Component {
         return {
             sceneName,
             background: currentScene.background,
-            frame: currentScene.frames[sceneFrame],
+            frame: [
+                ...(currentScene.baseFrame || []),
+                ...currentScene.frames[sceneFrame]
+            ],
         };
     }
 
