@@ -12,7 +12,7 @@ class AboutPage extends React.Component {
                 <div class="navbar">
                     <Link to= "/">
                     <div class="navbar-logo">
-                        <img src="images/logo.png"></img>
+                        <img src="images/logo.png" alt="Marine Rescue logo"></img>
                     </div>
                     </Link>
                     <Link to="/leaderboard">Leaderboard</Link>
