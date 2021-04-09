@@ -164,7 +164,6 @@ class HomePage extends React.Component {
 
     // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
-        console.log(this.state)
         const sceneName = this.state.currentSceneName;
         const sceneFrame = this.state.currentFrame;
         const currentScene = this.getCurrentScene();
@@ -176,6 +175,43 @@ class HomePage extends React.Component {
                 ...(currentScene.frames[sceneFrame] || [])
             ],
         };
+    }
+
+    // Convert (x, y) screen position to percentage across storyteller view bounds
+    posToPerc(x, y) {
+        const storytellerBounds = document.getElementById('storyteller-view').getBoundingClientRect();
+        const viewLeft = storytellerBounds.left;
+        const viewTop = storytellerBounds.top;
+        const viewSize = storytellerBounds.width;
+
+        // Round to one decimal
+        const percX = Math.floor((x - viewLeft) / viewSize * 1000) / 10;
+        const percY = Math.floor((y - viewTop) / viewSize * 1000) / 10;
+
+        return [percX, percY];
+    }
+
+    // Set whether the sprite should follow the mouse
+    setSpriteFollowMouse(shouldFollowMouse) {
+        if(shouldFollowMouse) {
+            document.onmousemove = event => {
+                if (this.state.targetSpriteIdx === -1) {
+                    // If no sprite is targetted, stop following
+                    this.setSpriteFollowMouse(false);
+                    return;
+                }
+
+                const {pageX, pageY} = event;
+                const [percX, percY] = this.posToPerc(pageX, pageY);
+                this.updateTargetSpriteAttributes({
+                    x: percX,
+                    y: percY,
+                });
+            }
+        }
+        else {
+            document.onmousemove = () => {};
+        }
     }
 
     // Update current scene with new attributes
@@ -229,12 +265,15 @@ class HomePage extends React.Component {
             }
             currentFrameSprites.forEach(sprite => {
                 // For all sprites in the current frame, add a callback
-                onClickListeners.push(rawIdx => () => {
+                onClickListeners.push(rawIdx => event => {
                     const idx = rawIdx - baseFrameSize;
                     this.setState({
                         targetSpriteIdx: idx,
                     });
-                    console.log(idx,sprite);
+                    this.setSpriteFollowMouse(false);
+                    if(event.shiftKey) {
+                        this.setSpriteFollowMouse(true);
+                    }
                 });
             })
         }
@@ -354,7 +393,6 @@ class HomePage extends React.Component {
         }
 
         const targetSprite = this.getCurrentScene().frames[this.state.currentFrame][this.state.targetSpriteIdx];
-        console.log('ts', targetSprite, this.state);
 
         return (
             <div className="attrs-section editor-section">
