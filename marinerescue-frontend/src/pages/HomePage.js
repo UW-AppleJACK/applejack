@@ -87,7 +87,7 @@ class HomePage extends React.Component {
                             </div>
                             <div class="column">
                                 <div class="content">
-                                    <img id="icon" src="images/jade.png"></img>
+                                    <img class="icon" src="images/jade.png" alt="Image of Jade the turtle" />
                                     <h3>Jade</h3><br />
                                 </div>                            
                             </div>
