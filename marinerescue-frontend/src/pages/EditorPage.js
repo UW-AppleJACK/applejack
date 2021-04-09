@@ -154,6 +154,7 @@ class HomePage extends React.Component {
             currentSceneName: 'testScene',
             currentFrame: 0,
             targetSpriteIdx: -1,
+            showInstructions: false,
         };
     }
 
@@ -319,6 +320,39 @@ class HomePage extends React.Component {
         });
 
         return onClickListeners;
+    }
+
+    renderEditorPrimarySection() {
+        // Toggle instructions visibility
+        const toggleInstructions = () => {
+            this.setState({ showInstructions: !this.state.showInstructions });
+        }
+        return (
+            <div className="primary-section editor-section">
+                <button onClick={toggleInstructions}>
+                    <span class="material-icons-outlined">file_download</span>
+                </button>
+                <button onClick={toggleInstructions}>
+                    <span class="material-icons-outlined">file_upload</span>
+                </button>
+                <button onClick={toggleInstructions}>
+                    <span class="material-icons-outlined">help_outline</span>
+                </button>
+                {
+                    this.state.showInstructions && 
+                        <>
+                            <h2>Instructions</h2>
+                            <ul>
+                                <li>Use scenes and frames sections to navigate game</li>
+                                <li>Use attributes sections to edit attributes</li>
+                                <li>Click on a sprite to select it for editing</li>
+                                <li>Shift+click on a sprite to follow cursor, then click again to drop</li>
+                                <li>Don't forget to import/export</li>
+                            </ul>
+                        </>
+                }
+            </div>
+        )
     }
 
     // render scene editor view
@@ -652,7 +686,7 @@ class HomePage extends React.Component {
         return (
             <div id="storyteller" className="editor-page">
                 <div className="editor-pane">
-                    
+                    {this.renderEditorPrimarySection()}
                 </div>
                 <div id="storyteller-view">
                     {this.renderStorytellerView()}
