@@ -162,6 +162,19 @@ class HomePage extends React.Component {
         return this.state.storytellerData[this.state.currentSceneName];
     }
 
+    // Get target sprite
+    getTargetSprite() {
+        if (this.state.targetSpriteIdx === -1) {
+            return null;
+        }
+        else if (this.state.currentFrame === -1) {
+            return this.getCurrentScene().baseFrame[this.state.targetSpriteIdx];
+        }
+        else {
+            return this.getCurrentScene().frames[this.state.currentFrame][this.state.targetSpriteIdx];
+        }
+    }
+
     // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
         const sceneName = this.state.currentSceneName;
@@ -229,54 +242,82 @@ class HomePage extends React.Component {
 
     // Update target sprite with new attributes
     updateTargetSpriteAttributes(newSpriteAttributes) {
-        // Get clone of current scene frames
-        const newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
+        if (this.state.currentFrame === -1) {
+            // Base frame
+            // Get clone of current base frame
+            const newBaseFrame = JSON.parse(JSON.stringify(this.getCurrentScene().baseFrame));
 
-        newFrames[this.state.currentFrame][this.state.targetSpriteIdx] = {
-            ...newFrames[this.state.currentFrame][this.state.targetSpriteIdx],
-            ...newSpriteAttributes
-        };
+            newBaseFrame[this.state.targetSpriteIdx] = {
+                ...newBaseFrame[this.state.targetSpriteIdx],
+                ...newSpriteAttributes
+            };
 
-        this.setState({
-            storytellerData: {
-                ...this.state.storytellerData,
-                [this.state.currentSceneName]: {
-                    ...this.state.storytellerData[this.state.currentSceneName],
-                    frames: newFrames,
+            this.setState({
+                storytellerData: {
+                    ...this.state.storytellerData,
+                    [this.state.currentSceneName]: {
+                        ...this.state.storytellerData[this.state.currentSceneName],
+                        baseFrame: newBaseFrame,
+                    }
                 }
-            }
-        });
+            });
+        }
+        else {
+            // Other frames
+            // Get clone of current scene frames
+            const newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
+
+            newFrames[this.state.currentFrame][this.state.targetSpriteIdx] = {
+                ...newFrames[this.state.currentFrame][this.state.targetSpriteIdx],
+                ...newSpriteAttributes
+            };
+
+            this.setState({
+                storytellerData: {
+                    ...this.state.storytellerData,
+                    [this.state.currentSceneName]: {
+                        ...this.state.storytellerData[this.state.currentSceneName],
+                        frames: newFrames,
+                    }
+                }
+            });
+        }
     }
 
     // Get onClickListeners for sprites in current frame
     getCurrentOnClickListeners() {
         const currentScene = this.getCurrentScene();
         const sceneFrame = this.state.currentFrame;
+        
+        let baseFrameSize = (currentScene.baseFrame || []).length;
+        let currentFrameSprites = (currentScene.frames[sceneFrame] || []);
+
         const onClickListeners = [];
+
         if (sceneFrame === -1) {
-            //base frame
+            baseFrameSize = 0;
+            currentFrameSprites = (currentScene.baseFrame || []);
         }
-        else {
-            const baseFrameSize = (currentScene.baseFrame || []).length;
-            const currentFrameSprites = (currentScene.frames[sceneFrame] || []);
-            for (let i = 0; i < baseFrameSize; i++) {
-                // For all the sprites in the base frame, add a no-op listener
-                onClickListeners.push(idx => () => {});
-            }
-            currentFrameSprites.forEach(sprite => {
-                // For all sprites in the current frame, add a callback
-                onClickListeners.push(rawIdx => event => {
-                    const idx = rawIdx - baseFrameSize;
-                    this.setState({
-                        targetSpriteIdx: idx,
-                    });
-                    this.setSpriteFollowMouse(false);
-                    if(event.shiftKey) {
-                        this.setSpriteFollowMouse(true);
-                    }
+
+        for (let i = 0; i < baseFrameSize; i++) {
+            // For all the sprites in the base frame, add a no-op listener
+            onClickListeners.push(idx => () => {});
+        }
+
+        currentFrameSprites.forEach(sprite => {
+            // For all sprites in the current frame, add a callback
+            onClickListeners.push(rawIdx => event => {
+                const idx = rawIdx - baseFrameSize;
+                this.setState({
+                    targetSpriteIdx: idx,
                 });
-            })
-        }
+                this.setSpriteFollowMouse(false);
+                if(event.shiftKey) {
+                    this.setSpriteFollowMouse(true);
+                }
+            });
+        });
+
         return onClickListeners;
     }
 
@@ -392,7 +433,7 @@ class HomePage extends React.Component {
             this.setState({ targetSpriteIdx: -1 });
         }
 
-        const targetSprite = this.getCurrentScene().frames[this.state.currentFrame][this.state.targetSpriteIdx];
+        const targetSprite = this.getTargetSprite();
 
         return (
             <div className="attrs-section editor-section">
