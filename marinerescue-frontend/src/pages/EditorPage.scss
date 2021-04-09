@@ -1,0 +1,66 @@
+@import '../styles/colors';
+
+.editor-page {
+    .editor-pane {
+        flex: 1;
+        height: 100vh;
+    }
+
+    .editor-section {
+        background-color: #bdc3c7;
+        margin-bottom: 16px;
+        padding: 8px 16px;
+        
+        h2 {
+            margin: 0;
+            margin-bottom: 8px;
+        }
+    }
+
+    .selector-section {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+
+        .selector-scroll {
+            flex: 1;
+            overflow-y: scroll;
+        }
+
+        .selection {
+            display: flex;
+
+            &.selected .selection-primary {
+                background-color: $grape;
+            }
+
+            button {
+                margin: 0;
+                border: 1px solid black;
+
+                &:hover {
+                    background-color: $blue;
+                }
+            }
+
+            .selection-primary {
+                flex: 1;
+            }
+
+            .selection-secondary span {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .attrs-section {
+        .attr {
+            display: flex;
+            margin-bottom: 8px;
+            
+            & > * {
+                flex: 1 50%;
+            }
+        }
+    }
+}
