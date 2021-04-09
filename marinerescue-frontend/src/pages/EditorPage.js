@@ -44,7 +44,7 @@ const IMAGES = {
     ],
 };
 
-class HomePage extends React.Component {
+class EditorPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -775,4 +775,4 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+export default EditorPage;
