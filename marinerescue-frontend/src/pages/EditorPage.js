@@ -349,15 +349,17 @@ class HomePage extends React.Component {
         }
         return (
             <div className="primary-section editor-section">
-                <button onClick={this.export.bind(this)}>
-                    <span class="material-icons-outlined">file_download</span>
-                </button>
-                <button onClick={this.import.bind(this)}>
-                    <span class="material-icons-outlined">file_upload</span>
-                </button>
-                <button onClick={toggleInstructions.bind(this)}>
-                    <span class="material-icons-outlined">help_outline</span>
-                </button>
+                <div class="primary-section-btns">
+                    <button onClick={this.export.bind(this)}>
+                        <span class="material-icons-outlined">file_download</span>
+                    </button>
+                    <button onClick={this.import.bind(this)}>
+                        <span class="material-icons-outlined">file_upload</span>
+                    </button>
+                    <button onClick={toggleInstructions.bind(this)}>
+                        <span class="material-icons-outlined">help_outline</span>
+                    </button>
+                </div>
                 {
                     this.state.showInstructions && 
                         <>
