@@ -26,9 +26,8 @@ class AboutPage extends React.Component {
                     <div class="row">
                         <div class="column">
                             <h1>- Our Goal - </h1>
-                            <h2>Marine Rescue is a platform for elementary students to learn about debris' impacts on marine wildlife.</h2>
-                            <br />
-                            <h2>Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research. From our user research when developing this project, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. </h2>
+                            <p>Marine Rescue is a platform for elementary students to learn about debris' impacts on marine wildlife.</p>
+                            <p>Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research. From our user research when developing this project, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. </p>
                         </div>
                     </div>
                 </div>
