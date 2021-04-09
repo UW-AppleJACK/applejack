@@ -3,6 +3,7 @@
     height: 100%;
     width: 100%;
     background-size: cover;
+    overflow: hidden;
 
     // Allow transitions for sprites with IDs
     .comic-view-sprite {

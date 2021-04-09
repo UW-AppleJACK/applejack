@@ -11,7 +11,35 @@ const IMAGES = {
         'test-2',
     ],
     sprites: [
+        'buoy-net-marker',
+        'fish',
+        'fishingline',
+        'humphrey-blush',
+        'humphrey-sad',
+        'humphrey-surprised',
+        'humphrey',
+        'jade-birds-eye-view',
+        'jade-birds-eye-view2',
+        'jade-happy',
+        'jade-heart',
+        'jade-mad',
+        'jade-sad',
+        'jellyfish-purpleblue',
+        'jellyfish-white',
+        'squid',
+        'sqwacky-blank',
+        'sqwacky-doodle',
+        'sqwacky-love',
+        'sqwacky-mad',
+        'sqwacky-surprised',
+        'sqwacky-worried',
+        'sqwacky',
+        'sqwackyv2-BELLY',
+        'sqwackyv2-FLY',
         'strawberry',
+        'strawberry-love',
+        'strawberry-sad',
+        'strawberry-surprised',
     ],
 };
 
@@ -125,6 +153,7 @@ class HomePage extends React.Component {
             storytellerData: TEST2,
             currentSceneName: 'testScene',
             currentFrame: 0,
+            targetSpriteIdx: -1,
         };
     }
 
@@ -135,6 +164,7 @@ class HomePage extends React.Component {
 
     // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
+        console.log(this.state)
         const sceneName = this.state.currentSceneName;
         const sceneFrame = this.state.currentFrame;
         const currentScene = this.getCurrentScene();
@@ -159,6 +189,56 @@ class HomePage extends React.Component {
                 }
             }
         });
+    }
+
+    // Update target sprite with new attributes
+    updateTargetSpriteAttributes(newSpriteAttributes) {
+        // Get clone of current scene frames
+        const newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
+
+        newFrames[this.state.currentFrame][this.state.targetSpriteIdx] = {
+            ...newFrames[this.state.currentFrame][this.state.targetSpriteIdx],
+            ...newSpriteAttributes
+        };
+
+        this.setState({
+            storytellerData: {
+                ...this.state.storytellerData,
+                [this.state.currentSceneName]: {
+                    ...this.state.storytellerData[this.state.currentSceneName],
+                    frames: newFrames,
+                }
+            }
+        });
+    }
+
+    // Get onClickListeners for sprites in current frame
+    getCurrentOnClickListeners() {
+        const currentScene = this.getCurrentScene();
+        const sceneFrame = this.state.currentFrame;
+        const onClickListeners = [];
+        if (sceneFrame === -1) {
+            //base frame
+        }
+        else {
+            const baseFrameSize = (currentScene.baseFrame || []).length;
+            const currentFrameSprites = (currentScene.frames[sceneFrame] || []);
+            for (let i = 0; i < baseFrameSize; i++) {
+                // For all the sprites in the base frame, add a no-op listener
+                onClickListeners.push(idx => () => {});
+            }
+            currentFrameSprites.forEach(sprite => {
+                // For all sprites in the current frame, add a callback
+                onClickListeners.push(rawIdx => () => {
+                    const idx = rawIdx - baseFrameSize;
+                    this.setState({
+                        targetSpriteIdx: idx,
+                    });
+                    console.log(idx,sprite);
+                });
+            })
+        }
+        return onClickListeners;
     }
 
     // render scene editor view
@@ -252,6 +332,83 @@ class HomePage extends React.Component {
         );
     }
 
+    // render sprite editor view
+    renderSpriteEditor() {
+        if (this.state.targetSpriteIdx === -1) {
+            return <></>;
+        }
+
+        const updateSpriteImage = newImage => {
+            this.updateTargetSpriteAttributes({ image: newImage });
+        }
+
+        // Given a sprite property and an optional parser function, returns a onChange listener
+        const updateSpriteAttributeFromInput = prop => event => {
+            const newValue = event.target.value;
+            this.updateTargetSpriteAttributes({ [prop]: newValue || 0 });
+        }
+
+        // Deselect target sprite
+        const deselectTargetSprite = () => {
+            this.setState({ targetSpriteIdx: -1 });
+        }
+
+        const targetSprite = this.getCurrentScene().frames[this.state.currentFrame][this.state.targetSpriteIdx];
+        console.log('ts', targetSprite, this.state);
+
+        return (
+            <div className="attrs-section editor-section">
+                <h2>Sprite Attrs</h2>
+
+                <button onClick={deselectTargetSprite.bind(this)}>Deselect</button>
+
+                <div className="attr">
+                    <label htmlFor="sprite-image">Image</label>
+                    <Dropdown
+                        id="sprite-image"
+                        options={IMAGES.sprites}
+                        onChange={updateSpriteImage.bind(this)}
+                        selected={targetSprite.image} />
+                </div>
+
+                <div className="attr">
+                    <label htmlFor="sprite-id">ID (optional)</label>
+                    <input type="text"
+                        id="sprite-id"
+                        value={targetSprite.id || ''}
+                        onChange={updateSpriteAttributeFromInput('id').bind(this)} />
+                </div>
+
+                <div className="attr">
+                    <label htmlFor="sprite-x">X Position</label>
+                    <input type="number"
+                        id="sprite-size"
+                        min="0" max="100" step="0.1"
+                        value={targetSprite.x}
+                        onChange={updateSpriteAttributeFromInput('x').bind(this)} />
+                </div>
+
+                <div className="attr">
+                    <label htmlFor="sprite-y">Y Position</label>
+                    <input type="number"
+                        id="sprite-sze"
+                        min="0" max="100" step="0.1"
+                        value={targetSprite.y}
+                        onChange={updateSpriteAttributeFromInput('y').bind(this)} />
+                </div>
+
+                <div className="attr">
+                    <label htmlFor="sprite-size">Size</label>
+                    <input type="number"
+                        id="sprite-size"
+                        min="0" max="100" step="0.1"
+                        value={targetSprite.size}
+                        onChange={updateSpriteAttributeFromInput('size').bind(this)} />
+                </div>
+            </div>
+        );
+    }
+
     // Render Scene selection view
     renderSceneSelection() {
         // Sets the current scene
@@ -259,6 +416,7 @@ class HomePage extends React.Component {
             this.setState({
                 currentSceneName: newSceneName,
                 currentFrame: 0,
+                targetSpriteIdx: -1,
             });
         }
 
@@ -310,6 +468,7 @@ class HomePage extends React.Component {
         const setCurrentFrameCallback = (newFrameIdx) => {
             this.setState({
                 currentFrame: newFrameIdx,
+                targetSpriteIdx: -1,
             });
         }
 
@@ -398,7 +557,8 @@ class HomePage extends React.Component {
                 <ComicView
                     sceneName={this.state.currentSceneName}
                     background={this.getCurrentComicViewData().background}
-                    frame={this.getCurrentComicViewData().frame} />
+                    frame={this.getCurrentComicViewData().frame}
+                    onClickListeners={this.getCurrentOnClickListeners()} />
             );
         }
         else if (currentScene.type === 'minigame') {
@@ -422,6 +582,7 @@ class HomePage extends React.Component {
                     {this.renderSceneSelection()}
                     {this.renderFrameSelection()}
                     {this.renderSceneEditor()}
+                    {this.renderSpriteEditor()}
                 </div>
             </div>
         );

@@ -26,6 +26,16 @@ class ComicView extends React.Component {
         }));
     }
 
+    // Get on click listener for a sprite at a particular index
+    getSpriteOnClickListenerForIdx(idx) {
+        if (!this.props.onClickListeners || idx >= this.props.onClickListeners.length) {
+            // Return no-op if there are no on-click listeners for this index
+            return () => {};
+        }
+
+        return this.props.onClickListeners[idx](idx);
+    }
+
     // Render an element as a sprite
     renderSprite(element, idx) {
         const classes = {
@@ -41,6 +51,7 @@ class ComicView extends React.Component {
                     top: element.y,
                     width: `${element.size}%`,
                 }}
+                onClick={this.getSpriteOnClickListenerForIdx(idx)}
                 alt=""
                 src={`/sprites/sprite-${element.image}.png`}
                 key={id || idx}
