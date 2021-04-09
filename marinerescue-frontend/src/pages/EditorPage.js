@@ -285,6 +285,25 @@ class HomePage extends React.Component {
         }
     }
 
+    // Export: open window that shows storyteller data as JSON
+    export() {
+        window.open('', null, 'status=yes,toolbar=no,menubar=no,location=no').document.write('<pre>' +
+            JSON.stringify(this.state.storytellerData, null, 2) +
+        '</pre>');
+    }
+
+    // Import: open dialog to import storyteller data as JSON
+    import() {
+        const result = prompt("Paste Storyteller data as JSON");
+        const obj = JSON.parse(result);
+        this.setState({
+            storytellerData: obj,
+            currentSceneName: 'testScene',
+            currentFrame: 0,
+            targetSpriteIdx: -1,
+        });
+    }
+
     // Get onClickListeners for sprites in current frame
     getCurrentOnClickListeners() {
         const currentScene = this.getCurrentScene();
@@ -322,6 +341,7 @@ class HomePage extends React.Component {
         return onClickListeners;
     }
 
+    // render editor view for import, export, instructions
     renderEditorPrimarySection() {
         // Toggle instructions visibility
         const toggleInstructions = () => {
@@ -329,13 +349,13 @@ class HomePage extends React.Component {
         }
         return (
             <div className="primary-section editor-section">
-                <button onClick={toggleInstructions}>
+                <button onClick={this.export.bind(this)}>
                     <span class="material-icons-outlined">file_download</span>
                 </button>
-                <button onClick={toggleInstructions}>
+                <button onClick={this.import.bind(this)}>
                     <span class="material-icons-outlined">file_upload</span>
                 </button>
-                <button onClick={toggleInstructions}>
+                <button onClick={toggleInstructions.bind(this)}>
                     <span class="material-icons-outlined">help_outline</span>
                 </button>
                 {

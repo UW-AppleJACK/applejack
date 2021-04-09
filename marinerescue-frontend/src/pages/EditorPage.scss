@@ -63,4 +63,12 @@
             }
         }
     }
+
+    .primary-section {
+        display: flex;
+
+        button {
+            flex: 1;
+        }
+    }
 }
