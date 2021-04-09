@@ -264,15 +264,15 @@ class HomePage extends React.Component {
         }
         return (
             <div className="primary-section editor-section">
-                <div class="primary-section-btns">
+                <div className="primary-section-btns">
                     <button onClick={this.export.bind(this)}>
-                        <span class="material-icons-outlined">file_download</span>
+                        <span className="material-icons-outlined">file_download</span>
                     </button>
                     <button onClick={this.import.bind(this)}>
-                        <span class="material-icons-outlined">file_upload</span>
+                        <span className="material-icons-outlined">file_upload</span>
                     </button>
                     <button onClick={toggleInstructions.bind(this)}>
-                        <span class="material-icons-outlined">help_outline</span>
+                        <span className="material-icons-outlined">help_outline</span>
                     </button>
                 </div>
                 {
@@ -489,6 +489,47 @@ class HomePage extends React.Component {
             this.setState({ targetSpriteIdx: -1 });
         }
 
+        // Delete target sprite
+        const deleteTargetSprite = () => {
+            const confirmed = window.confirm(`Delete sprite?`)
+            if (!confirmed) return;
+
+            if (this.state.currentFrame === -1) {
+                // Base frame
+                // Get clone of current base frame
+                let newBaseFrame = JSON.parse(JSON.stringify(this.getCurrentScene().baseFrame));
+                newBaseFrame.splice(this.state.targetSpriteIdx, 1);
+    
+                this.setState({
+                    storytellerData: {
+                        ...this.state.storytellerData,
+                        [this.state.currentSceneName]: {
+                            ...this.state.storytellerData[this.state.currentSceneName],
+                            baseFrame: newBaseFrame,
+                        }
+                    },
+                    targetSpriteIdx: -1,
+                });
+            }
+            else {
+                // Other frames
+                // Get clone of current scene frame
+                const newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
+                newFrames[this.state.currentFrame].splice(this.state.targetSpriteIdx, 1);
+
+                this.setState({
+                    storytellerData: {
+                        ...this.state.storytellerData,
+                        [this.state.currentSceneName]: {
+                            ...this.state.storytellerData[this.state.currentSceneName],
+                            frames: newFrames,
+                        }
+                    },
+                    targetSpriteIdx: -1,
+                });
+            }
+        }
+
         const targetSprite = this.getTargetSprite();
 
         return (
@@ -496,6 +537,8 @@ class HomePage extends React.Component {
                 <h2>Sprite Attrs</h2>
 
                 <button onClick={deselectTargetSprite.bind(this)}>Deselect</button>
+                
+                <button onClick={deleteTargetSprite.bind(this)}>Delete</button>
 
                 <div className="attr">
                     <label htmlFor="sprite-image">Image</label>
@@ -711,6 +754,7 @@ class HomePage extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div id="storyteller" className="editor-page">
                 <div className="editor-pane">
