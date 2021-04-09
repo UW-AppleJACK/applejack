@@ -358,7 +358,7 @@ class HomePage extends React.Component {
     // render scene editor view
     renderSceneEditor() {
         // Update current scene with new type
-        const updateSceneType = (newSceneType) => {
+        const updateSceneType = newSceneType => {
             if (newSceneType === 'minigame' && !this.getCurrentScene().minigame) {
                 this.updateCurrentSceneAttributes({
                     type: newSceneType,
@@ -380,17 +380,17 @@ class HomePage extends React.Component {
         }
 
         // Update current scene with new minigame
-        const updateSceneMinigame = (newMinigame) => {
+        const updateSceneMinigame = newMinigame => {
             this.updateCurrentSceneAttributes({ minigame: newMinigame });
         }
 
         // Update current scene with new background
-        const updateSceneBackground = (newBackground) => {
+        const updateSceneBackground = newBackground => {
             this.updateCurrentSceneAttributes({ background: newBackground });
         }
 
         // Update current scene with new nextScene
-        const updateSceneNext = (newNextScene) => {
+        const updateSceneNext = newNextScene => {
             this.updateCurrentSceneAttributes({ nextScene: newNextScene });
         }
 
@@ -452,6 +452,12 @@ class HomePage extends React.Component {
             return <></>;
         }
 
+        // Toggle target sprite flip X
+        const toggleFlipX = () => {
+            this.updateTargetSpriteAttributes({ flipX: !this.getTargetSprite().flipX });
+        }
+
+        // Update target sprite image
         const updateSpriteImage = newImage => {
             this.updateTargetSpriteAttributes({ image: newImage });
         }
@@ -518,6 +524,12 @@ class HomePage extends React.Component {
                         value={targetSprite.size}
                         onChange={updateSpriteAttributeFromInput('size').bind(this)} />
                 </div>
+
+                <div className="attr">
+                    <label htmlFor="sprite-flip-x">Flip X</label>
+                    <span>{!!targetSprite.flipX ? 'true' : 'false'}</span>
+                    <button onClick={toggleFlipX.bind(this)}>Toggle</button>
+                </div>
             </div>
         );
     }
@@ -525,7 +537,7 @@ class HomePage extends React.Component {
     // Render Scene selection view
     renderSceneSelection() {
         // Sets the current scene
-        const setCurrentSceneNameCallback = (newSceneName) => {
+        const setCurrentSceneNameCallback = newSceneName => {
             this.setState({
                 currentSceneName: newSceneName,
                 currentFrame: 0,
@@ -578,7 +590,7 @@ class HomePage extends React.Component {
     // Render Frame selection view
     renderFrameSelection() {
         // Sets the current frame
-        const setCurrentFrameCallback = (newFrameIdx) => {
+        const setCurrentFrameCallback = newFrameIdx => {
             this.setState({
                 currentFrame: newFrameIdx,
                 targetSpriteIdx: -1,
@@ -586,7 +598,7 @@ class HomePage extends React.Component {
         }
 
         // Adds a new frame with particular content
-        const addNewFrame = (newFrameContent) => {
+        const addNewFrame = newFrameContent => {
             this.setState({
                 storytellerData: {
                     ...this.state.storytellerData,
@@ -602,7 +614,7 @@ class HomePage extends React.Component {
         }
 
         // Deletes a frame
-        const deleteFrame = (frameIndex) => {
+        const deleteFrame = frameIndex => {
             const confirmed = window.confirm(`Delete frame ${frameIndex}?`)
             if (!confirmed) return;
             let newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
