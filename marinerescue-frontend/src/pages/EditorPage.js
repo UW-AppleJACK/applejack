@@ -155,6 +155,7 @@ class HomePage extends React.Component {
             currentFrame: 0,
             targetSpriteIdx: -1,
             showInstructions: false,
+            spriteSearchFilter: '',
         };
     }
 
@@ -189,6 +190,11 @@ class HomePage extends React.Component {
                 ...(currentScene.frames[sceneFrame] || [])
             ],
         };
+    }
+
+    // Return filtered list of sprites that can be spawned
+    getFilteredSpawnSprites() {
+        return IMAGES.sprites.filter(sprite => sprite.includes(this.state.spriteSearchFilter));
     }
 
     // Convert (x, y) screen position to percentage across storyteller view bounds
@@ -375,6 +381,85 @@ class HomePage extends React.Component {
                 }
             </div>
         )
+    }
+
+    // Render sprite spawner view
+    renderSpriteSpawner() {
+        if (this.getCurrentScene().type === 'minigame') {
+            return <div></div>;
+        }
+
+        // Update current sprite spawn search filter
+        const updateFilter = event => {
+            const newFilter = event.target.value;
+            this.setState({ spriteSearchFilter: newFilter });
+        }
+
+        // Spawn a new sprite into the current frame
+        const spawnSprite = spriteName => {
+            const newSprite = {
+                type: 'sprite',
+                image: spriteName,
+                x: 0,
+                y: 0,
+                size: 50,
+                flipX: false,
+            }
+            if (this.state.currentFrame === -1) {
+                // Base frame
+                // Get clone of current base frame
+                let newBaseFrame = JSON.parse(JSON.stringify(this.getCurrentScene().baseFrame));
+                newBaseFrame.push(newSprite);
+    
+                this.setState({
+                    storytellerData: {
+                        ...this.state.storytellerData,
+                        [this.state.currentSceneName]: {
+                            ...this.state.storytellerData[this.state.currentSceneName],
+                            baseFrame: newBaseFrame,
+                        }
+                    }
+                });
+            }
+            else {
+                // Other frames
+                // Get clone of current scene frame
+                const newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
+                newFrames[this.state.currentFrame].push(newSprite)
+    
+                this.setState({
+                    storytellerData: {
+                        ...this.state.storytellerData,
+                        [this.state.currentSceneName]: {
+                            ...this.state.storytellerData[this.state.currentSceneName],
+                            frames: newFrames,
+                        }
+                    }
+                });
+            }
+        }
+
+        return (
+            <div className="sprite-spawner-section editor-section selector-section">
+                <h2>Add Sprite</h2>
+                <input type="text" onChange={updateFilter.bind(this)} value={this.state.spriteSearchFilter} placeholder="Search..." />
+                <div className="selector-scroll">
+                    {
+                        this.getFilteredSpawnSprites().map((sprite, idx) => (
+                            <div className="selection" key={idx}>
+                                <img src={`/sprites/sprite-${sprite}.png`} alt="" />
+                                <button
+                                    className="selection-primary"
+                                    onClick={() => spawnSprite.bind(this)(sprite)}
+                                >
+                                    {sprite}
+                                </button>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        );
     }
 
     // render scene editor view
@@ -611,6 +696,10 @@ class HomePage extends React.Component {
 
     // Render Frame selection view
     renderFrameSelection() {
+        if (this.getCurrentScene().type === 'minigame') {
+            return <div></div>;
+        }
+
         // Sets the current frame
         const setCurrentFrameCallback = newFrameIdx => {
             this.setState({
@@ -642,10 +731,6 @@ class HomePage extends React.Component {
             let newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
             newFrames.splice(frameIndex, 1);
             this.updateCurrentSceneAttributes({ frames: newFrames });
-        }
-
-        if (this.getCurrentScene().type === 'minigame') {
-            return <div></div>;
         }
 
         return (
@@ -721,6 +806,7 @@ class HomePage extends React.Component {
             <div id="storyteller" className="editor-page">
                 <div className="editor-pane">
                     {this.renderEditorPrimarySection()}
+                    {this.renderSpriteSpawner()}
                 </div>
                 <div id="storyteller-view">
                     {this.renderStorytellerView()}

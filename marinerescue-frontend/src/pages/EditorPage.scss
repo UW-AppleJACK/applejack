@@ -71,4 +71,32 @@
             flex: 1;
         }
     }
+
+    .sprite-spawner-section {
+        height: calc(100vh - 300px);
+
+        input[type=text] {
+            height: 30px;
+            padding: 0 8px;
+            margin-bottom: 8px;
+        }
+
+        .selector-scroll {
+            max-height: 100%;
+        }
+
+        .selection {
+            align-items: center;
+            height: 80px;
+
+            img {
+                width: 40px;
+                max-height: 100%;
+            }
+
+            button {
+                height: 100%;
+            }
+        }
+    }
 }
