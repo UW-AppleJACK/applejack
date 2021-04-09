@@ -77,9 +77,8 @@ class AboutPage extends React.Component {
                     <div class="row">
                         <div class="column">
                             <h1>- Acknowledgements - </h1>
-                            <h2>Our team is grateful for the support from our mentors and peers at the University of Washington’s Information School for their advice through each iteration of our project. Throughout the development of this project, we have worked with the Coastal Observation and Seabird Survey Team (COASST). The team at COASST has helped ensure the validity of our content and provided materials such as photos and informational handouts from their Marine Debris program which are incorporated in our educational activities. Our team would like to thank COASST for their incredible support through this development process.  </h2>
-                            <br />
-                            <h2>COASST is a citizen science program housed at the University of Washington with more than 20 years of history. The program’s goal is to focus on beach environment, specifically marine debris and beached birds in the northeast Pacific area. To learn more about COASST, visit their <a href="https://coasst.org/">website</a>.</h2>
+                            <p>Our team is grateful for the support from our mentors and peers at the University of Washington’s Information School for their advice through each iteration of our project. Throughout the development of this project, we have worked with the Coastal Observation and Seabird Survey Team (COASST). The team at COASST has helped ensure the validity of our content and provided materials such as photos and informational handouts from their Marine Debris program which are incorporated in our educational activities. Our team would like to thank COASST for their incredible support through this development process.  </p>
+                            <p>COASST is a citizen science program housed at the University of Washington with more than 20 years of history. The program’s goal is to focus on beach environment, specifically marine debris and beached birds in the northeast Pacific area. To learn more about COASST, visit their <a href="https://coasst.org/" target="_blank">website</a>.</p>
                         </div>
                     </div>
                 </div>
