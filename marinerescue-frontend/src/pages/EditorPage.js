@@ -159,6 +159,16 @@ class HomePage extends React.Component {
         };
     }
 
+    componentDidMount() {
+        window.onbeforeunload = () => {
+            return 'Make sure you saved your work before exiting!';
+        };
+    }
+
+    componentWillUnmount() {
+        window.onbeforeunload = null;
+    }
+
     // Get current game scene
     getCurrentScene() {
         return this.state.storytellerData[this.state.currentSceneName];
@@ -301,6 +311,7 @@ class HomePage extends React.Component {
     // Import: open dialog to import storyteller data as JSON
     import() {
         const result = prompt("Paste Storyteller data as JSON");
+        if (!result) return;
         const obj = JSON.parse(result);
         this.setState({
             storytellerData: obj,
