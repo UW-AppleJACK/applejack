@@ -20,9 +20,6 @@ class AboutPage extends React.Component {
                     <Link to="/parents">Parents</Link>
                     <a href="#playnow"><button id="nav-bar-button">Play Now</button></a>
                     <a href="profile">Profile</a>
-                    {/* <div class="navbar-logo">
-                        <img src="images/profile-logo.png"></img>
-                    </div> */}
                 </div>
 
                 <div class="section">
