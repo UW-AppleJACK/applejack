@@ -4,7 +4,7 @@ import {
     Route
 } from "react-router-dom";
 
-import './App.css';
+import './App.scss';
 import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import HomePage from './pages/HomePage';
