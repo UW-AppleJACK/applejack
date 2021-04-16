@@ -92,6 +92,7 @@ class EditorPage extends React.Component {
         const sceneName = this.state.currentSceneName;
         const sceneFrame = this.state.currentFrame;
         const currentScene = this.getCurrentScene();
+        const currentDialog = sceneFrame !== -1 ? currentScene.dialog[sceneFrame] : null;
         return {
             sceneName,
             background: currentScene.background,
@@ -99,6 +100,7 @@ class EditorPage extends React.Component {
                 ...(currentScene.baseFrame || []),
                 ...(currentScene.frames[sceneFrame] || [])
             ],
+            dialog: currentDialog,
         };
     }
 
@@ -605,6 +607,35 @@ class EditorPage extends React.Component {
         );
     }
 
+    renderDialogEditor() {
+        if (this.getCurrentScene().type === 'minigame' || this.state.currentFrame === -1) {
+            return <></>;
+        }
+
+        const setCurrentFrameDialogEnabled = isEnabled => () => {
+            // Clone existing dialog
+            const newDialogAttr = JSON.parse(JSON.stringify(this.getCurrentScene().dialog));
+            newDialogAttr[this.state.currentFrame] = !isEnabled ? null : {
+                speaker: '',
+                message: '',
+                type: 'left',
+            };
+            this.updateCurrentSceneAttributes({
+                dialog: newDialogAttr
+            });
+        }
+
+        const currentFrameHasDialog = this.getCurrentComicViewData().dialog !== null;
+        console.log(currentFrameHasDialog, this.getCurrentComicViewData());
+        return (
+            <div className="attrs-section editor-section">
+                <h2>Dialog</h2>
+
+                <button onClick={setCurrentFrameDialogEnabled.bind(this)(!currentFrameHasDialog)}>{currentFrameHasDialog ? 'Remove' : 'Add'} Dialog</button>
+            </div>
+        )
+    }
+
     // Render Scene selection view
     renderSceneSelection() {
         // Sets the current scene
@@ -779,6 +810,7 @@ class EditorPage extends React.Component {
                     {this.renderSceneSelection()}
                     {this.renderFrameSelection()}
                     {this.renderSceneEditor()}
+                    {this.renderDialogEditor()}
                     {this.renderSpriteEditor()}
                 </div>
             </div>

@@ -12,6 +12,7 @@ const storytellerData = {
                 size: 8,
             },
         ],
+        dialog: [null, null],
         frames: [
             [
                 {
@@ -55,6 +56,7 @@ const storytellerData = {
         type: 'comic',
         background: 'test-2',
         nextScene: 'testMinigame',
+        dialog: [null, null],
         frames: [
             [
                 {
