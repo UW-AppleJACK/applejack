@@ -52,6 +52,8 @@ class EditorPage extends React.Component {
             currentSceneName: 'testScene',
             currentFrame: 0,
             targetSpriteIdx: -1,
+            targetSpriteMoveOffsetPxX: 0,
+            targetSpriteMoveOffsetPxY: 0,
             showInstructions: false,
             spriteSearchFilter: '',
         };
@@ -132,8 +134,8 @@ class EditorPage extends React.Component {
                 const {pageX, pageY} = event;
                 const [percX, percY] = this.posToPerc(pageX, pageY);
                 this.updateTargetSpriteAttributes({
-                    x: percX,
-                    y: percY,
+                    x: percX + this.state.targetSpriteMoveOffsetPxX,
+                    y: percY + this.state.targetSpriteMoveOffsetPxY,
                 });
             }
         }
@@ -249,6 +251,16 @@ class EditorPage extends React.Component {
                 this.setSpriteFollowMouse(false);
                 if(event.shiftKey) {
                     this.setSpriteFollowMouse(true);
+
+                    // Set offset so that element follows cursor relative to initial click on element
+                    const [clickX, clickY] = this.posToPerc(event.pageX, event.pageY);
+                    const targetSpriteRect = event.target.getBoundingClientRect();
+                    const [elementOriginX, elementOriginY] = this.posToPerc(targetSpriteRect.left, targetSpriteRect.top);
+
+                    this.setState({
+                        targetSpriteMoveOffsetPxX: elementOriginX - clickX,
+                        targetSpriteMoveOffsetPxY: elementOriginY - clickY,
+                    });
                 }
             });
         });
@@ -754,7 +766,6 @@ class EditorPage extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div id="storyteller" className="editor-page">
                 <div className="editor-pane">
