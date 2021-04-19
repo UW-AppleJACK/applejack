@@ -70,7 +70,7 @@ class ComicView extends React.Component {
     // Render dialogue
     renderDialogue(dialogue) {
         return (<div id="dialogue" className={`dialogue-${dialogue.type}`}>
-            <img src="/sprites/misc-textbubble.png" alt="Text bubble background" />
+            <img src={dialogue.type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" />
             <div className="message-container">
                 <p>{dialogue.message}</p>
             </div>

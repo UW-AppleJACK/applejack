@@ -792,7 +792,7 @@ class EditorPage extends React.Component {
                                 <label htmlFor="dialogue-type">Dialogue Type</label>
                                 <Dropdown
                                     id="dialogue-type"
-                                    options={['left', 'right']}
+                                    options={['left', 'right', 'nospeaker']}
                                     selected={currentFrameDialogue.message}
                                     onChange={setCurrentFrameDialogueAttrFromInput('type').bind(this)} />
                             </div>

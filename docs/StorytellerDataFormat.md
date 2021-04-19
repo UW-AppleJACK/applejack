@@ -92,4 +92,4 @@ A dialogue can be null, non-existing, or an object. If it is null or non-existin
 
 * `speaker`: The speaker for the current dialogue.
 * `message`: The message for the current dialogue (supports line breaks).
-* `type`: The type of the current dialogue (either `left` or `right`).
+* `type`: The type of the current dialogue (either `left`, `right`, or `nospeaker`).
