@@ -62,6 +62,18 @@
                 flex: 1 50%;
             }
         }
+
+        .attr-map {
+            margin-bottom: 8px;
+
+            & > div {
+                display: flex;
+
+                & > * {
+                    flex: 1 0 50%;
+                }
+            }
+        }
     }
 
     .primary-section-btns {

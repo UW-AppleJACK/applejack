@@ -469,12 +469,21 @@ class EditorPage extends React.Component {
 
                 <div className="attr">
                     <label htmlFor="scene-type">Next Scene</label>
-                    <Dropdown
-                        id="scene-type"
-                        options={Object.keys(this.state.storytellerData)}
-                        onChange={updateSceneNext.bind(this)}
-                        selected={this.getCurrentScene().nextScene} />
+                    {
+                        typeof(this.getCurrentScene().nextScene) === 'string' &&
+                            <Dropdown
+                                id="scene-type"
+                                options={Object.keys(this.state.storytellerData)}
+                                onChange={updateSceneNext.bind(this)}
+                                selected={this.getCurrentScene().nextScene} />
+                    }
+                    {
+                        typeof(this.getCurrentScene().nextScene) !== 'string' &&
+                            <span>Decision on frame {this.getCurrentScene().frames.length - 1}</span>
+                    }
                 </div>
+
+                
 
                 {
                     this.getCurrentScene().type === 'minigame' &&
@@ -680,13 +689,79 @@ class EditorPage extends React.Component {
             });
         }
 
+        // Curried function that sets whether the next scene is determined by a decision
+        const setNextSceneIsDecision = isDecision => () => {
+            const defaultNextScene = Object.keys(this.state.storytellerData)[0];
+            this.updateCurrentSceneAttributes({
+                nextScene: isDecision ? { 'Continue': defaultNextScene } : defaultNextScene,
+            });
+        }
+
+        // Curried function that renames a decision label according to an input event
+        const renameChoiceLabel = oldLabel => event => {
+            const newLabel = event.target.value;
+            const newNextScene = JSON.parse(JSON.stringify(this.getCurrentScene().nextScene));
+            if (newLabel !== oldLabel) {
+                newNextScene[newLabel] = newNextScene[oldLabel];
+                delete newNextScene[oldLabel];
+                this.updateCurrentSceneAttributes({
+                    nextScene: newNextScene,
+                });
+            }
+        }
+
+        // Curried function that changes the target destination 
+        const setChoiceDestination = label => newDestination => {
+            const newNextScene = JSON.parse(JSON.stringify(this.getCurrentScene().nextScene));
+            newNextScene[label] = newDestination;
+            this.updateCurrentSceneAttributes({
+                nextScene: newNextScene,
+            });
+        }
+
+        // Add additional choice to decisions
+        const addChoice = () => {
+            const newNextScene = JSON.parse(JSON.stringify(this.getCurrentScene().nextScene));
+            const newLabel = `Choice ${Object.keys(this.getCurrentScene().nextScene).length}`;
+            const newDestination = Object.keys(this.state.storytellerData)[0];
+            newNextScene[newLabel] = newDestination;
+            this.updateCurrentSceneAttributes({
+                nextScene: newNextScene,
+            });
+        }
+
+        // Remove last choice from decision
+        const removeChoice = () => {
+            const newNextScene = JSON.parse(JSON.stringify(this.getCurrentScene().nextScene));
+            const decisionLabels = Object.keys(this.getCurrentScene().nextScene);
+            const labelToRemove = decisionLabels[decisionLabels.length - 1];
+            delete newNextScene[labelToRemove];
+            this.updateCurrentSceneAttributes({
+                nextScene: newNextScene,
+            });
+        }
+
         const currentFrameDialogue = this.getCurrentComicViewData().dialogue;
         const currentFrameHasDialogue = currentFrameDialogue !== null;
+        const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
+        const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
         return (
-            <div className="dialogue-section editor-section">
+            <div className="dialogue-section attrs-section editor-section">
                 <h2>Dialogue</h2>
 
-                <button onClick={setCurrentFrameDialogueEnabled.bind(this)(!currentFrameHasDialogue)}>{currentFrameHasDialogue ? 'Remove' : 'Add'} Dialogue</button>
+                {
+                    (!currentFrameIsFinalFrame || !nextSceneIsDecision) &&
+                        <button onClick={setCurrentFrameDialogueEnabled.bind(this)(!currentFrameHasDialogue)}>
+                            {currentFrameHasDialogue ? 'Remove' : 'Add'} Dialogue
+                        </button>
+                }
+
+                {
+                    (!currentFrameHasDialogue && currentFrameIsFinalFrame) &&
+                        <button onClick={setNextSceneIsDecision.bind(this)(!nextSceneIsDecision)}>
+                            {nextSceneIsDecision ? 'Remove' : 'Add'} Decision
+                        </button>
+                }
 
                 {
                     currentFrameHasDialogue &&
@@ -714,6 +789,38 @@ class EditorPage extends React.Component {
                                     onChange={setCurrentFrameDialogueAttrFromInput('type').bind(this)} />
                             </div>
                         </>
+                }
+
+                {
+                    (!currentFrameHasDialogue && currentFrameIsFinalFrame && nextSceneIsDecision) &&
+                        (<div className="attr-map">
+                            <div className="attr-map-header">
+                                <span>Label</span>
+                                <span>Destination</span>
+                            </div>
+                            {
+                                Object.keys(this.getCurrentScene().nextScene).sort().map((label, idx) =>  {
+                                    return (
+                                        <div key={idx}>
+                                            <input type="text"
+                                                value={label}
+                                                onChange={renameChoiceLabel(label).bind(this)} />
+                                            <Dropdown
+                                                options={Object.keys(this.state.storytellerData)}
+                                                onChange={setChoiceDestination(label).bind(this)}
+                                                selected={this.getCurrentScene().nextScene[label]} />
+                                        </div>
+                                    );
+                                })
+                            }
+                            <div>
+                                <button onClick={addChoice.bind(this)}>Add Choice</button>
+                                {
+                                    Object.keys(this.getCurrentScene().nextScene).length > 1 &&
+                                        <button onClick={removeChoice.bind(this)}>Remove Choice</button>
+                                }
+                            </div>
+                        </div>)
                 }
             </div>
         )
