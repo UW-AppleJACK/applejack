@@ -109,10 +109,17 @@ class EditorPage extends React.Component {
         const sceneName = this.state.currentSceneName;
         const sceneFrame = this.state.currentFrame;
         const currentScene = this.getCurrentScene();
+
         let currentDialogue = null;
         if (sceneFrame !== -1 && 'dialogue' in currentScene) {
             currentDialogue = currentScene.dialogue[sceneFrame];
         }
+
+        let currentDecision = null;
+        if (sceneFrame === currentScene.frames.length - 1 && typeof(currentScene.nextScene) !== 'string') {
+            currentDecision = currentScene.nextScene;
+        }
+
         return {
             sceneName,
             background: currentScene.background,
@@ -121,6 +128,7 @@ class EditorPage extends React.Component {
                 ...(currentScene.frames[sceneFrame] || [])
             ],
             dialogue: currentDialogue,
+            decision: currentDecision,
         };
     }
 
@@ -992,6 +1000,7 @@ class EditorPage extends React.Component {
                     background={this.getCurrentComicViewData().background}
                     frame={this.getCurrentComicViewData().frame}
                     dialogue={this.getCurrentComicViewData().dialogue}
+                    decision={this.getCurrentComicViewData().decision}
                     onClickListeners={this.getCurrentOnClickListeners()} />
             );
         }

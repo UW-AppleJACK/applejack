@@ -84,4 +84,26 @@
             }
         }
     }
+
+    #decision {
+        display: flex;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 40px 85px;
+        background-color: $grape;
+
+        button {
+            flex: 1;
+            background-color: $blue;
+            border: none;
+            font-family: 'Balsamiq Sans';
+            font-weight: 700;
+            font-size: 20px;
+            padding: 16px;
+            border-radius: 32px;
+            margin: 0 8px;
+        }
+    }
 }

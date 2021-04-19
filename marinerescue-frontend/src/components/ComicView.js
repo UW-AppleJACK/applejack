@@ -80,6 +80,15 @@ class ComicView extends React.Component {
         </div>);
     }
 
+    // Render decision
+    renderDecision(decision) {
+        return <div id="decision">
+            {Object.keys(decision).map(label => {
+                return (<button>{label}</button>)
+            })}
+        </div>;
+    }
+
     render() {
         return (
             <div className="comic-view" style={{
@@ -87,6 +96,7 @@ class ComicView extends React.Component {
             }}>
                 {this.getElements().map((element, idx) => this.renderElement(element, idx))}
                 {this.props.dialogue && this.renderDialogue(this.props.dialogue)}
+                {this.props.decision && this.renderDecision(this.props.decision)}
             </div>
         );
     }
