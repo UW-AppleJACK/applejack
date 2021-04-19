@@ -235,6 +235,17 @@ class EditorPage extends React.Component {
         const result = prompt("Paste Storyteller data as JSON");
         if (!result) return;
         const obj = JSON.parse(result);
+
+        // if length of dialogue is less than length of frames, fix it to match
+        Object.keys(obj).forEach(sceneName => {
+            const scene = obj[sceneName];
+            if ('dialogue' in scene && scene.dialogue.length !== scene.frames.length) {
+                for (let i = scene.dialogue.length; i < scene.frames.length; i++) {
+                    scene.dialogue.push(null);
+                }
+            }
+        })
+
         this.setState({
             storytellerData: obj,
             currentSceneName: 'testScene',
@@ -777,27 +788,43 @@ class EditorPage extends React.Component {
 
         // Adds a new frame with particular content
         const addNewFrame = newFrameContent => {
-            this.setState({
-                storytellerData: {
-                    ...this.state.storytellerData,
-                    [this.state.currentSceneName]: {
-                        ...this.state.storytellerData[this.state.currentSceneName],
-                        frames: [
-                            ...this.state.storytellerData[this.state.currentSceneName].frames,
-                            JSON.parse(JSON.stringify(newFrameContent))
-                        ]
-                    }
-                }
-            });
+            const newSceneAttrs = {
+                frames: [
+                    ...this.state.storytellerData[this.state.currentSceneName].frames,
+                    JSON.parse(JSON.stringify(newFrameContent))
+                ],
+            };
+
+            if ('dialogue' in this.state.storytellerData[this.state.currentSceneName]) {
+                newSceneAttrs.dialogue = [
+                    ...this.state.storytellerData[this.state.currentSceneName].dialogue,
+                    null
+                ];
+            }
+
+            this.updateCurrentSceneAttributes(newSceneAttrs);
         }
 
         // Deletes a frame
         const deleteFrame = frameIndex => {
             const confirmed = window.confirm(`Delete frame ${frameIndex}?`)
             if (!confirmed) return;
+
             let newFrames = JSON.parse(JSON.stringify(this.getCurrentScene().frames));
             newFrames.splice(frameIndex, 1);
-            this.updateCurrentSceneAttributes({ frames: newFrames });
+
+            const newSceneAttrs = {
+                frames: newFrames,
+            };
+
+            if ('dialogue' in this.state.storytellerData[this.state.currentSceneName]) {
+                let newDialogue = JSON.parse(JSON.stringify(this.getCurrentScene().dialogue));
+                newDialogue.splice(frameIndex, 1);
+                newSceneAttrs.dialogue = newDialogue;
+            }
+
+            this.setState({ currentFrame: -1 });
+            this.updateCurrentSceneAttributes(newSceneAttrs);
         }
 
         return (
