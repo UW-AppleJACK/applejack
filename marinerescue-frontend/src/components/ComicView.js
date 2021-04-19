@@ -74,9 +74,12 @@ class ComicView extends React.Component {
             <div className="message-container">
                 <p>{dialogue.message}</p>
             </div>
-            <div className="speaker-container">
-                <span>{dialogue.speaker}</span>
-            </div>
+            {
+                dialogue.speaker.length > 0 &&
+                    <div className="speaker-container">
+                        <span>{dialogue.speaker}</span>
+                    </div>
+            }
         </div>);
     }
 
