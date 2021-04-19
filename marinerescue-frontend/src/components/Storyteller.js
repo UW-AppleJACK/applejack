@@ -107,6 +107,10 @@ class Storyteller extends React.Component {
     getCurrentComicViewData() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
         const currentScene = this.getCurrentScene();
+        let currentDialogue = null;
+        if (sceneFrame !== -1 && 'dialogue' in currentScene) {
+            currentDialogue = currentScene.dialogue[sceneFrame];
+        }
         return {
             sceneName,
             background: currentScene.background,
@@ -114,6 +118,7 @@ class Storyteller extends React.Component {
                 ...(currentScene.baseFrame || []),
                 ...currentScene.frames[sceneFrame]
             ],
+            dialogue: currentDialogue,
         };
     }
 
@@ -125,7 +130,8 @@ class Storyteller extends React.Component {
                 <ComicView
                     sceneName={this.getCurrentComicViewData().sceneName}
                     background={this.getCurrentComicViewData().background}
-                    frame={this.getCurrentComicViewData().frame} />
+                    frame={this.getCurrentComicViewData().frame}
+                    dialogue={this.getCurrentComicViewData().dialogue} />
             );
         }
         else if (currentScene.type === 'minigame') {

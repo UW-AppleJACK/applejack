@@ -67,12 +67,26 @@ class ComicView extends React.Component {
         return (<div></div>);
     }
 
+    // Render dialogue
+    renderDialogue(dialogue) {
+        return (<div id="dialogue" className={`dialogue-${dialogue.type}`}>
+            <img src="/sprites/misc-textbubble.png" alt="Text bubble background" />
+            <div className="message-container">
+                <p>{dialogue.message}</p>
+            </div>
+            <div className="speaker-container">
+                <span>{dialogue.speaker}</span>
+            </div>
+        </div>);
+    }
+
     render() {
         return (
             <div className="comic-view" style={{
                 backgroundImage: `url("/sprites/bg-${this.props.background}.png")`
             }}>
                 {this.getElements().map((element, idx) => this.renderElement(element, idx))}
+                {this.props.dialogue && this.renderDialogue(this.props.dialogue)}
             </div>
         );
     }

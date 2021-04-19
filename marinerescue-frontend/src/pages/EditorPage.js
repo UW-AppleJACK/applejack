@@ -92,7 +92,10 @@ class EditorPage extends React.Component {
         const sceneName = this.state.currentSceneName;
         const sceneFrame = this.state.currentFrame;
         const currentScene = this.getCurrentScene();
-        const currentDialog = sceneFrame !== -1 ? currentScene.dialog[sceneFrame] : null;
+        let currentDialogue = null;
+        if (sceneFrame !== -1 && 'dialogue' in currentScene) {
+            currentDialogue = currentScene.dialogue[sceneFrame];
+        }
         return {
             sceneName,
             background: currentScene.background,
@@ -100,7 +103,7 @@ class EditorPage extends React.Component {
                 ...(currentScene.baseFrame || []),
                 ...(currentScene.frames[sceneFrame] || [])
             ],
-            dialog: currentDialog,
+            dialogue: currentDialogue,
         };
     }
 
@@ -607,31 +610,83 @@ class EditorPage extends React.Component {
         );
     }
 
-    renderDialogEditor() {
+    // Render dialogue editor
+    renderDialogueEditor() {
         if (this.getCurrentScene().type === 'minigame' || this.state.currentFrame === -1) {
             return <></>;
         }
 
-        const setCurrentFrameDialogEnabled = isEnabled => () => {
+        // Curried function that set an attribute for the current frame's dialogue from an
+        // input event
+        const setCurrentFrameDialogueAttrFromInput = attr => event => {
+            const newValue = typeof(event) === 'string' ? event : event.target.value;
             // Clone existing dialog
-            const newDialogAttr = JSON.parse(JSON.stringify(this.getCurrentScene().dialog));
-            newDialogAttr[this.state.currentFrame] = !isEnabled ? null : {
+            const newDialogueAttr = JSON.parse(JSON.stringify(this.getCurrentScene().dialogue));
+            newDialogueAttr[this.state.currentFrame] = {
+                ...newDialogueAttr[this.state.currentFrame],
+                [attr]: newValue,
+            };
+            this.updateCurrentSceneAttributes({
+                dialogue: newDialogueAttr
+            });
+        };
+
+        // Curied function that sets whether dialogue is enabled for the current frame by
+        // setting it to either null or a valid dialogue object
+        const setCurrentFrameDialogueEnabled = isEnabled => () => {
+            // Clone existing dialog
+            let newDialogueAttr;
+            if ('dialogue' in this.getCurrentScene()) {
+                newDialogueAttr = JSON.parse(JSON.stringify(this.getCurrentScene().dialogue));
+            }
+            else {
+                newDialogueAttr = this.getCurrentScene().frames.map(() => null);
+            }
+            newDialogueAttr[this.state.currentFrame] = !isEnabled ? null : {
                 speaker: '',
                 message: '',
                 type: 'left',
             };
             this.updateCurrentSceneAttributes({
-                dialog: newDialogAttr
+                dialogue: newDialogueAttr
             });
         }
 
-        const currentFrameHasDialog = this.getCurrentComicViewData().dialog !== null;
-        console.log(currentFrameHasDialog, this.getCurrentComicViewData());
+        const currentFrameDialogue = this.getCurrentComicViewData().dialogue;
+        const currentFrameHasDialogue = currentFrameDialogue !== null;
         return (
-            <div className="attrs-section editor-section">
-                <h2>Dialog</h2>
+            <div className="dialogue-section editor-section">
+                <h2>Dialogue</h2>
 
-                <button onClick={setCurrentFrameDialogEnabled.bind(this)(!currentFrameHasDialog)}>{currentFrameHasDialog ? 'Remove' : 'Add'} Dialog</button>
+                <button onClick={setCurrentFrameDialogueEnabled.bind(this)(!currentFrameHasDialogue)}>{currentFrameHasDialogue ? 'Remove' : 'Add'} Dialogue</button>
+
+                {
+                    currentFrameHasDialogue &&
+                        <>
+                            <div className="attr">
+                                <label htmlFor="dialogue-speaker">Speaker</label>
+                                <input type="text"
+                                    id="dialogue-speaker"
+                                    value={currentFrameDialogue.speaker}
+                                    onChange={setCurrentFrameDialogueAttrFromInput('speaker').bind(this)} />
+                            </div>
+                            <div className="attr">
+                                <label htmlFor="dialogue-message">Message</label>
+                                <textarea
+                                    id="dialogue-message"
+                                    value={currentFrameDialogue.message}
+                                    onChange={setCurrentFrameDialogueAttrFromInput('message').bind(this)} />
+                            </div>
+                            <div className="attr">
+                                <label htmlFor="dialogue-type">Dialogue Type</label>
+                                <Dropdown
+                                    id="dialogue-type"
+                                    options={['left', 'right']}
+                                    selected={currentFrameDialogue.message}
+                                    onChange={setCurrentFrameDialogueAttrFromInput('type').bind(this)} />
+                            </div>
+                        </>
+                }
             </div>
         )
     }
@@ -785,6 +840,7 @@ class EditorPage extends React.Component {
                     sceneName={this.state.currentSceneName}
                     background={this.getCurrentComicViewData().background}
                     frame={this.getCurrentComicViewData().frame}
+                    dialogue={this.getCurrentComicViewData().dialogue}
                     onClickListeners={this.getCurrentOnClickListeners()} />
             );
         }
@@ -810,7 +866,7 @@ class EditorPage extends React.Component {
                     {this.renderSceneSelection()}
                     {this.renderFrameSelection()}
                     {this.renderSceneEditor()}
-                    {this.renderDialogEditor()}
+                    {this.renderDialogueEditor()}
                     {this.renderSpriteEditor()}
                 </div>
             </div>

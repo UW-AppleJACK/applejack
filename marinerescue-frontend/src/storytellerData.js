@@ -12,7 +12,6 @@ const storytellerData = {
                 size: 8,
             },
         ],
-        dialog: [null, null],
         frames: [
             [
                 {
@@ -56,7 +55,14 @@ const storytellerData = {
         type: 'comic',
         background: 'test-2',
         nextScene: 'testMinigame',
-        dialog: [null, null],
+        dialogue: [
+            {
+                type: 'left',
+                speaker: 'Strawberry',
+                message: 'I’m showing my friend Ellie around and introducing them to all the animals! Ellie is the newest member of the Marine Rescue team!'
+            },
+            null,
+        ],
         frames: [
             [
                 {
