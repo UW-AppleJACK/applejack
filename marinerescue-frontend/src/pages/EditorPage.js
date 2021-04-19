@@ -13,9 +13,11 @@ const IMAGES = {
         'beige',
         'sea',
         'sea-mountains',
+        'sea-mountains-left',
         'beach-small',
         'beach-big',
         'beach-rocks',
+        'beach-rocks-2',
     ],
     sprites: [
         'blue-bag',
@@ -24,6 +26,7 @@ const IMAGES = {
         'color-scale',
         'fish',
         'fishingline',
+        'exclaim',
         'humphrey-blush',
         'humphrey-sad',
         'humphrey-surprised',
@@ -39,6 +42,7 @@ const IMAGES = {
         'journal-closed',
         'journal-open',
         'lighter',
+        'net',
         'squid',
         'sqwacky-blank',
         'sqwacky-doodle',
@@ -53,6 +57,7 @@ const IMAGES = {
         'strawberry-love',
         'strawberry-sad',
         'strawberry-surprised',
+        'question',
     ],
 };
 
