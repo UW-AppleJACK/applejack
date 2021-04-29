@@ -10,6 +10,7 @@ import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import EditorPage from './pages/EditorPage';
 import HomePage from './pages/HomePage';
+import JournalPage from './pages/JournalPage';
 
 function App() {
     return (
@@ -26,6 +27,9 @@ function App() {
                 </Route>
                 <Route path="/storyteller/editor">
                     <EditorPage />
+                </Route>
+                <Route path="/journal">
+                    <JournalPage />
                 </Route>
                 <Route path="/">
                     <HomePage />
