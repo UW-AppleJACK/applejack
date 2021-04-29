@@ -24,15 +24,19 @@ class Journal extends React.Component {
     // Render a directory view
     renderDirectory(newView, options, onNavigate) {
         return (
-            <div>
-                <p>Directory</p>
-                {options.map(option => {
-                    return <button onClick={() => onNavigate(newView, option)} key={option}>{option}</button>;
-                })}
+            <div className="journal">
+                <div className="page"></div>
+                <div className="page">
+                    <h1>Table of Contents</h1>
+                    {options.map(option => {
+                        return <button onClick={() => onNavigate(newView, option)} key={option}>{option}</button>;
+                    })}
+                </div>
             </div>
         );
     }
 
+    // Renders a list of facts
     renderFacts(facts) {
         return (
             <ul>
@@ -48,13 +52,18 @@ class Journal extends React.Component {
     // Render an entry view
     renderEntry(entry) {
         return (
-            <div>
-                <h1>{entry.title}</h1>
-                <img
-                    alt={`Icon for ${entry.title}`}
-                    src={`/sprites/journal-${entry.image}.png`} />
-                { this.renderFacts(entry.infoboxFacts) }
-                { this.renderFacts(entry.funFacts) }
+            <div className="journal">
+                <div className="page page-infobox">
+                    <h1>{entry.title}</h1>
+                    <img
+                        alt={`Icon for ${entry.title}`}
+                        src={`/sprites/journal-${entry.image}.png`} />
+                    { this.renderFacts(entry.infoboxFacts) }
+                </div>
+                <div className="page">
+                    <h2>Facts</h2>
+                    { this.renderFacts(entry.funFacts) }
+                </div>
             </div>
         );
     }

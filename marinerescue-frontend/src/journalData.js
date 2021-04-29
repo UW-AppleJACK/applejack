@@ -31,7 +31,7 @@ const journalData = [
     {
         title: 'Humphrey',
         category: 'Animals',
-        image: 'squawky',
+        image: 'humphrey',
         infoboxFacts: [
             'Species: Humpback Whale',
             'Habitat: Many Oceans',

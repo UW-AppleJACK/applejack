@@ -2,10 +2,9 @@ import React from 'react';
 import {
     Journal,
     JOURNAL_TOC_VIEW,
-    JOURNAL_CATEGORY_VIEW,
-    JOURNAL_ENTRY_VIEW,
 } from '../components/Journal';
 import journalData from '../journalData';
+import './JournalPage.scss';
 
 class JournalPage extends React.Component {
     constructor(props) {
@@ -30,12 +29,17 @@ class JournalPage extends React.Component {
     render() {
         return (
             <div id="journal-page">
-                <button onClick={this.resetNavigation.bind(this)}>Reset</button>
-                <Journal
-                    data={journalData}
-                    view={this.state.view}
-                    page={this.state.page}
-                    onNavigate={this.onNavigate.bind(this)} />
+                <button onClick={this.resetNavigation.bind(this)} id="journal-reset-btn">
+                    <img src="/sprites/sprite-journal-closed.png" alt="Journal Icon" />
+                    <span>View Directory</span>
+                </button>
+                <div id="journal-page-content">
+                    <Journal
+                        data={journalData}
+                        view={this.state.view}
+                        page={this.state.page}
+                        onNavigate={this.onNavigate.bind(this)} />
+                </div>
             </div>
         );
     }
