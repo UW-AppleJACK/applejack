@@ -30,6 +30,12 @@ const storytellerData = {
                     size: 8.3,
                     flipX: true,
                 },
+                {
+                    type: 'journal',
+                    title: 'Humphrey',
+                    x: 25,
+                    y: 10,
+                },
             ],
             [
                 {

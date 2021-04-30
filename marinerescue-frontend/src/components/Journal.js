@@ -24,7 +24,7 @@ class Journal extends React.Component {
     // Render a directory view
     renderDirectory(newView, options, onNavigate) {
         return (
-            <div className="journal">
+            <>
                 <div className="page"></div>
                 <div className="page">
                     <h1>Table of Contents</h1>
@@ -32,7 +32,7 @@ class Journal extends React.Component {
                         return <button onClick={() => onNavigate(newView, option)} key={option}>{option}</button>;
                     })}
                 </div>
-            </div>
+            </>
         );
     }
 
@@ -52,7 +52,7 @@ class Journal extends React.Component {
     // Render an entry view
     renderEntry(entry) {
         return (
-            <div className="journal">
+            <>
                 <div className="page page-infobox">
                     <h1>{entry.title}</h1>
                     <img
@@ -64,12 +64,12 @@ class Journal extends React.Component {
                     <h2>Facts</h2>
                     { this.renderFacts(entry.funFacts) }
                 </div>
-            </div>
+            </>
         );
     }
 
-    render() {
-        const { data, view, page, onNavigate } = this.props;
+    renderInner(props) {
+        const { data, view, page, onNavigate } = props;
         if (view === JOURNAL_TOC_VIEW) {
             return this.renderDirectory(JOURNAL_CATEGORY_VIEW, this.getCategories(data), onNavigate);
         }
@@ -79,6 +79,14 @@ class Journal extends React.Component {
         if (view === JOURNAL_ENTRY_VIEW) {
             return this.renderEntry(this.getEntry(data, page));
         }
+    }
+
+    render() {
+        return (
+            <div className="journal" style={this.props.style || {}}>
+                {this.renderInner(this.props)}
+            </div>
+        )
     }
 }
 
