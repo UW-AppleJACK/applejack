@@ -10,6 +10,7 @@ import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import HomePage from './pages/HomePage';
 import ParentsPage from './pages/ParentsPage';
+import GameLandingPage from './pages/GameLandingPage';
 
 function App() {
     return (
@@ -26,6 +27,9 @@ function App() {
                 </Route>
                 <Route path="/storyteller-test">
                     <Storyteller />
+                </Route>
+                <Route path="/play">
+                    <GameLandingPage />
                 </Route>
                 <Route path="/">
                     <HomePage />

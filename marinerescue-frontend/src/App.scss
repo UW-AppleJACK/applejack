@@ -17,6 +17,10 @@ button {
   border-radius: 30px;
   font-family : inherit;
   cursor: pointer;
+
+  &.sunshine {
+    background-color: $sunshine;
+  }
 }
   
 .row { // line up elements horizontally on landing pages 
