@@ -2,77 +2,92 @@
 @import '../styles/colors';
 
 #game-landing-page {
-    #game-map {
+    #game-map-container {
         background-image: url('../srcImages/adventure-map-bg.svg');
         background-size: cover;
         min-height: 100vh;
+        display: flex;
+        justify-content: center;
 
-        .game-module-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 64px 0;
+        #game-map {
+            max-width: 1200px;
 
-            &.game-module-section-alt {
-                flex-direction: row-reverse;
-            }
+            .game-module-section {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 64px 0;
 
-            &.game-module-section-locked {
-                .module-box {
-                    background-color: $blue;
+                &.game-module-section-alt {
+                    flex-direction: row-reverse;
+                }
 
-                    button {
-                        background-color: $dark;
-                        cursor: not-allowed;
+                &.game-module-section-locked {
+                    .module-box {
+                        background-color: $blue;
+
+                        button {
+                            background-color: $dark;
+                            cursor: not-allowed;
+                        }
                     }
                 }
-            }
 
-            @media screen and (max-width: $break-small) {
-                margin: 32px 0;
+                @media screen and (max-width: $break-small) {
+                    margin: 32px 0;
 
-                &,
-                &.game-module-section-alt {
-                    flex-direction: column;
+                    &,
+                    &.game-module-section-alt {
+                        flex-direction: column;
+                    }
+
+                    .module-deco,
+                    .module-box-container {
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-top: 16px;
+                        margin-bottom: 16px;
+                    }
                 }
 
                 .module-deco,
                 .module-box-container {
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 16px;
-                    margin-bottom: 16px;
+                    margin-left: 16px;
+                    margin-right: 16px;
                 }
-            }
 
-            .module-deco,
-            .module-box-container {
-                margin-left: 16px;
-                margin-right: 16px;
-            }
+                .module-deco {
+                    flex: 1 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
 
-            .module-deco {
-                flex: 1 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+                .module-box-container {
+                    flex: 2 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
-            .module-box-container {
-                flex: 2 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                    .module-box {
+                        background-color: $blue;
+                        border-radius: 64px;
+                        text-align: center;
+                        max-width: 600px;
 
-                .module-box {
-                    background-color: $blue;
-                    border-radius: 64px;
-                    text-align: center;
-                    max-width: 800px;
+                        p {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                            font-size: 24px;
+                        }
 
-                    p {
-                        padding-top: 0;
-                        padding-bottom: 0;
+                        button {
+                            width: 80%;
+                            
+                            &:not(.disabled) {
+                                box-shadow: 5px 5px 15px -5px $dark;
+                            }
+                        }
                     }
                 }
             }

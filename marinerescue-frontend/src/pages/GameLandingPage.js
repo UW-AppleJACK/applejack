@@ -48,8 +48,10 @@ class GameLandingPage extends React.Component {
         return (
             <div id="game-landing-page">
                 <NavBar></NavBar>
-                <main id="game-map">
-                    {this.renderModules()}
+                <main id="game-map-container">
+                    <div id="game-map">
+                        {this.renderModules()}
+                    </div>
                 </main>
                 
                 <div className="section">

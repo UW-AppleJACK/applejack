@@ -17,9 +17,14 @@ button {
   border-radius: 30px;
   font-family : inherit;
   cursor: pointer;
+  transition: 250ms background-color;
 
   &.sunshine {
     background-color: $sunshine;
+
+    &:hover {
+      background-color: darken($sunshine, 10);
+    }
   }
 }
   
