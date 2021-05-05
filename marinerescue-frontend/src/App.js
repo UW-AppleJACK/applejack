@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import './App.scss';
+import './AppMarketingPages.scss';
 import Storyteller from "./components/Storyteller";
 import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';

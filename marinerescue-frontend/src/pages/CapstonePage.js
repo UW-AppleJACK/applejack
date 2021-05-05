@@ -7,7 +7,7 @@ import './CapstonePage.scss';
 class CapstonePage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">

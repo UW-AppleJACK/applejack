@@ -2,13 +2,11 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom";
-import './AboutPage.scss';
-
 
 class AboutPage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
