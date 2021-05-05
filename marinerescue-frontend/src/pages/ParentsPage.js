@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 class ParentsPage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
@@ -52,7 +52,7 @@ This learning module includes an interactive story for students to learn about k
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>                
             </main>

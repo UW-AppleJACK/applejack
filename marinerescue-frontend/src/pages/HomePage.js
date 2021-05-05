@@ -7,7 +7,7 @@ import './HomePage.scss';
 class HomePage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
@@ -82,7 +82,7 @@ class HomePage extends React.Component {
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>
             </main>

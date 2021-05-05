@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class BadgesPage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
@@ -46,7 +46,7 @@ class BadgesPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>
             </main>
