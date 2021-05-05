@@ -1,0 +1,51 @@
+body, html {
+    background-color: #006994;
+    // background-image: url('bg-water.png');
+    background-image: url('./sprites/bg-water.png');
+    font-family: 'Trebuchet MS', sans-serif;
+    font-style: bold
+}
+
+.text-center {
+    height: 100vh;
+}
+
+/* Game Screen */
+#minimap {
+    background-color: #F7EDE1;
+    float: right;
+    height: 100%;
+    width: 25%;
+}
+
+#emphasis {
+    color: #FF0000;
+}
+
+#obstacle {
+    width: 250px;
+    height: 175px;
+}
+
+#obstacle-log {
+    width: 100px;
+    height: 50px;
+}
+
+#obstacle img, #obstacle-log img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Start Screen */
+#start {
+    // background-image: url('bg-wave-racing-cover.png');
+    background-image: url('./sprites/bg-wave-racing-cover.png');
+
+}
+
+.jumbotron {
+    background-color: #F7EDE1;
+    border: 2, solid, black
+}
