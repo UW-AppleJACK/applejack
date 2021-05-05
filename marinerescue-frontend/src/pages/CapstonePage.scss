@@ -1,0 +1,18 @@
+@import '../styles/breaks';
+@import '../styles/colors';
+
+.height-300px {
+    height: 300px;
+    align-items: center;
+}
+
+.row-no-padding { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.characters-section {
+    align-items: left;
+    padding: 0px;
+  }

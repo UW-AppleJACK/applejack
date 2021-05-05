@@ -3,6 +3,10 @@
 
 // button styling source: https://www.w3schools.com/howto/howto_css_round_buttons.asp
 
+main {
+  background-color: $blue;
+}
+
 button {
   background-color: $blue;
   border: none;
@@ -35,7 +39,19 @@ button {
   align-content: center;
   width: 100%;
   height: 100%;
+}
 
+.container {
+  background-color: $sunshine;
+  color: $grape;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.section {
+  padding-bottom: 100px;
 }
   
 .content {
@@ -54,6 +70,10 @@ button {
 
 .text-center {
     text-align: center;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .background-color-grape {
@@ -82,21 +102,23 @@ button {
 
 h1 {
   font-size: 60px;
-  padding-top: 70px;        
+  padding-top: 60px;        
 
 }
 
 h2{
   font-size: 40px;
-  padding: 30px;        
-
+  padding: 30px; 
 } 
 
 p {
   font-size: 30px;
-  padding: 40px;        
-
+  padding: 30px;        
 }
 
-  
-  
+li {
+  padding-left: 30px;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+

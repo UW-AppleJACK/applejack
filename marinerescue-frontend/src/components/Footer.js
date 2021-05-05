@@ -4,7 +4,7 @@ import './Footer.scss';
 class Footer extends React.Component {
     render() {
         return (
-            <div class="footer">
+            <footer>
                 <div class="row">
                     <div class="column">                        
                     </div>
@@ -29,7 +29,7 @@ class Footer extends React.Component {
                         <img id="icon" src="images/coasst-logo.png" alt="COASST Logo" />
                     </div>
                 </div>
-            </div>
+            </footer>
         );
     }
 }
