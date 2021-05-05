@@ -1,7 +1,14 @@
 @import '../styles/colors';
 
-$page-margin: 20px;
-$page-padding: 16px;
+$journal-natural-width: 849px;
+$journal-natural-height: 582px;
+
+$journal-size: #{"min(70vw, 70vh)"};
+$journal-aspect-ratio: $journal-natural-height / $journal-natural-width;
+$journal-base-font-size: #{"min(2vw, 2vh)"};
+
+$page-margin: $journal-base-font-size;
+$page-padding: $journal-base-font-size;
 
 .journal,
 .journal button {
@@ -13,16 +20,16 @@ $page-padding: 16px;
 .journal {
     display: flex;
     background-image: url('../srcImages/journal-open.png');
-    width: 849px;
-    max-width: 100%;
-    height: 582px;
-    max-height: 100%;
+    background-size: cover;
+    width: $journal-size;
+    height: calc(#{$journal-size} * #{$journal-aspect-ratio});
     transform-origin: top left;
     padding: 0.05px; // prevent margin collapse, rounds to 0
+    font-size: calc(#{$journal-base-font-size});
 
     .page {
         margin: $page-margin;
-        width: calc((100% - #{$page-margin * 3}) / 2);
+        width: calc((100% - #{$page-margin} * 3) / 2);
         padding: $page-padding;
 
         button {
@@ -45,6 +52,7 @@ $page-padding: 16px;
 
     img {
         text-align: center;
+        max-width: 100%;
     }
 
     li,
@@ -57,6 +65,7 @@ $page-padding: 16px;
 
     ul {
         margin-block-start: 0;
+        padding-inline-start: 10px;
     }
 
     .page-infobox {

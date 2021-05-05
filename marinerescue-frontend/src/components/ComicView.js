@@ -77,7 +77,6 @@ class ComicView extends React.Component {
                     left: element.x,
                     top: element.y,
                     textAlign: 'left',
-                    transform: 'scale(0.8)',
                 }}
                 data={journalData}
                 view={JOURNAL_ENTRY_VIEW}
