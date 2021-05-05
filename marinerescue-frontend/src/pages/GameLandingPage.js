@@ -1,7 +1,10 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
+
 import './GameLandingPage.scss';
+
 import MODULES from '../data/Modules';
 
 class GameLandingPage extends React.Component {
@@ -33,7 +36,11 @@ class GameLandingPage extends React.Component {
                                     <div className="module-box">
                                         <h2>{module.title}</h2>
                                         <p>{module.subtitle}</p>
-                                        <button className={isLocked ? 'disabled' : 'sunshine'}>{isLocked ? 'Locked' : 'Play Now'}</button>
+                                        {
+                                            isLocked
+                                                ? <button className="std-btn disabled" to={module.target} disabled>Locked</button>
+                                                : <Link className="std-btn sunshine" to={module.target}>Play Now</Link>
+                                        }                                   
                                     </div>
                                 </div>
                             </div>
