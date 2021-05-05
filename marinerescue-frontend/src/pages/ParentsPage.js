@@ -52,7 +52,7 @@ This learning module includes an interactive story for students to learn about k
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>                
             </main>

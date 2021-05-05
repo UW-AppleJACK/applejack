@@ -46,7 +46,7 @@ class BadgesPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>
             </main>
