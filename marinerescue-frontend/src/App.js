@@ -10,11 +10,20 @@ import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import HomePage from './pages/HomePage';
 import ParentsPage from './pages/ParentsPage';
+import CapstonePage from './pages/CapstonePage';
+import BadgesPage from './pages/BadgesPage';
+
 
 function App() {
     return (
         <Router>
             <Switch>
+                <Route path="/capstone">
+                    <CapstonePage />
+                </Route>
+                <Route path="/badges">
+                    <BadgesPage />
+                </Route>
                 <Route path="/about">
                     <AboutPage />
                 </Route>

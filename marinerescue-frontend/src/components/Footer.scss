@@ -1,9 +1,10 @@
 @import '../styles/breaks';
 @import '../styles/colors';
 
-.footer {
+footer {
     background-color: $blue;
     text-align: center;
+    padding-top: 60px;
 
     h3 {
         color: $grape;
