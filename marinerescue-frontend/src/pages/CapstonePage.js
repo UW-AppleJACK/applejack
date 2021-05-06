@@ -141,6 +141,24 @@ class CapstonePage extends React.Component {
                             </div>                            
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="content">
+                                <div class="container">
+                                    <p class="color-purple text-center">“Capstone has exposed me to how to execute quality research and user interviews, as well as how to continuously edit the scope of a project. I also learned how to code a minigame, something I’ve never done before! ”</p>
+                                    <p class="color-purple text-center">- Kiran</p>
+                                </div>
+                            </div>                            
+                        </div>
+                        {/* <div class="column">
+                            <div class="content">
+                                <div class="container">
+                                    <p class="color-purple text-center">“”</p>
+                                    <p class="color-purple text-center">- Andrey</p>
+                                </div>
+                            </div>                            
+                        </div> */}
+                    </div>
                 </div>
 
                 
