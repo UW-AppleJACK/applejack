@@ -1,7 +1,42 @@
 @import '../styles/breaks';
 @import '../styles/colors';
 
-.characters-section {
-    align-items: left;
-    padding: 0px;
-  }
+// .characters-section {
+//   // align-items: left;
+//   padding: 0px;
+// }
+
+#problem-statement {
+  width: 100%;
+  max-width: 1200px;
+}
+
+#topic-h2 {
+  font-size: 50px;
+}
+
+#topic-p {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+#topic-button {
+  font-size: 30px;
+  background-color: $sand;
+  color: $grape;
+  padding: 0;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+#concepts {
+  margin-bottom: 30px;
+}
+
+#width-30 {
+  width: 30%
+}
+
+#width-60 {
+  width: 60%
+}
