@@ -18,10 +18,11 @@
 
 button.topic-button-selected {
   font-size: 30px;
+  font-weight: bolder;
   width: auto;
   background-color: $sand;
   color: $grape;
-  border-bottom: 2px solid black;
+  border-bottom: 4px solid black;
   border-radius: 0;
   padding-bottom: 5px;
 }
@@ -30,7 +31,7 @@ button.topic-button {
   font-size: 30px;
   width: auto;
   background-color: $sand;
-  color: $grape;
+  color: #7a4988;
   border-bottom: 2px solid transparent;
 }
 
