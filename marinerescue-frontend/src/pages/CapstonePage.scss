@@ -1,11 +1,6 @@
 @import '../styles/breaks';
 @import '../styles/colors';
 
-// .characters-section {
-//   // align-items: left;
-//   padding: 0px;
-// }
-
 #problem-statement {
   width: 100%;
   max-width: 1200px;
@@ -13,6 +8,7 @@
 
 #topic-h2 {
   font-size: 50px;
+  text-shadow: 2px 2px 5px $sunshine;
 }
 
 #topic-p {
@@ -22,9 +18,9 @@
 
 #topic-button {
   font-size: 30px;
+  width: auto;
   background-color: $sand;
   color: $grape;
-  padding: 0;
   border-bottom: 1px solid black;
   padding-bottom: 5px;
 }
@@ -39,4 +35,9 @@
 
 #width-60 {
   width: 60%
+}
+
+#caption {
+  font-size: 20px;
+  margin-bottom: 40px;
 }

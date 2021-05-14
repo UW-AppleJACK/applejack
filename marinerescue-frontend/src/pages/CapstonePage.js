@@ -8,21 +8,22 @@ class CapstonePage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        topicNum: 1
+        topic: "Survey Insights"
       }
-      console.log(this.state.topicNum)
+      console.log(this.state.topic)
     }
 
-    changeTopicContent() {
+    toggleContent = (e) => {
+        this.setState({topic: e.target.value});
         const CONTENT = {
-            1: {title: "Survey Insights", content: "When brainstorming, our team was interested in two areas: science and education. To connect these two topics, we researched science learning in-school and at-home. Our initial research surveyed over 100+ parents and college students about their perceptions of learning science in K-12. Many students recall starting to learn science around age 7-12 and more than 25% of participants described classes as “boring” and “repetitive”. From these findings, we decided to target kids as the primary users."},
-            2: {title: "User Interviews", content: "Next, we conducted 10+ user interviews and learned that due to online learning, students aren’t learning science as much as class time is reduced and there is a lack of active-learning. From our literature review, there’s a lack of curriculum for parents and 99% of parents from an article in our literature review think science learning is important, but do not feel confident in their teaching ability. This motivated us to create an at-home science learning platform that kids and parents could both benfit from."},
-            3: {title: "Market Research", content: "Our market research showed that there are a variety of resources to learn science, but specifically no platforms for kids to connect to the natural world through citizen science. With children being naturally curious and engaged, we found an opportunity to create an active-learning citizen science platform for students to contribute their findings to research."}
+            "Survey Insights": "When brainstorming, our team was interested in two areas: science and education. To connect these two topics, we researched science learning in-school and at-home. Our initial research surveyed over 100+ parents and college students about their perceptions of learning science in K-12. Many students recall starting to learn science around age 7-12 and more than 25% of participants described classes as “boring” and “repetitive”. From these findings, we decided to target kids as the primary users.",
+            "User Interviews": "Next, we conducted 10+ user interviews and learned that due to online learning, students aren’t learning science as much as class time is reduced and there is a lack of active-learning. From our literature review, there’s a lack of curriculum for parents and 99% of parents from an article in our literature review think science learning is important, but do not feel confident in their teaching ability. This motivated us to create an at-home science learning platform that kids and parents could both benfit from.",
+            "Market Research": "Our market research showed that there are a variety of resources to learn science, but specifically no platforms for kids to connect to the natural world through citizen science. With children being naturally curious and engaged, we found an opportunity to create an active-learning citizen science platform for students to contribute their findings to research."
         }
         return(
             <div class="color-grape content">
-                <h2 id="topic-h2">{CONTENT[this.state.topicNum].title}</h2>
-                <p id="topic-p">{CONTENT[this.state.topicNum].content}</p>
+                <h2 id="topic-h2">{this.state.topic}</h2>
+                <p id="topic-p">{CONTENT[this.state.topic]}</p>
             </div>
         )
     }
@@ -63,22 +64,22 @@ class CapstonePage extends React.Component {
                         <h2 class="color-grape">Research</h2>
                         <div class="row-no-padding">
                             <div class="column">
-                                <button id="topic-button" onClick={() => {this.setState({topicNum: 1})}}>
+                                <button id="topic-button" onClick={this.toggleContent}>
                                     Survey Insights
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="topic-button" onClick={() => {this.setState({topicNum: 2})}}>
+                                <button id="topic-button" onClick={this.toggleContent}>
                                     User Interviews
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="topic-button" onClick={() => {this.setState({topicNum: 3})}}>
+                                <button id="topic-button" onClick={this.toggleContent}>
                                     Market Research
                                 </button>
                             </div>
                         </div>
-                        {this.changeTopicContent()}
+                        {this.toggleContent()}
                     </div>
                     <div>
                        <h2 class="color-grape">COASST Partnership</h2>
@@ -90,6 +91,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" src="images/coasst-logo.png" alt="Coastal Observation and Seabird Survey Team (COASST) logo"/>
+                                <p class="color-grape text-center" id="caption">coasst.org</p>
                             </div>
                        </div>
                     </div>
@@ -111,8 +113,10 @@ class CapstonePage extends React.Component {
                                 <p class="color-sand">Interviewing the kids gave us great feedback that we took into consideration when revising our design. Many said the activity was too easy and told us they already knew this content- to this we revised our storyline to include more complex words and topics. They also said they had lots of fun with the activity so we continued to add active engagement in the stories!</p>
                             </div>
                             <div class="column responsive">
-                                <img id="concepts" src="images/low-fid-prototype.png" alt="Example scene from the low-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
+                                <img src="images/low-fid-prototype.png" alt="Example scene from the low-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
+                                <p id="caption" class="color-sand text-center">Comic scene from low-fidelity prototype</p>
                                 <iframe src="https://docs.google.com/document/d/e/2PACX-1vRjOVeqkZ2RmTWSQNc-L_oNHnJsQYh35BSlkcAgZPuw6IupcRtf9nQYhfmCgcXdpOFMs0RMizvlqGL1/pub?embedded=true" width="600" height="700"></iframe>
+                                <p id="caption" class="color-sand text-center">Interview guide for user testing low-fidelity prototype</p>
                             </div>
                         </div>
                     </div>
@@ -126,8 +130,10 @@ class CapstonePage extends React.Component {
                                 <p class="color-sand">We received great feedback on our concepts to test, and also noted the kids' overall enjoyment of our animations and designs.</p>
                             </div>
                             <div class="column responsive">
-                                <img id="concepts" src="images/high-fid-prototype.png" alt="Example scene from the high-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
+                                <img src="images/high-fid-prototype.png" alt="Example scene from the high-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
+                                <p id="caption" class="color-sand text-center">High-fidelity prototype story scene</p>
                                 <iframe src="https://docs.google.com/document/d/e/2PACX-1vTgRrvZqTPA2pulaUn3QUzZlzxkb0k6S7VDta7n5bxIus0apj3TVQuqHUwI-Gv8CNgKGNtCvHLiHqDq/pub?embedded=true" width="600" height="700"></iframe>
+                                <p id="caption" class="color-sand text-center">Revised interview guide for user testing high-fidelity prototype</p>
                             </div>
                         </div>
                     </div>
@@ -146,14 +152,15 @@ class CapstonePage extends React.Component {
                                 <p class="color-grape">Our original storyline involved Strawberry finding her friends all sick. Strawberry and the user would then go on a detective hunt to discover that her animal friends all were harmed by marine debris.</p>
                                 <p class="color-grape">After sharing our storylines with the researchers at COASST to confirm everything was factually-correct, part of their feedback was for us to consider whether the storyline was too somber for our target user.</p>
                             </div>
-                            <div class="column">
+                            <div class="column responsive">
                                 <img src="images/meet-strawberry.png" alt="Scene from Meet Strawberry story showing Strawberry introducing herself as the navigator"/>
+                                <p id="caption" class="color-grape text-center">Strawberry introduces herself in the first scene of the story</p>
                             </div>
                         </div>
                         <div class="row-no-padding">
-                            <div class="column">
-                                FIX THIS ONE
-                                <img id="concepts" src="images/high-fid-prototype.png" alt="Example scene from the high-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
+                            <div class="column responsive">
+                                <img src="images/proactive-strawberry.png" height="400" alt="Scene from Squawky story where Strawberry asks the user to help her stop Squawky from eating a lighter that looks similar to his usual meal of squid"/>
+                                <p id="caption" class="color-grape text-center">Strawberry asks the user to help her stop Squawky from eating a lighter that looks similar to his usual meal of squid</p>
                             </div>
                             <div class="column content">
                                  <p class="color-grape">We took this feedback into consideration and decided to revise the stories to be more uplifting by giving the user the ability to proactively help Strawberry’s friends. This would also empower users through the game to use their knowledge and action to make a difference in the real world.</p>
@@ -177,6 +184,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <iframe src="https://drive.google.com/file/d/1Ptt0t5vMeLaXCKK2VhvURmOcmdILz-Ot/preview" width="640" height="480"></iframe>
+                                <p id="caption" class="color-sand text-center">Check out our style guide!</p>
                             </div>
                         </div>
                     </div>
@@ -208,6 +216,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" height="400" src="images/character-emotions2.png" alt="Showing four emotions for each marine animal, including neutral, love, and alarmed"/>
+                                <p id="caption" class="color-sand text-center">Each marine animal has different emotions, including neutral, love, and alarmed!</p>
                             </div>
                         </div>
                     </div>
