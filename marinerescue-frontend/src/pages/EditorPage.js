@@ -17,9 +17,14 @@ const IMAGES = {
         'beach-small',
         'beach-big',
         'beach-rocks',
+<<<<<<< HEAD
         'beach-rocks-2',
+=======
+        'beach-wrack',
+>>>>>>> temp-editor
     ],
     sprites: [
+        'annie-bag',
         'blue-bag',
         'blue-circle',
         'buoy-net-marker',
@@ -27,6 +32,7 @@ const IMAGES = {
         'fish',
         'fishingline',
         'exclaim',
+        'garbage-bag',
         'humphrey-blush',
         'humphrey-sad',
         'humphrey-surprised',
@@ -42,7 +48,13 @@ const IMAGES = {
         'journal-closed',
         'journal-open',
         'lighter',
+        'log',
         'net',
+        'ronald',
+        'seashell',
+        'sophie-and-ronald',
+        'sophie-and-ronald-2',
+        'sophie-and-ronald-love',
         'squid',
         'sqwacky-blank',
         'sqwacky-doodle',
