@@ -19,6 +19,7 @@ class WaveRacer extends React.Component {
         time_since_last_obstacle: 0,
         obstacles: [],
         strawberryX: -1,
+        gameLoopIntervalId: null,
       }
       this.spawnObstacle = this.spawnObstacle.bind(this);
       console.log(this.state.obstacle_type, "is at", this.state.obstacleX)
@@ -68,6 +69,41 @@ class WaveRacer extends React.Component {
         return Math.floor(Math.random() * (window.innerWidth - offset));
     }
 
+    gameLoop() {
+        let newObstacles = JSON.parse(JSON.stringify(this.state.obstacles));
+        console.log(this.state);
+        newObstacles = newObstacles.map(obstacle => {
+            // if(obstacle.type === 'log') {
+            //     obstacle.y -= SPEED;
+            // }
+            // if(obstacle.type === 'wave') {
+            //     obstacle.y += SPEED;
+            // }
+            // if(obstacle.type === 'boat') {
+            //     obstacle.x += SPEED;
+            // }
+            obstacle.y = obstacle.y + 5;
+
+            return obstacle;
+        });
+
+        newObstacles = newObstacles.filter(obstacle => {
+            console.log(obstacle)
+            return obstacle.y >= -50 && obstacle.y <= 150 && obstacle.x >= -50 && obstacle.x <= 150;
+        });
+
+        this.setState({ obstacle: newObstacles });
+    }
+
+    startGameLoop() {
+        const intervalId = window.setInterval(this.gameLoop.bind(this), 1000 / 30);
+        this.setState({ gameLoopIntervalId: intervalId });
+    }
+
+    componentWillUnmount() {
+        window.clearInterval(this.state.gameLoopIntervalId);
+    }
+
     start() {
         return (
             <div id="start">
@@ -87,7 +123,7 @@ class WaveRacer extends React.Component {
     render() {
         return (
             <div className="text-center" id="wave-racer">
-                <button onClick={this.spawnObstacle}>Spawn Obstacle</button>
+                <button onClick={this.spawnObstacle}>Spawn Obstacle</button> <button onClick={this.startGameLoop.bind(this)}>START</button>
                 <div className="wave-racer-container">
                     <div className="wave-racer-view">
                         {this.renderSprites()}
