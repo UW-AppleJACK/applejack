@@ -1,11 +1,13 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import './WaveRacer.scss';
 import boat from './sprites/sprite-boat.png';
 import wave from './sprites/sprite-wave.png';
 import log from './sprites/sprite-log.png';
 import lighter from './sprites/sprite-lighter.png';
 import strawberry from './sprites/sprite-strawberry.png';
+
+const SPEED = 10;
+const { height, width } = useWindowDimensions();
 
 class WaveRacer extends React.Component {
     constructor(props) {
@@ -15,23 +17,30 @@ class WaveRacer extends React.Component {
         isGameOver: false,
         time_start: "",
         time_since_last_obstacle: "",
-        obstacle_type: "",
-        obstacleX: -1,
-        obstacleY: -1,
+        obstacle_type: "boat",
+        obstacleX: "200px",
+        obstacleY: "0px",
         strawberryX: -1,
       }
+      this.spawnObstacle = this.spawnObstacle.bind(this);
+      console.log(this.state.obstacle_type, "is at", this.state.obstacleX)
     }
 
     spawnObstacle() {
         let OBSTACLES = ["boat", "log", "wave"]
         let obstacle = OBSTACLES[Math.floor(Math.random() * OBSTACLES.length)]
-        console.log(obstacle)
-        let stateChanges = {
+        console.log(obstacle);
+        this.setState({
                 "obstacle_type": obstacle,
-                "obstacleX": this.rndX(250),
-                "obstacleY": 0
-            };
-        this.setState(stateChanges);
+                "obstacleX": "100px",
+                "obstacleY": "0px"
+            });
+    }
+
+    renderSprite() {
+        return(
+            <img class="obstacle" src={{obstacle}}/>
+        )
     }
 
     rndX(offset) {
@@ -57,8 +66,9 @@ class WaveRacer extends React.Component {
     render() {
         return (
             <div className="text-center">
-                
-                {/* <Button onClick={this.props.toNext}>Next</Button> */}
+                <button onClick={this.spawnObstacle}>Spawn Obstacle</button>
+
+                {/* <button onClick={this.props.toNext}>Next</button> */}
                 <div id="minimap">
                     <p>Reach the <span id="emphasis">pink lighter</span> before Squawky!</p>
                     <div id="obstacle">

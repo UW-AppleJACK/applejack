@@ -1,10 +1,18 @@
+@import '../../styles/breaks';
+@import '../../styles/colors';
+
 body, html {
     background-color: #006994;
     // background-image: url('bg-water.png');
     background-image: url('./sprites/bg-water.png');
-    font-family: 'Trebuchet MS', sans-serif;
-    font-style: bold
+    font-family: 'Balsamiq Sans';
 }
+
+p {
+    font-size: 30px;
+    padding: 30px;
+}
+
 
 .text-center {
     height: 100vh;
@@ -23,18 +31,21 @@ body, html {
 }
 
 #obstacle {
-    width: 250px;
-    height: 175px;
+    max-width: 300px;
+    max-height: 175px;
+    height: auto;
+    width: auto;
 }
 
 #obstacle-log {
-    width: 100px;
-    height: 50px;
+    max-width: 100px;
+    max-height: 50px;
+    height: auto;
+    width: auto;
 }
 
 #obstacle img, #obstacle-log img {
     width: 100%;
-    height: auto;
 }
 
 
