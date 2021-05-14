@@ -190,20 +190,6 @@ class CapstonePage extends React.Component {
                             <p class="color-sand">We’ve also made many unique, illustrated assets that were made according to our scripts. A lot of detail has been put into the illustrations that’s pleasing to the eye and fits with our platform’s style. These illustrations have been iterated many times based on user feedback and general improvements </p>
                         </div>
                     </div>
-                    {/* <div class="row">
-                        <div class="column">
-                            <div class="content">
-                            <img class="height-300px" src="images/beach-rocks.png" alt="Image of beach rocks background" />
-                                <p class="color-sand text-center">Beach rocks background</p>
-                            </div>                            
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="height-300px" src="images/shiba.png" alt="Image of shiba" />
-                                <p class="color-sand text-center">Shiba character</p>
-                            </div>                            
-                        </div>
-                    </div> */}
                     <div>
                         <h2 class="color-sand">Characters</h2>
                         <div class="row-no-padding">
@@ -218,7 +204,7 @@ class CapstonePage extends React.Component {
                     </div>
                 </div>
 
-                <div class="section background-color-sand">
+                {/* <div class="section background-color-sand">
                     <div class="row">
                         <div class="column">
                             <h1 class="color-blue">- Development Framework - </h1>
@@ -246,7 +232,7 @@ class CapstonePage extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div class="section background-color-grape text-left">
                     <div class="row">
