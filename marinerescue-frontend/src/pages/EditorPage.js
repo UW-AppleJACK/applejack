@@ -17,11 +17,8 @@ const IMAGES = {
         'beach-small',
         'beach-big',
         'beach-rocks',
-<<<<<<< HEAD
         'beach-rocks-2',
-=======
         'beach-wrack',
->>>>>>> temp-editor
     ],
     sprites: [
         'annie-bag',
