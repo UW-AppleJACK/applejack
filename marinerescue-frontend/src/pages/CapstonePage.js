@@ -3,7 +3,11 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import './CapstonePage.scss';
 
-
+const CONTENT = {
+            "Survey Insights": "When brainstorming, our team was interested in two areas: science and education. To connect these two topics, we researched science learning in-school and at-home. Our initial research surveyed over 100+ parents and college students about their perceptions of learning science in K-12. Many students recall starting to learn science around age 7-12 and more than 25% of participants described classes as “boring” and “repetitive”. From these findings, we decided to target kids as the primary users.",
+            "User Interviews": "Next, we conducted 10+ user interviews and learned that due to online learning, students aren’t learning science as much as class time is reduced and there is a lack of active-learning. From our literature review, there’s a lack of curriculum for parents and 99% of parents from an article in our literature review think science learning is important, but do not feel confident in their teaching ability. This motivated us to create an at-home science learning platform that kids and parents could both benfit from.",
+            "Market Research": "Our market research showed that there are a variety of resources to learn science, but specifically no platforms for kids to connect to the natural world through citizen science. With children being naturally curious and engaged, we found an opportunity to create an active-learning citizen science platform for students to contribute their findings to research."
+        }
 class CapstonePage extends React.Component {
     constructor(props) {
       super(props);
@@ -13,19 +17,8 @@ class CapstonePage extends React.Component {
       console.log(this.state.topic)
     }
 
-    toggleContent = (e) => {
-        this.setState({topic: e.target.value});
-        const CONTENT = {
-            "Survey Insights": "When brainstorming, our team was interested in two areas: science and education. To connect these two topics, we researched science learning in-school and at-home. Our initial research surveyed over 100+ parents and college students about their perceptions of learning science in K-12. Many students recall starting to learn science around age 7-12 and more than 25% of participants described classes as “boring” and “repetitive”. From these findings, we decided to target kids as the primary users.",
-            "User Interviews": "Next, we conducted 10+ user interviews and learned that due to online learning, students aren’t learning science as much as class time is reduced and there is a lack of active-learning. From our literature review, there’s a lack of curriculum for parents and 99% of parents from an article in our literature review think science learning is important, but do not feel confident in their teaching ability. This motivated us to create an at-home science learning platform that kids and parents could both benfit from.",
-            "Market Research": "Our market research showed that there are a variety of resources to learn science, but specifically no platforms for kids to connect to the natural world through citizen science. With children being naturally curious and engaged, we found an opportunity to create an active-learning citizen science platform for students to contribute their findings to research."
-        }
-        return(
-            <div class="color-grape content">
-                <h2 id="topic-h2">{this.state.topic}</h2>
-                <p id="topic-p">{CONTENT[this.state.topic]}</p>
-            </div>
-        )
+    toggleContent(newTopic) {
+        this.setState({topic: newTopic});
     }
 
     render() {
@@ -64,22 +57,25 @@ class CapstonePage extends React.Component {
                         <h2 class="color-grape">Research</h2>
                         <div class="row-no-padding">
                             <div class="column">
-                                <button id="topic-button" onClick={this.toggleContent}>
+                                <button class={this.state.topic == "Survey Insights" ? "topic-button-selected" : "topic-button"} onClick={() => this.toggleContent("Survey Insights")}>
                                     Survey Insights
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="topic-button" onClick={this.toggleContent}>
+                                <button class={this.state.topic == "User Interviews" ? "topic-button-selected" : "topic-button"} onClick={() => this.toggleContent("User Interviews")}>
                                     User Interviews
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="topic-button" onClick={this.toggleContent}>
+                                <button class={this.state.topic == "Market Research" ? "topic-button-selected" : "topic-button"} onClick={() => this.toggleContent("Market Research")}>
                                     Market Research
                                 </button>
                             </div>
                         </div>
-                        {this.toggleContent()}
+                        <div class="color-grape content">
+                            <h2 id="topic-h2">{this.state.topic}</h2>
+                            <p id="topic-p">{CONTENT[this.state.topic]}</p>
+                        </div>
                     </div>
                     <div>
                        <h2 class="color-grape">COASST Partnership</h2>
