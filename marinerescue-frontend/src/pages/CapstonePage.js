@@ -204,35 +204,45 @@ class CapstonePage extends React.Component {
                     </div>
                 </div>
 
-                {/* <div class="section background-color-sand">
+                <div class="section background-color-sand">
                     <div class="row">
                         <div class="column">
                             <h1 class="color-blue">- Development Framework - </h1>
                         </div>
                     </div>
                     <div>
-                        <h2 class="color-grape">Level Editor</h2>
                         <div class="row-no-padding">
                             <div class="column content">
-                                <p class="color-grape">paragraph here</p>
+                                <h2 class="color-grape">Level Editor</h2>
+                                <p class="color-grape">Marine Rescue is built with a Model-View-Controller (MVC) design pattern which enables our project to be easy to develop and easy to maintain. We developed a robust framework that allows most elements of our game  – interactive comic scenes, engaging minigames, and more – to be represented as standard JSON data files in our custom, well-documented data formats.</p>
+ 
+                                <p class="color-grape">We developed a level editor that enables non-technical stakeholders to build the game using drag-and-drop tools to place sprites, create dialogue, define transitions between scenes, and design smooth animations. Data exported from the level editor can be immediately used in the game itself.</p>
+  
+                                <p class="color-grape">Our framework – called “Storyteller” – is flexible, easy to extend, and could be used to build any story-based game.</p>
                             </div>
                             <div class="column">
-                                <p> img here </p>
+                                <img class="responsive" height="400" src="/images/landing-dev-editor.png" alt="Screenshot of Level Editor" />
+                                <p id="caption" class="text-center">Screenshot of the level editor.</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <h2 class="color-grape">Minigames</h2>
                         <div class="row-no-padding">
                             <div class="column">
-                                <p>img here</p>
+                                <img class="responsive" height="400" src="/images/landing-dev-responsive.png" alt="iPhone playing Marine Rescue" />
+                                <p id="caption" class="text-center">Marine Rescue is responsive and can be played on an iPhone.</p>
                             </div>
                             <div class="column content">
-                                 <p class="color-grape">paragaph here</p>
+                                <h2 class="color-grape">Responsive Design</h2>
+                                <p class="color-grape">To maximize access to our educational platform, we implemented Marine Rescue as a responsive web-based game. Users with nearly any screen size or device type – including desktop, tablet, or mobile –  can use Marine Rescue. We used a standard mobile-first approach to build responsive landing pages, but implementing a responsive game required some more:</p>
+                                <ul />
+                                <li class="color-grape">Standard Aspect Ratio: Our game utilizes a standard aspect ratio. Even as the game view scales up or down, we can rely on the aspect ratio for our game design.</li>
+                                <li class="color-grape">Relative Positions and Sizes: In our custom Storyteller data format, the positions and sizes of all game elements are defined relative to the current game view. Whatever the size of the view, all elements will have the correct relative position and size. Similarly, font sizes in game views are defined relative to the game view and scale accordingly.</li>
+                                <li class="color-grape">Standard Control System: Our game only utilizes click/touch as inputs. By avoiding platform-specific controls, our game can be utilized on any device.</li>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                 <div class="section background-color-grape text-left">
                     <div class="row">
@@ -305,14 +315,14 @@ class CapstonePage extends React.Component {
                                 </div>
                             </div>                            
                         </div>
-                        {/* <div class="column">
+                        <div class="column">
                             <div class="content">
                                 <div class="container">
-                                    <p class="color-purple text-center">“”</p>
+                                    <p class="color-purple text-center">“Capstone was an excellent opportunity to go through the entire project development lifecycle including research, implementation, and planning next steps. I also appreciated learning from the detailed feedback provided by our Capstone instructors and our COASST collaborators.”</p>
                                     <p class="color-purple text-center">- Andrey</p>
                                 </div>
                             </div>                            
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 
