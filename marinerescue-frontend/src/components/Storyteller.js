@@ -5,6 +5,7 @@ import React from 'react';
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView';
 import minigames from './minigames';
+import storytellerData from '../storytellerData';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
@@ -14,109 +15,6 @@ const COOKIE_EXP = '2038-01-19T03:14:08+00:00';
 const STATE_KEYS_SAVE = ['stateFormatVersion', 'currentScene', 'sceneHistory', 'complete'];
 
 let cookies = null;
-
-const TEST2 = {
-    testScene: {
-        type: 'comic',
-        background: 'test-1',
-        nextScene: 'testScene2',
-        baseFrame: [
-            {
-                type: 'sprite',
-                image: 'strawberry',
-                x: 5,
-                y: 5,
-                size: 8,
-            },
-        ],
-        frames: [
-            [
-                {
-                    id: 1,
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 40,
-                    y: 40,
-                    size: 20,
-                },
-                {
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 80,
-                    y: 80,
-                    size: 8.3,
-                    flipX: true,
-                },
-            ],
-            [
-                {
-                    id: 1,
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 20,
-                    y: 20,
-                    size: 40,
-                },
-                {
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 80,
-                    y: 80,
-                    size: 8.3,
-                    flipX: true,
-                },
-            ],
-        ]
-    },
-    testScene2: {
-        type: 'comic',
-        background: 'test-2',
-        nextScene: 'testMinigame',
-        frames: [
-            [
-                {
-                    id: 1,
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 40,
-                    y: 40,
-                    size: 20,
-                },
-                {
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 80,
-                    y: 80,
-                    size: 8.3,
-                    flipX: true,
-                },
-            ],
-            [
-                {
-                    id: 1,
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 20,
-                    y: 20,
-                    size: 20,
-                },
-                {
-                    type: 'sprite',
-                    image: 'strawberry',
-                    x: 30,
-                    y: 80,
-                    size: 8.3,
-                    flipX: true,
-                },
-            ],
-        ]
-    },
-    testMinigame: {
-        type: 'minigame',
-        nextScene: 'testScene',
-        minigame: 'DemoMinigame',
-    },
-}
 
 class Storyteller extends React.Component {
     constructor(props) {
@@ -179,20 +77,20 @@ class Storyteller extends React.Component {
             sceneHistory: [...this.state.sceneHistory, this.state.currentScene],
         });
 
-        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < TEST2[oldSceneName].frames.length) {
+        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < storytellerData[oldSceneName].frames.length) {
             this.setState({
                 currentScene: `${oldSceneName}/${oldSceneFrame + 1}`,
             });
         }
         else {
-            newSceneName = TEST2[oldSceneName].nextScene;
+            newSceneName = storytellerData[oldSceneName].nextScene;
             this.setState({
                 currentScene: `${newSceneName}/0`,
             });
         }
 
         // Clear history before and after minigames to avoid weird UX
-        if (TEST2[oldSceneName].type === 'minigame' || (!!newSceneName && TEST2[newSceneName].type === 'minigame')) {
+        if (storytellerData[oldSceneName].type === 'minigame' || (!!newSceneName && storytellerData[newSceneName].type === 'minigame')) {
             this.setState({
                 sceneHistory: [],
             });
@@ -202,13 +100,17 @@ class Storyteller extends React.Component {
     // Get current game scene
     getCurrentScene() {
         const [sceneName] = this.getParsedSceneAttrs();
-        return TEST2[sceneName];
+        return storytellerData[sceneName];
     }
 
     // Get data about the current game state required for `ComicView`
     getCurrentComicViewData() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
         const currentScene = this.getCurrentScene();
+        let currentDialogue = null;
+        if (sceneFrame !== -1 && 'dialogue' in currentScene) {
+            currentDialogue = currentScene.dialogue[sceneFrame];
+        }
         return {
             sceneName,
             background: currentScene.background,
@@ -216,6 +118,7 @@ class Storyteller extends React.Component {
                 ...(currentScene.baseFrame || []),
                 ...currentScene.frames[sceneFrame]
             ],
+            dialogue: currentDialogue,
         };
     }
 
@@ -227,7 +130,8 @@ class Storyteller extends React.Component {
                 <ComicView
                     sceneName={this.getCurrentComicViewData().sceneName}
                     background={this.getCurrentComicViewData().background}
-                    frame={this.getCurrentComicViewData().frame} />
+                    frame={this.getCurrentComicViewData().frame}
+                    dialogue={this.getCurrentComicViewData().dialogue} />
             );
         }
         else if (currentScene.type === 'minigame') {
