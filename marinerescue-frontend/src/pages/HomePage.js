@@ -1,12 +1,13 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
 import './HomePage.scss';
 
 class HomePage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
@@ -77,11 +78,11 @@ class HomePage extends React.Component {
                 <div class="section background-color-sand">
                     <div class="parents-of-marine-rescuers-section">
                         <img src="images/two-jade-parents-background.png" alt="Image of Jade the turle with hearts" />
-                        <button id="parents-button"><h1>Parents of Marine Rescuers</h1>Read more about our team and mission in educating young scientists through Marine Rescue, a citizen science project teaching debris’ impacts on marine wildlife. </button>
+                        <Link to="/parents" className="mega-button"><h1>Parents of Marine Rescuers</h1>Read more about our team and mission in educating young scientists through Marine Rescue, a citizen science project teaching debris’ impacts on marine wildlife.</Link>
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div>
             </main>

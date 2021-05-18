@@ -15,8 +15,8 @@ class NavBar extends React.Component {
                     <Link to="/adventures">Adventures</Link>
                     <Link to="/about">About</Link>
                     <Link to="/parents">Parents</Link>
+                    <Link to="/badges">Badges</Link>
                     <Link to="/play" id="nav-bar-button">Play Now</Link>
-                    <a href="profile">Profile</a>
             </div>
         );
     }

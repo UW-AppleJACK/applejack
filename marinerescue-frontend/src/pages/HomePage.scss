@@ -1,12 +1,6 @@
 @import '../styles/breaks';
 @import '../styles/colors';
 
-*{
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
 #strawberry-welcome {
     width: 700px;
 }
@@ -24,7 +18,7 @@
     }
 
 
-    #parents-button {
+    .mega-button {
         position: absolute;
         width: 40%;
         top: 50%;
@@ -35,6 +29,7 @@
         padding: 12px 24px;
         border-radius: 20px;
         text-align: center;
+        text-decoration: none;
     }
 }
 

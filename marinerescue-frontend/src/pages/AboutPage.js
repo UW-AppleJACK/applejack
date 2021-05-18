@@ -1,20 +1,19 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import './AboutPage.scss';
-
+import { Link } from "react-router-dom";
 
 class AboutPage extends React.Component {
     render() {
         return (
-            <main>
+            <main class="marketing-page">
                 <NavBar></NavBar>
                 <div class="section background-color-grape">
                     <div class="row">
                         <div class="column">
                             <h1 class="color-sunshine">- Our Goal - </h1>
                             <p class="color-sand">Marine Rescue is a platform for elementary students to learn about debris' impacts on marine wildlife.</p>
-                            <p class="color-sand">Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research. From our user research when developing this project, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. </p>
+                            <p class="color-sand">Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research. From our user research when developing this project, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. <Link to="/capstone">Read more</Link>  about our capstone project.</p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ class AboutPage extends React.Component {
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section section-footer">
                     <Footer></Footer>
                 </div> 
             </main>

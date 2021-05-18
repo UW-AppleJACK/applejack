@@ -25,6 +25,11 @@ $storyteller-btn-margin: 16px;
         bottom: $storyteller-btn-margin;
         width: $storyteller-btn-size;
         height: $storyteller-btn-size;
+        border-radius: $storyteller-btn-size;
+        background-color: $grape;
+        color: white;
+        border: none;
+        box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.2);
 
         &.storyteller-load {
             left: $storyteller-btn-margin;

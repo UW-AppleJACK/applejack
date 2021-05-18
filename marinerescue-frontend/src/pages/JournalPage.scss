@@ -1,0 +1,33 @@
+#journal-page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    #journal-reset-btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: none;
+        border-radius: 16px;
+        padding: 16px;
+        align-self: flex-start;
+    
+        img {
+            width: 80px;
+        }
+    
+        span {
+            font-family: 'Balsamiq Sans';
+            font-weight: 700;
+            font-size: 20px;
+        }
+    }
+
+    #journal-page-content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
