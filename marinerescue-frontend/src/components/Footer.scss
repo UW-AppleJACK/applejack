@@ -1,0 +1,32 @@
+@import '../styles/breaks';
+@import '../styles/colors';
+
+footer {
+    background-color: $blue;
+    text-align: center;
+    padding-top: 60px;
+
+    h3 {
+        color: $grape;
+    }
+    
+    #icon {
+        width: 100px;
+    }
+
+    .navbar-logo{ 
+        margin-bottom: -5px;
+    
+        img{
+           width: 50%;
+           height: auto; 
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+    }
+}

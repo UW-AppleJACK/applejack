@@ -1,0 +1,21 @@
+@import './styles/breaks';
+@import './styles/colors';
+
+// button styling source: https://www.w3schools.com/howto/howto_css_round_buttons.asp
+
+.marketing-page button,
+.std-btn {
+  background-color: $blue;
+  border: none;
+  color: white;
+  width: 180px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 30px 2px;
+  border-radius: 30px;
+  font-family : inherit;
+  cursor: pointer;
+}

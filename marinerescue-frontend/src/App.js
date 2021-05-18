@@ -4,20 +4,34 @@ import {
     Route
 } from "react-router-dom";
 
-import './App.css';
+import './App.scss';
+import './AppMarketingPages.scss';
 import Storyteller from "./components/Storyteller";
 import AboutPage from './pages/AboutPage';
 import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import EditorPage from './pages/EditorPage';
 import HomePage from './pages/HomePage';
 import JournalPage from './pages/JournalPage';
+import ParentsPage from './pages/ParentsPage';
+import CapstonePage from './pages/CapstonePage';
+import BadgesPage from './pages/BadgesPage';
+
 
 function App() {
     return (
         <Router>
             <Switch>
+                <Route path="/capstone">
+                    <CapstonePage />
+                </Route>
+                <Route path="/badges">
+                    <BadgesPage />
+                </Route>
                 <Route path="/about">
                     <AboutPage />
+                </Route>
+                <Route path="/parents">
+                    <ParentsPage />
                 </Route>
                 <Route path="/classify">
                     <DebrisClassificationPage />

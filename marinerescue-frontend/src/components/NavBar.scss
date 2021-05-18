@@ -1,0 +1,60 @@
+@import '../styles/breaks';
+@import '../styles/colors';
+
+// navbar styling source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_topnav_equal_width
+
+.navbar {
+    display: flex;
+    align-items:center;
+    width: 100%;
+    background-color: $blue;
+    overflow: auto;
+    padding: 14px 50px;
+
+    #nav-bar-button {
+        background-color: $sand;
+        border: none;
+        color: $grape;
+        width: 180px;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 25px;
+        margin: 30px 2px;
+        border-radius: 30px;
+        font-family : inherit;
+    }
+}
+  
+.navbar a {
+    float: left;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    width: 25%; 
+    text-align: center;
+}
+  
+.navbar a:hover {
+    color: $dark;
+}
+
+.navbar-logo{ 
+    margin-bottom: -5px;
+
+    img{
+       width: 100%;
+       height: auto; 
+    }
+}
+  
+@media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+}
