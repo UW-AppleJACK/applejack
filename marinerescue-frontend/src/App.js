@@ -13,9 +13,9 @@ import EditorPage from './pages/EditorPage';
 import HomePage from './pages/HomePage';
 import JournalPage from './pages/JournalPage';
 import ParentsPage from './pages/ParentsPage';
+import GameLandingPage from './pages/GameLandingPage';
 import CapstonePage from './pages/CapstonePage';
 import BadgesPage from './pages/BadgesPage';
-
 
 function App() {
     return (
@@ -38,6 +38,9 @@ function App() {
                 </Route>
                 <Route path="/storyteller-test">
                     <Storyteller />
+                </Route>
+                <Route path="/play">
+                    <GameLandingPage />
                 </Route>
                 <Route path="/storyteller/editor">
                     <EditorPage />
