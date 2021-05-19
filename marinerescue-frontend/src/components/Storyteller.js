@@ -19,14 +19,14 @@ let cookies = null;
 class Storyteller extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.getDefaultState();
+        this.state = this.getDefaultState(props.startScene);
     }
 
     // Get default game state
-    getDefaultState() {
+    getDefaultState(startScene) {
         return {
             stateFormatVersion: 0,
-            currentScene: 'testScene/0',
+            currentScene: `${startScene || 'testScene'}/0`,
             sceneHistory: [],
             complete: [],
         };

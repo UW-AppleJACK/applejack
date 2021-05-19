@@ -14,7 +14,7 @@ class GameLandingPage extends React.Component {
         {
           MODULES.map((module, idx) => {
             const isAlt = idx % 2 !== 0;
-            const isLocked = idx > 2;
+            const isLocked = idx > 3 || idx === 1;
 
             let classes = 'game-module-section';
             if (isAlt) {
