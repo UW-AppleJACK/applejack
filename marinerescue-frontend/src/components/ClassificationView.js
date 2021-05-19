@@ -14,7 +14,7 @@ class ClassificationView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.targetUrl !== this.props.targetUrl) {
+    if (prevProps.target.id !== this.props.target.id) {
       this.setState({ loadingImage: true });
     }
   }
@@ -28,8 +28,8 @@ class ClassificationView extends React.Component {
     }
   }
 
-  onClassify(targetUrl, classificationId) {
-    this.props.onClassify(targetUrl, classificationId);
+  onClassify(target, option) {
+    this.props.onClassify(target, option);
 
     if (this.state.seenFactIndices.length !== this.props.facts.length && Math.random() < this.props.factsProportion) {
       // Select a random fact that hasn't already been seen. This can be optimized.
@@ -48,7 +48,7 @@ class ClassificationView extends React.Component {
   renderClassificationOptions(options, disabled) {
     return (options || []).map(option => (
       <div className="classification-option" key={option.id}>
-        <button className="button-select" onClick={() => this.onClassify(this.props.targetUrl, option.id)} disabled={disabled}>{option.label}</button>
+        <button className="button-select" onClick={() => this.onClassify(this.props.target, option)} disabled={disabled}>{option.display}</button>
         <button className="button-help" onClick={this.updateSelectedHelpObject(option)}>Help?</button>
       </div>
     ))
@@ -91,7 +91,7 @@ class ClassificationView extends React.Component {
           {this.state.loadingImage && <p>Loading...</p>}
           { /* eslint-disable-next-line */}
           <img
-            src={this.props.targetUrl}
+            src={this.props.target.url}
             className={this.state.loadingImage ? 'loading' : ''}
             alt="Image to classify."
             onLoad={() => this.setState({ loadingImage: false })}

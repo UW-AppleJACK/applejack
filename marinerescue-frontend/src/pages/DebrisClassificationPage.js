@@ -1,42 +1,16 @@
 import React from 'react';
 import ClassificationView from '../components/ClassificationView';
+import DEBRIS_CLASSIFICATION_IMAGES from '../data/DebrisClassificationImagesData';
+import DEBRIS_CLASSIFICATION_OPTIONS from '../data/DebrisClassificationOptionsData';
+
+const URL_PREFIX = 'https://marinerescue-static.s3-us-west-2.amazonaws.com/classification/';
 
 class DebrisClassificationPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
+      currentImageId: 0,
       targetsCompleted: 0,
-      targetUrls: [...Array(100).keys()].map(i => `https://picsum.photos/seed/${i + 1}/400`), // 100 random images. will eventually get from server
-      options: [
-        {
-          id: 'loopy',
-          label: 'Loopy',
-          helpTextTitle: 'What is "Loopy"?',
-          helpTextPrimary: 'Loopy things have circle shapes in them, like a rollercoaster!',
-          helpTextSecondary: 'Loopy things are dangerous to marine animals because they can get stuck in the loops. Getting stuck can make it hard to move and hard to breath.',
-          helpImageUrl: '/images/loopy-help-image.png',
-          helpImageAlt: 'Comic of Strawberry saying "you can\'t grab that rope! It might get caught on your neck and hurt you.'
-        },
-        {
-          id: 'crumbly',
-          label: 'Crumbly',
-          helpTextTitle: 'What is "Crumbly"?',
-          helpTextPrimary: '...'
-        },
-        {
-          id: 'sharp',
-          label: 'Sharp',
-          helpTextTitle: 'What is "Sharp"?',
-          helpTextPrimary: '...'
-        },
-        {
-          id: 'shiny',
-          label: 'Shiny',
-          helpTextTitle: 'What is "Shiny"?',
-          helpTextPrimary: '...'
-        },
-      ],
       facts: [
         {
           title: 'A fact about plastic...',
@@ -57,15 +31,35 @@ class DebrisClassificationPage extends React.Component {
     };
   }
 
-  getCurrentTargetUrl() {
-    return this.state.targetUrls[this.state.targetsCompleted];
+  prepareUrl(url) {
+    return `${URL_PREFIX}${url.replaceAll(' ', '+')}`;
   }
 
-  onClassify(targetUrl, classificationId) {
-    console.log(`Classified ${targetUrl} as ${classificationId}`);
-    console.log(this)
+  getImageWithId(id) {
+    const image = DEBRIS_CLASSIFICATION_IMAGES.filter(image => image.id === id)[0];
+    return {
+      ...image,
+      url: this.prepareUrl(image.url),
+    };
+  }
+
+  getCurrentImage() {
+    return this.getImageWithId(this.state.currentImageId);
+  }
+
+  getOptionsForClassification(classification) {
+    return DEBRIS_CLASSIFICATION_OPTIONS[classification];
+  }
+
+  getCurrentOptions() {
+    return this.getOptionsForClassification(this.getCurrentImage().classification);
+  }
+
+  onClassify(image, option) {
+    console.log(`classified ${image.id} as ${option.id}`)
     this.setState({
-      targetsCompleted: this.state.targetsCompleted + 1
+      targetsCompleted: this.state.targetsCompleted + 1,
+      currentImageId: this.state.currentImageId + 1,
     });
   }
 
@@ -73,8 +67,8 @@ class DebrisClassificationPage extends React.Component {
     return (
       <div className="debris-classification-page">
         <ClassificationView
-          options={this.state.options}
-          targetUrl={this.getCurrentTargetUrl()}
+          options={this.getCurrentOptions()}
+          target={this.getCurrentImage()}
           onClassify={this.onClassify.bind(this)}
           facts={this.state.facts}
           factsProportion={0.25}
