@@ -1,4 +1,4 @@
-const DEBRIS_CLASSIFICATION_DATA = [
+const DEBRIS_CLASSIFICATION_IMAGES = [
     {
         "id": 0,
         "url": "clear - bag 2 .png",
@@ -746,4 +746,4 @@ const DEBRIS_CLASSIFICATION_DATA = [
     },
 ];
 
-export default DEBRIS_CLASSIFICATION_DATA;
+export default DEBRIS_CLASSIFICATION_IMAGES;
