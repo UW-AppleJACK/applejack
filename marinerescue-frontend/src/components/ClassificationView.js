@@ -9,13 +9,18 @@ class ClassificationView extends React.Component {
       seenFactIndices: [],
       currentFactObject: {},
       selectedHelpObject: {},
+      successfulClassificationModalType: null,
+      incorrectOptions: [],
       loadingImage: true
     };
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.target.id !== this.props.target.id) {
-      this.setState({ loadingImage: true });
+      this.setState({
+        loadingImage: true,
+        incorrectOptions: [],
+      });
     }
   }
 
@@ -29,7 +34,22 @@ class ClassificationView extends React.Component {
   }
 
   onClassify(target, option) {
+    if (target.classification !== option.id) {
+      const newIncorrectOptions = JSON.parse(JSON.stringify(this.state.incorrectOptions));
+      newIncorrectOptions.push(option.id);
+      this.setState({
+        incorrectOptions: newIncorrectOptions,
+      });
+      return;
+    }
+
     this.props.onClassify(target, option);
+
+    if (target.classification === option.id) {
+      this.setState({
+        successfulClassificationModalType: option.display,
+      });
+    }
 
     if (this.state.seenFactIndices.length !== this.props.facts.length && Math.random() < this.props.factsProportion) {
       // Select a random fact that hasn't already been seen. This can be optimized.
@@ -45,13 +65,19 @@ class ClassificationView extends React.Component {
     }
   }
 
-  renderClassificationOptions(options, disabled) {
-    return (options || []).map(option => (
-      <div className="classification-option" key={option.id}>
-        <button className="std-btn button-select" onClick={() => this.onClassify(this.props.target, option)} disabled={disabled}>{option.display}</button>
-        <button className="std-btn button-help" onClick={this.updateSelectedHelpObject(option)}>Help?</button>
-      </div>
-    ))
+  renderClassificationOptions(options, disabled, incorrectOptions) {
+    return (options || []).map(option => {
+      return (
+        <div className="classification-option" key={option.id}>
+          {
+            !this.state.incorrectOptions.includes(option.id)
+              ? <button className="std-btn button-select" onClick={() => this.onClassify(this.props.target, option)} disabled={disabled}>{option.display}</button>
+              : <button className="std-btn button-select button-select-incorrect" disabled={true}>That's not it, look carefully and try again</button>
+          }
+          <button className="std-btn button-help" onClick={this.updateSelectedHelpObject(option)}>Help?</button>
+        </div>
+      );
+    })
   }
 
   renderFactModal(currentFactObject) {
@@ -82,9 +108,22 @@ class ClassificationView extends React.Component {
     );
   }
 
+  renderSuccessModal(successfulClassificationModalType) {
+    return (
+      <Modal
+        textTitle="Great job!"
+        textPrimary={`You got it right, that is a ${successfulClassificationModalType} debris!`}
+        primaryButtonText="Continue"
+        show={successfulClassificationModalType !== null}
+        onClickPrimaryButton={() => this.setState({ successfulClassificationModalType: null })}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="classification-view">
+        {this.renderSuccessModal(this.state.successfulClassificationModalType)}
         {this.renderFactModal(this.state.currentFactObject)}
         {this.renderHelpModal(this.state.selectedHelpObject)}
         <div className="classification-target">
@@ -98,7 +137,7 @@ class ClassificationView extends React.Component {
           />
         </div>
         <div className="classification-options">
-          {this.renderClassificationOptions(this.props.options, this.state.loadingImage)}
+          {this.renderClassificationOptions(this.props.options, this.state.loadingImage, this.state.incorrectOptions)}
         </div>
       </div>
     );
