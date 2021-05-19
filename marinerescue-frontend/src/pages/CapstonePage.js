@@ -42,7 +42,7 @@ class CapstonePage extends React.Component {
                     </div>
                     <div>
                         <h2 class="color-grape text-left">Problem Statement</h2>
-                        <img class="responsive center" id="problem-statement" src="images/problem-statement.png" alt="Jade the Green Turtle with thought bubble saying problem statement"/>            
+                        <img class="responsive center problem-statement" src="images/problem-statement.png" alt="Jade the Green Turtle with thought bubble saying problem statement"/>            
                     </div>
                     <div>
                         <h2 class="color-grape">Supporting Research Questions</h2>
@@ -73,8 +73,8 @@ class CapstonePage extends React.Component {
                             </div>
                         </div>
                         <div class="color-grape content">
-                            <h2 id="topic-h2">{this.state.topic}</h2>
-                            <p id="topic-p">{CONTENT[this.state.topic]}</p>
+                            <h2 class="topic-h2">{this.state.topic}</h2>
+                            <p class="topic-p">{CONTENT[this.state.topic]}</p>
                         </div>
                     </div>
                     <div>
@@ -87,7 +87,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" src="images/coasst-logo.png" alt="Coastal Observation and Seabird Survey Team (COASST) logo"/>
-                                <p class="color-grape text-center" id="caption">coasst.org</p>
+                                <p class="color-grape text-center caption">coasst.org</p>
                             </div>
                        </div>
                     </div>
@@ -104,15 +104,15 @@ class CapstonePage extends React.Component {
                         <div class="row-no-padding content">
                             <div class="column">
                                 <p class="color-sand">Our first prototype was a comic of an animal encountering harmful debris with an interactive activity. We validated this concept with 7 kids from ages 7-12.</p>
-                                <img class="responsive" id="concepts" src="images/concepts-low-fid.png" alt="Concepts to validate with the low-fidelity prototype"/>
+                                <img class="responsive concepts" src="images/concepts-low-fid.png" alt="Concepts to validate with the low-fidelity prototype"/>
                                 <p class="color-sand">To evaluate our success, we created an interview script complete with pre-questions to understand the interviewees prior knowledge about marine animals and science research, along with post-questions and an activity to assess what they learned from the story. You can view the template here to the side.</p>
                                 <p class="color-sand">Interviewing the kids gave us great feedback that we took into consideration when revising our design. Many said the activity was too easy and told us they already knew this content- to this we revised our storyline to include more complex words and topics. They also said they had lots of fun with the activity so we continued to add active engagement in the stories!</p>
                             </div>
                             <div class="column responsive">
                                 <img src="images/low-fid-prototype.png" alt="Example scene from the low-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
-                                <p id="caption" class="color-sand text-center">Comic scene from low-fidelity prototype</p>
+                                <p class="color-sand text-center caption">Comic scene from low-fidelity prototype</p>
                                 <iframe src="https://docs.google.com/document/d/e/2PACX-1vRjOVeqkZ2RmTWSQNc-L_oNHnJsQYh35BSlkcAgZPuw6IupcRtf9nQYhfmCgcXdpOFMs0RMizvlqGL1/pub?embedded=true" width="600" height="700"></iframe>
-                                <p id="caption" class="color-sand text-center">Interview guide for user testing low-fidelity prototype</p>
+                                <p class="color-sand text-center caption">Interview guide for user testing low-fidelity prototype</p>
                             </div>
                         </div>
                     </div>
@@ -121,15 +121,15 @@ class CapstonePage extends React.Component {
                         <div class="row-no-padding content">
                             <div class="column">
                                 <p class="color-sand">After several iterations incorporating the feedback, we created a high fidelity prototype with an updated story, a minigame, and a journal activity. We then returned to user testing to evaluate some similar concepts and a few new ones. If you’re curious, you can view our Figma prototype here:  <a class="color-blue" href="http://to.marinerescue.app/story">http://to.marinerescue.app/story</a></p>
-                                <img class="responsive" id="concepts" src="images/concepts-high-fid.png" alt="Concepts to validate with the high-fidelity prototype"/>
+                                <img class="responsive concepts" src="images/concepts-high-fid.png" alt="Concepts to validate with the high-fidelity prototype"/>
                                 <p class="color-sand">We revised our interview script to help us evaluate these concepts. In particular, we asked the kids directly what they learned from the story and from the minigame. We also revised the post-question activity to classify real marine debris with the vocabulary they learned from the story. Lastly, we asked them if they would be interested in learning about more animals. </p>
                                 <p class="color-sand">We received great feedback on our concepts to test, and also noted the kids' overall enjoyment of our animations and designs.</p>
                             </div>
                             <div class="column responsive">
                                 <img src="images/high-fid-prototype.png" alt="Example scene from the high-fidelity prototype where Strawberry the Harbor Seal is introducing herself"/>
-                                <p id="caption" class="color-sand text-center">High-fidelity prototype story scene</p>
+                                <p class="color-sand text-center caption">High-fidelity prototype story scene</p>
                                 <iframe src="https://docs.google.com/document/d/e/2PACX-1vTgRrvZqTPA2pulaUn3QUzZlzxkb0k6S7VDta7n5bxIus0apj3TVQuqHUwI-Gv8CNgKGNtCvHLiHqDq/pub?embedded=true" width="600" height="700"></iframe>
-                                <p id="caption" class="color-sand text-center">Revised interview guide for user testing high-fidelity prototype</p>
+                                <p class="color-sand text-center caption">Revised interview guide for user testing high-fidelity prototype</p>
                             </div>
                         </div>
                     </div>
@@ -150,13 +150,13 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column responsive">
                                 <img src="images/meet-strawberry.png" alt="Scene from Meet Strawberry story showing Strawberry introducing herself as the navigator"/>
-                                <p id="caption" class="color-grape text-center">Strawberry introduces herself in the first scene of the story</p>
+                                <p class="color-grape text-center caption">Strawberry introduces herself in the first scene of the story</p>
                             </div>
                         </div>
                         <div class="row-no-padding">
                             <div class="column responsive">
                                 <img src="images/proactive-strawberry.png" height="400" alt="Scene from Squawky story where Strawberry asks the user to help her stop Squawky from eating a lighter that looks similar to his usual meal of squid"/>
-                                <p id="caption" class="color-grape text-center">Strawberry asks the user to help her stop Squawky from eating a lighter that looks similar to his usual meal of squid</p>
+                                <p class="color-grape text-center caption">Strawberry asks the user to help her stop Squawky from eating a lighter that looks similar to his usual meal of squid</p>
                             </div>
                             <div class="column content">
                                  <p class="color-grape">We took this feedback into consideration and decided to revise the stories to be more uplifting by giving the user the ability to proactively help Strawberry’s friends. This would also empower users through the game to use their knowledge and action to make a difference in the real world.</p>
@@ -180,7 +180,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <iframe src="https://drive.google.com/file/d/1Ptt0t5vMeLaXCKK2VhvURmOcmdILz-Ot/preview" width="640" height="480"></iframe>
-                                <p id="caption" class="color-sand text-center">Check out our style guide!</p>
+                                <p class="color-sand text-center caption">Check out our style guide!</p>
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" height="400" src="images/character-emotions2.png" alt="Showing four emotions for each marine animal, including neutral, love, and alarmed"/>
-                                <p id="caption" class="color-sand text-center">Each marine animal has different emotions, including neutral, love, and alarmed!</p>
+                                <p class="color-sand text-center caption">Each marine animal has different emotions, including neutral, love, and alarmed!</p>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" height="400" src="/images/landing-dev-editor.png" alt="Screenshot of Level Editor" />
-                                <p id="caption" class="text-center">Screenshot of the level editor</p>
+                                <p class="text-center color-grape caption">Screenshot of the level editor</p>
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@ class CapstonePage extends React.Component {
                         <div class="row-no-padding">
                             <div class="column">
                                 <img class="responsive" height="400" src="/images/landing-dev-responsive.png" alt="iPhone playing Marine Rescue" />
-                                <p id="caption" class="text-center">Marine Rescue is responsive and can be played on an iPhone</p>
+                                <p class="text-center color-grape caption">Marine Rescue is responsive and can be played on an iPhone</p>
                             </div>
                             <div class="column content">
                                 <h2 class="color-grape">Responsive Design</h2>
@@ -255,26 +255,26 @@ class CapstonePage extends React.Component {
 
                         <p class="color-sand">Overall, Marine Rescue provides a holistic solution for the three main gaps we identified in early science learning:</p>
                         <div class="row">
-                            <div class="column" id="width-30">
+                            <div class="column width-30">
                                 <img src="images/list-1.png" height="130" alt="List option 1 with yellow background color"/>
                             </div>
-                            <div class="column" id="width-60">
+                            <div class="column width-60">
                                 <p class="color-sand">It incorporates active learning through minigames to help kids stay engaged, while also reinforcing their new knowledge</p> 
                             </div>
                         </div>
                         <div class="row">
-                            <div class="column" id="width-30">
+                            <div class="column width-30">
                                 <img src="images/list-2.png" height="130" alt="List option 2 with blue background color"/>
                             </div>
-                            <div class="column" id="width-60">
+                            <div class="column width-60">
                                 <p class="color-sand">It allows kids to learn about a new science topic at home, and also gives parents an activity to engage with their kids- beach cleanups</p> 
                             </div>
                         </div>
                         <div class="row">
-                            <div class="column" id="width-30">
+                            <div class="column width-30">
                                 <img src="images/list-3.png" height="130" alt="List option 3 with sand background color"/>
                             </div>
-                            <div class="column" id="width-60">
+                            <div class="column width-60">
                                 <p class="color-sand">It incorporates real-world pictures of debris from COASST’s Marine Debris program and gives kids an opportunity to practice contributing to citizen science</p> 
                             </div>
                         </div>
