@@ -22,8 +22,11 @@ const IMAGES = {
     ],
     sprites: [
         'annie-bag',
+        'annie-zoom-feet',
+        'annie-zoom-waist',
         'blue-bag',
         'blue-circle',
+        'broken-bottle',
         'buoy-net-marker',
         'color-scale',
         'fish',
@@ -68,6 +71,9 @@ const IMAGES = {
         'strawberry-love',
         'strawberry-sad',
         'strawberry-surprised',
+        'strawberry-zoom-tail',
+        'trash-can',
+        'waves',
         'question',
     ],
 };
