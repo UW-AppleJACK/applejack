@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import './GameLandingPage.scss';
 
@@ -9,12 +9,14 @@ import MODULES from '../data/Modules';
 
 class GameLandingPage extends React.Component {
   renderModules() {
+    const next = (new URLSearchParams(this.props.location.search)).get('next');
     return (
       <>
         {
           MODULES.map((module, idx) => {
             const isAlt = idx % 2 !== 0;
             const isLocked = idx > 3 || idx === 1;
+            const isNext = module.tag === next;
 
             let classes = 'game-module-section';
             if (isAlt) {
@@ -23,9 +25,13 @@ class GameLandingPage extends React.Component {
             if (isLocked) {
               classes += ' game-module-section-locked';
             }
+            if (isNext) {
+              classes += ' game-module-section-next';
+            }
 
             return (
               <div className={classes} key={idx}>
+                <a id={module.tag} class="anchor" />
                 <div className="module-deco">
                   {
                     module.icon
@@ -51,6 +57,13 @@ class GameLandingPage extends React.Component {
     );
   }
 
+  componentDidMount() {
+    const next = (new URLSearchParams(this.props.location.search)).get('next');
+    if (!!next) {
+      window.location.hash = next;
+    }
+  }
+
   render() {
     return (
       <div id="game-landing-page">
@@ -69,4 +82,4 @@ class GameLandingPage extends React.Component {
   }
 }
 
-export default GameLandingPage;
+export default withRouter(GameLandingPage);

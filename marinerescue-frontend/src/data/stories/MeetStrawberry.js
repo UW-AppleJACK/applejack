@@ -82,7 +82,7 @@ const MEET_STRAWBERRY = {
   "MeetStrawberry-inwater": {
     "type": "comic",
     "background": "sea-mountains",
-    "nextScene": "testScene2",
+    "nextScene": "GOTO /play?next=squawky",
     "baseFrame": [
       {
         "type": "sprite",

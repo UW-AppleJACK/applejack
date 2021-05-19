@@ -2,6 +2,7 @@
 // See documentation in /docs/StorytellerDataFormat.md
 
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView';
 import minigames from './minigames';
@@ -78,15 +79,28 @@ class Storyteller extends React.Component {
         });
 
         if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < STORYTELLER_DATA[oldSceneName].frames.length) {
+            // Transition to new frame in same scene
             this.setState({
                 currentScene: `${oldSceneName}/${oldSceneFrame + 1}`,
             });
         }
         else {
             newSceneName = STORYTELLER_DATA[oldSceneName].nextScene;
-            this.setState({
-                currentScene: `${newSceneName}/0`,
-            });
+            console.log(newSceneName)
+            if (newSceneName.substring(0, 4) === 'GOTO') {
+                // Transition to another webpage
+                const destination =  newSceneName.split(' ')[1];
+                this.props.history.push(destination);
+                return;
+            }
+            else {
+                // Transition to a new scene
+                // Next line of code makes this case insensitive due to a bug in the editor
+                newSceneName = Object.keys(STORYTELLER_DATA).find(key => key.toLowerCase() === newSceneName.toLowerCase())
+                this.setState({
+                    currentScene: `${newSceneName}/0`,
+                });
+            }
         }
 
         // Clear history before and after minigames to avoid weird UX
@@ -190,4 +204,4 @@ class Storyteller extends React.Component {
     }
 }
 
-export default Storyteller;
+export default withRouter(Storyteller);
