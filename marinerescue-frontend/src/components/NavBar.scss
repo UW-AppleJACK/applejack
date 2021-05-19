@@ -5,56 +5,73 @@
 
 .navbar {
     display: flex;
-    align-items:center;
+    align-items: center;
     width: 100%;
     background-color: $blue;
-    overflow: auto;
-    padding: 14px 50px;
+    padding: 14px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
 
-    #nav-bar-button {
-        background-color: $sand;
-        border: none;
-        color: $grape;
-        width: 180px;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 25px;
-        margin: 30px 2px;
-        border-radius: 30px;
-        font-family : inherit;
-    }
-}
-  
-.navbar a {
-    float: left;
-    padding: 5px;
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-    width: 25%; 
-    text-align: center;
-}
-  
-.navbar a:hover {
-    color: $dark;
+.nav-links {
+    display: none;
 }
 
 .navbar-logo{ 
     margin-bottom: -5px;
 
     img{
-       width: 100%;
-       height: auto; 
+       max-width: 100%;
+       height: auto;
+       width: auto;
     }
 }
-  
-@media screen and (max-width: 500px) {
-    .navbar a {
-      float: none;
-      display: block;
-      width: 100%;
-      text-align: left;
+
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .tab-option {
+        padding: 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+    }
+
+    .navbar a:hover {
+        color: $dark;
+    }
+
+    #nav-bar-button {
+        background-color: $sand;
+        border: none;
+        color: $grape;
+        width: 140px;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 25px;
+        margin: 20px 2px;
+        border-radius: 30px;
+        font-family: inherit;
     }
 }
+
+@media (min-width: 992px) {
+
+}
+// @media screen and (max-width: 500px) {
+//     .navbar a {
+//       float: none;
+//       display: block;
+//       width: 100%;
+//       text-align: left;
+//     }
+// }
