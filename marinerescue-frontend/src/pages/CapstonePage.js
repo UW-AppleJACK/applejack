@@ -222,7 +222,7 @@ class CapstonePage extends React.Component {
                             </div>
                             <div class="column">
                                 <img class="responsive" height="400" src="/images/landing-dev-editor.png" alt="Screenshot of Level Editor" />
-                                <p id="caption" class="text-center">Screenshot of the level editor.</p>
+                                <p id="caption" class="text-center">Screenshot of the level editor</p>
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@ class CapstonePage extends React.Component {
                         <div class="row-no-padding">
                             <div class="column">
                                 <img class="responsive" height="400" src="/images/landing-dev-responsive.png" alt="iPhone playing Marine Rescue" />
-                                <p id="caption" class="text-center">Marine Rescue is responsive and can be played on an iPhone.</p>
+                                <p id="caption" class="text-center">Marine Rescue is responsive and can be played on an iPhone</p>
                             </div>
                             <div class="column content">
                                 <h2 class="color-grape">Responsive Design</h2>
