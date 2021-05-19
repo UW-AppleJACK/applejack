@@ -3,7 +3,7 @@ import {
     Journal,
     JOURNAL_TOC_VIEW,
 } from '../components/Journal';
-import journalData from '../journalData';
+import JOURNAL_DATA from '../data/JournalData';
 import './JournalPage.scss';
 
 class JournalPage extends React.Component {
@@ -35,7 +35,7 @@ class JournalPage extends React.Component {
                 </button>
                 <div id="journal-page-content">
                     <Journal
-                        data={journalData}
+                        data={JOURNAL_DATA}
                         view={this.state.view}
                         page={this.state.page}
                         onNavigate={this.onNavigate.bind(this)} />

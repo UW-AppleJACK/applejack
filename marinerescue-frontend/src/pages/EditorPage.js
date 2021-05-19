@@ -1,7 +1,7 @@
 import React from 'react';
 
 import minigames from '../components/minigames';
-import storytellerData from '../storytellerData';
+import STORYTELLER_DATA from '../data/StorytellerData';
 import Dropdown from '../components/Dropdown';
 import ComicView from '../components/ComicView';
 import './EditorPage.scss';
@@ -76,7 +76,7 @@ class EditorPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            storytellerData: storytellerData,
+            storytellerData: STORYTELLER_DATA,
             currentSceneName: 'testScene',
             currentFrame: 0,
             targetSpriteIdx: -1,

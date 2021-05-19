@@ -1,4 +1,4 @@
-const storytellerData = {
+const STORYTELLER_DATA = {
     testScene: {
         type: 'comic',
         background: 'test-1',
@@ -115,4 +115,4 @@ const storytellerData = {
     },
 };
 
-export default storytellerData;
+export default STORYTELLER_DATA;

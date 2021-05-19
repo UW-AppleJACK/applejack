@@ -5,7 +5,7 @@ import React from 'react';
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView';
 import minigames from './minigames';
-import storytellerData from '../storytellerData';
+import STORYTELLER_DATA from '../data/StorytellerData';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
@@ -77,20 +77,20 @@ class Storyteller extends React.Component {
             sceneHistory: [...this.state.sceneHistory, this.state.currentScene],
         });
 
-        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < storytellerData[oldSceneName].frames.length) {
+        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < STORYTELLER_DATA[oldSceneName].frames.length) {
             this.setState({
                 currentScene: `${oldSceneName}/${oldSceneFrame + 1}`,
             });
         }
         else {
-            newSceneName = storytellerData[oldSceneName].nextScene;
+            newSceneName = STORYTELLER_DATA[oldSceneName].nextScene;
             this.setState({
                 currentScene: `${newSceneName}/0`,
             });
         }
 
         // Clear history before and after minigames to avoid weird UX
-        if (storytellerData[oldSceneName].type === 'minigame' || (!!newSceneName && storytellerData[newSceneName].type === 'minigame')) {
+        if (STORYTELLER_DATA[oldSceneName].type === 'minigame' || (!!newSceneName && STORYTELLER_DATA[newSceneName].type === 'minigame')) {
             this.setState({
                 sceneHistory: [],
             });
@@ -100,7 +100,7 @@ class Storyteller extends React.Component {
     // Get current game scene
     getCurrentScene() {
         const [sceneName] = this.getParsedSceneAttrs();
-        return storytellerData[sceneName];
+        return STORYTELLER_DATA[sceneName];
     }
 
     // Get data about the current game state required for `ComicView`
