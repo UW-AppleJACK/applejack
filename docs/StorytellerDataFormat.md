@@ -44,7 +44,7 @@ A scene is an object that looks like this:
 * `background`: Background to be displayed if this scene is a comic. All backgrounds are in the `/marinerescue-frontend/public/sprites/` directory with `bg-` prefix.
 * `minigame`: Name of minigame React Component if this scene is a minigame.
 * `nextScene`: Either a string or an object that determines the scene to change to after this scene is complete.
-  * `string`: Scene to change to after this scene is complete.
+  * `string`: Scene to change to after this scene is complete. If `nextScene` begins with `"GOTO"`, it indicates that the user should be navigated to another page after completing this scene (i.e. `"nextScene": "GOTO /play?next=squawky"`).
   * `object`: A map of labels to destination scenes. Depending on the label chosen by the player in a decision, the scene will change to the given destination scene.
 * `baseFrame`: A base frame that is prepended to every frame in the scene.
 * `frames`: All the frames in the scene.
