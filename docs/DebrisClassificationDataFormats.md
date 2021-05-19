@@ -22,5 +22,5 @@ The keys for those objects are:
 
 * `id`: The classification that the server will receive for this option.
 * `display`: The classification that the user will see for this option.
-* `helpTextTitle`, `helpTextPrimary`, `helpTextSecondary`: Content user will read if they need help with this option.
-* `helpImageUrl`, `helpImageAlt`: Optional image user will view if they need help with this option.
+* `textTitle`, `textPrimary`, `textSecondary`: Content user will read if they need help with this option.
+* `imageUrl`, `imageAlt`: Optional image user will view if they need help with this option.

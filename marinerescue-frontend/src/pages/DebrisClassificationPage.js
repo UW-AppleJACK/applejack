@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassificationView from '../components/ClassificationView';
+import Modal from '../components/Modal';
 import NavBar from '../components/NavBar';
 import DEBRIS_CLASSIFICATION_IMAGES from '../data/DebrisClassificationImagesData';
 import DEBRIS_CLASSIFICATION_OPTIONS from '../data/DebrisClassificationOptionsData';
@@ -8,10 +9,20 @@ import './DebrisClassificationPage.scss';
 
 const URL_PREFIX = 'https://marinerescue-static.s3-us-west-2.amazonaws.com/classification/';
 
+const INTRO_PAGES = [
+  {
+    textTitle: 'Welcome to the Classification Game!',
+    textPrimary: 'You have an important job to help scientists: for every picture, accurately select which word best describes the marine debris in the image.',
+    textSecondary: 'Scientists use pictures of trash on beaches to understand the risks to marine animals on different beaches. Knowing these rsisks helps make policies that protect animals and keep our beaches beautiful.\n\nThis is good practice for other citizen science projects, where people help scientists\' research by classifying pictures taken in the field.\n\nYou will earn badges for being accurate!',
+  },
+  ...DEBRIS_CLASSIFICATION_OPTIONS.crumbly,
+];
+
 class DebrisClassificationPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentIntroPage: 0,
       currentImageId: this.chooseRandomIdFromList(
         DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
         [],
@@ -84,10 +95,33 @@ class DebrisClassificationPage extends React.Component {
     });
   }
 
+  renderIntro() {
+    if (this.state.currentIntroPage < 0 || this.state.currentIntroPage >= INTRO_PAGES.length) {
+      return <></>;
+    }
+
+    const nextPageFn = () => this.setState({ currentIntroPage: this.state.currentIntroPage + 1 });
+    const skipFn = () => this.setState({ currentIntroPage: -1 });
+
+    const currentPage = INTRO_PAGES[this.state.currentIntroPage];
+    const isPageOne = this.state.currentIntroPage === 0;
+    const isLastPage = this.state.currentIntroPage === INTRO_PAGES.length - 1;
+    return (
+      <Modal
+        {...currentPage}
+        show={true}
+        primaryButtonText="Play"
+        onClickPrimaryButton={skipFn}
+        secondaryButtonText={!isLastPage && (isPageOne ? 'Instructions' : 'More Instructions')}
+        onClickSecondaryButton={nextPageFn} />
+    )
+  }
+
   render() {
     return (
       <div className="debris-classification-page">
         <NavBar />
+        {this.renderIntro()}
         <ClassificationView
           options={this.getCurrentOptions()}
           target={this.getCurrentImage()}

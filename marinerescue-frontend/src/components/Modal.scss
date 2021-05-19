@@ -32,11 +32,21 @@
                 margin-bottom: 0;
             }
 
-            button {
-                width: 100%;
-                color: black;
-                margin-bottom: 0;
+            .modal-button-container {
+                display: flex;
+                flex-direction: row-reverse;
                 margin-top: 36px;
+
+                button {
+                    width: 100%;
+                    color: black;
+                    margin: 0;
+
+                    &.secondary {
+                        background-color: $gray;
+                        margin-right: 8px;
+                    }
+                }
             }
         }
     }

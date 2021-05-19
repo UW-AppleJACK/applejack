@@ -11,7 +11,10 @@ class Modal extends React.Component {
                         {this.props.textTitle && <h1>{this.props.textTitle}</h1> }
                         {this.props.textPrimary && <b>{this.props.textPrimary}</b> }
                         {this.props.textSecondary && <p>{this.props.textSecondary}</p> }
-                        <button onClick={this.props.onClickPrimaryButton} className="std-btn">{this.props.primaryButtonText || 'Okay'}</button>
+                        <div className="modal-button-container">
+                            <button onClick={this.props.onClickPrimaryButton} className="std-btn">{this.props.primaryButtonText || 'Okay'}</button>
+                            {this.props.secondaryButtonText && <button onClick={this.props.onClickSecondaryButton} className="std-btn secondary">{this.props.secondaryButtonText || 'Okay'}</button>}
+                        </div>
                     </div>
                 </div>
             </div>

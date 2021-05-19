@@ -97,11 +97,11 @@ class ClassificationView extends React.Component {
   renderHelpModal(selectedHelpObject) {
     return (
       <Modal
-        imageUrl={selectedHelpObject.helpImageUrl}
-        imageAlt={selectedHelpObject.helpImageAlt}
-        textTitle={selectedHelpObject.helpTextTitle}
-        textPrimary={selectedHelpObject.helpTextPrimary}
-        textSecondary={selectedHelpObject.helpTextSecondary}
+        imageUrl={selectedHelpObject.imageUrl}
+        imageAlt={selectedHelpObject.imageAlt}
+        textTitle={selectedHelpObject.textTitle}
+        textPrimary={selectedHelpObject.textPrimary}
+        textSecondary={selectedHelpObject.textSecondary}
         show={Object.keys(selectedHelpObject).length !== 0}
         onClickPrimaryButton={this.updateSelectedHelpObject({})}
       />
