@@ -33,7 +33,7 @@ function App() {
                 <Route path="/parents">
                     <ParentsPage />
                 </Route>
-                <Route path="/classify">
+                <Route path="/play/classification">
                     <DebrisClassificationPage />
                 </Route>
                 <Route path="/storyteller-test">
