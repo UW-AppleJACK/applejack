@@ -8,6 +8,7 @@ import DEBRIS_CLASSIFICATION_OPTIONS from '../data/DebrisClassificationOptionsDa
 import './DebrisClassificationPage.scss';
 
 const URL_PREFIX = 'https://marinerescue-static.s3-us-west-2.amazonaws.com/classification/';
+const CLASSIFICATION_API_ENDPOINT = 'https://vl0f6177xb.execute-api.us-west-2.amazonaws.com/prod/save-classification'
 
 const INTRO_PAGES = [
   {
@@ -95,6 +96,22 @@ class DebrisClassificationPage extends React.Component {
     });
   }
 
+  recordClassification(image, option) {
+    const requestUrl = `${CLASSIFICATION_API_ENDPOINT}?image=${image.id}&class=${option.id}`;
+    console.log(`recording classification to ${requestUrl}`);
+
+    const requestOptions = {
+      method: 'PUT',
+      mode: 'cors',
+      cache: 'no-cache',
+      referrerPolicy: 'no-referrer',
+    }
+
+    fetch(requestUrl, requestOptions)
+      .then(console.log)
+      .catch(console.error);
+  }
+
   renderIntro() {
     if (this.state.currentIntroPage < 0 || this.state.currentIntroPage >= INTRO_PAGES.length) {
       return <></>;
@@ -126,6 +143,7 @@ class DebrisClassificationPage extends React.Component {
           options={this.getCurrentOptions()}
           target={this.getCurrentImage()}
           onClassify={this.onClassify.bind(this)}
+          recordClassification={this.recordClassification.bind(this)}
           facts={this.state.facts}
           factsProportion={0.25}
         />

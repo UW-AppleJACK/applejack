@@ -34,7 +34,10 @@ class ClassificationView extends React.Component {
   }
 
   onClassify(target, option) {
+    this.props.recordClassification(target, option);
+
     if (target.classification !== option.id) {
+      // If the classification is incorrect, the user should try again
       const newIncorrectOptions = JSON.parse(JSON.stringify(this.state.incorrectOptions));
       newIncorrectOptions.push(option.id);
       this.setState({
@@ -43,13 +46,13 @@ class ClassificationView extends React.Component {
       return;
     }
 
+    // Notify parent
     this.props.onClassify(target, option);
 
-    if (target.classification === option.id) {
-      this.setState({
-        successfulClassificationModalType: option.display,
-      });
-    }
+    // Show success modal
+    this.setState({
+      successfulClassificationModalType: option.display,
+    });
 
     if (this.state.seenFactIndices.length !== this.props.facts.length && Math.random() < this.props.factsProportion) {
       // Select a random fact that hasn't already been seen. This can be optimized.
