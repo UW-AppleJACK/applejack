@@ -48,8 +48,8 @@ class ClassificationView extends React.Component {
   renderClassificationOptions(options, disabled) {
     return (options || []).map(option => (
       <div className="classification-option" key={option.id}>
-        <button className="button-select" onClick={() => this.onClassify(this.props.target, option)} disabled={disabled}>{option.display}</button>
-        <button className="button-help" onClick={this.updateSelectedHelpObject(option)}>Help?</button>
+        <button className="std-btn button-select" onClick={() => this.onClassify(this.props.target, option)} disabled={disabled}>{option.display}</button>
+        <button className="std-btn button-help" onClick={this.updateSelectedHelpObject(option)}>Help?</button>
       </div>
     ))
   }

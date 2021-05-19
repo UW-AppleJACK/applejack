@@ -1,7 +1,10 @@
 import React from 'react';
 import ClassificationView from '../components/ClassificationView';
+import NavBar from '../components/NavBar';
 import DEBRIS_CLASSIFICATION_IMAGES from '../data/DebrisClassificationImagesData';
 import DEBRIS_CLASSIFICATION_OPTIONS from '../data/DebrisClassificationOptionsData';
+
+import './DebrisClassificationPage.scss';
 
 const URL_PREFIX = 'https://marinerescue-static.s3-us-west-2.amazonaws.com/classification/';
 
@@ -9,8 +12,11 @@ class DebrisClassificationPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentImageId: 0,
-      targetsCompleted: 0,
+      currentImageId: this.chooseRandomIdFromList(
+        DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
+        [],
+      ),
+      completeImages: [],
       facts: [
         {
           title: 'A fact about plastic...',
@@ -55,17 +61,33 @@ class DebrisClassificationPage extends React.Component {
     return this.getOptionsForClassification(this.getCurrentImage().classification);
   }
 
+  chooseRandomIdFromList(possibilities, completed) {
+    const noncompletedPossibilities = possibilities.filter(id => !completed.includes(id));
+    const result = noncompletedPossibilities[Math.floor(Math.random() * noncompletedPossibilities.length)];
+    return result;
+  }
+
   onClassify(image, option) {
     console.log(`classified ${image.id} as ${option.id}`)
+
+    const newCompleteImages = JSON.parse(JSON.stringify(this.state.completeImages));
+    newCompleteImages.push(option.id);
+
+    const newCurrentImageId = this.chooseRandomIdFromList(
+      DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
+      newCompleteImages
+    );
+
     this.setState({
-      targetsCompleted: this.state.targetsCompleted + 1,
-      currentImageId: this.state.currentImageId + 1,
+      currentImageId: newCurrentImageId,
+      completeImages: newCompleteImages
     });
   }
 
   render() {
     return (
       <div className="debris-classification-page">
+        <NavBar />
         <ClassificationView
           options={this.getCurrentOptions()}
           target={this.getCurrentImage()}
