@@ -1,10 +1,9 @@
 function uuidv4() {
-  // not the ideal solution because Math.random is not so random
-  // it works for us since we're not popular, and UUID collisions won't break anything anyway
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
+  // not the ideal solution but it works for us, and UUID collisions won't break anything
+return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+  return v.toString(16);
+});
 }
 
 exports.handler = function(event, context, callback) {
@@ -20,7 +19,12 @@ exports.handler = function(event, context, callback) {
   if (!userImageId || !userClassification || !Number.isInteger(parseInt(userImageId)) || userClassification.length > 50) {
       var response = {
         "statusCode": 400,
-        "body": JSON.stringify("invalid parameters")
+        "body": JSON.stringify("invalid parameters"),
+        "headers": {
+          "Access-Control-Allow-Headers" : "Content-Type",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS,PUT"
+        },
       }
   
       callback(null, response);
@@ -43,7 +47,12 @@ exports.handler = function(event, context, callback) {
       
       var response = {
         "statusCode": 500,
-        "body": JSON.stringify("database error")
+        "body": JSON.stringify("database error"),
+        "headers": {
+          "Access-Control-Allow-Headers" : "Content-Type",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS,PUT"
+        },
       }
   
       callback(null, response);
@@ -52,7 +61,12 @@ exports.handler = function(event, context, callback) {
       
       var response = {
         "statusCode": 200,
-        "body": JSON.stringify("success")
+        "body": JSON.stringify("success"),
+        "headers": {
+          "Access-Control-Allow-Headers" : "Content-Type",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS,PUT"
+        },
       }
   
       callback(null, response);

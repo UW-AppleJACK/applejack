@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2021-05-19T05:54:02Z",
+    "version": "2021-05-19T22:03:12Z",
     "title": "mrlSaveClassificationAPI"
   },
   "host": "vl0f6177xb.execute-api.us-west-2.amazonaws.com",
@@ -34,20 +34,28 @@
             "description": "200 response",
             "schema": {
               "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
             }
           }
         },
         "x-amazon-apigateway-integration": {
-          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:314359620323:function:mrl-saveClassification/invocations",
-          "httpMethod": "POST",
+          "type": "aws_proxy",
           "responses": {
             "default": {
-              "statusCode": "200"
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
             }
           },
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:314359620323:function:mrl-saveClassification/invocations",
           "passthroughBehavior": "when_no_match",
-          "contentHandling": "CONVERT_TO_TEXT",
-          "type": "aws_proxy"
+          "contentHandling": "CONVERT_TO_TEXT"
         }
       },
       "options": {
@@ -77,12 +85,13 @@
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "mock",
           "responses": {
             "default": {
               "statusCode": "200",
               "responseParameters": {
-                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
             }
@@ -90,8 +99,7 @@
           "requestTemplates": {
             "application/json": "{\"statusCode\": 200}"
           },
-          "passthroughBehavior": "when_no_match",
-          "type": "mock"
+          "passthroughBehavior": "when_no_match"
         }
       }
     }
