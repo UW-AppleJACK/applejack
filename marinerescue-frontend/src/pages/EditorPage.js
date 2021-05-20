@@ -22,6 +22,7 @@ const IMAGES = {
     ],
     sprites: [
         'annie-bag',
+        'annie-smile',
         'annie-zoom-feet',
         'annie-zoom-waist',
         'blue-bag',
