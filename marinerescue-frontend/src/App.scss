@@ -19,6 +19,7 @@
   font-family : inherit;
   cursor: pointer;
   transition: 250ms background-color;
+  font-family: 'Balsamiq Sans';
 
   &.sunshine {
     background-color: $sunshine;

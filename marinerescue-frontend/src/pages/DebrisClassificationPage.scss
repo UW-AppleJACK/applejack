@@ -1,0 +1,16 @@
+@import '../styles/colors';
+
+$navbar-height: 161px;
+
+.debris-classification-page {
+  min-height: calc(100vh);
+  background-color: $sand;
+
+  .classification-view {
+    min-height: calc(100vh - #{$navbar-height});
+
+    .classification-target {
+      height: calc(100vh - #{$navbar-height});
+    }
+  }
+}

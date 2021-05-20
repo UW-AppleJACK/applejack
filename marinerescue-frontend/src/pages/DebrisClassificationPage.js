@@ -1,87 +1,155 @@
 import React from 'react';
 import ClassificationView from '../components/ClassificationView';
+import Modal from '../components/Modal';
+import NavBar from '../components/NavBar';
+import DEBRIS_CLASSIFICATION_IMAGES from '../data/DebrisClassificationImagesData';
+import DEBRIS_CLASSIFICATION_OPTIONS from '../data/DebrisClassificationOptionsData';
+
+import './DebrisClassificationPage.scss';
+
+const URL_PREFIX = 'https://marinerescue-static.s3-us-west-2.amazonaws.com/classification/';
+const CLASSIFICATION_API_ENDPOINT = 'https://vl0f6177xb.execute-api.us-west-2.amazonaws.com/prod/save-classification'
+
+const INTRO_PAGES = [
+  {
+    textTitle: 'Welcome to the Classification Game!',
+    textPrimary: 'You have an important job to help scientists: for every picture, accurately select which word best describes the marine debris in the image.',
+    textSecondary: 'Scientists use pictures of trash on beaches to understand the risks to marine animals on different beaches. Knowing these rsisks helps make policies that protect animals and keep our beaches beautiful.\n\nThis is good practice for other citizen science projects, where people help scientists\' research by classifying pictures taken in the field.\n\nYou will earn badges for being accurate!',
+  },
+  ...DEBRIS_CLASSIFICATION_OPTIONS.crumbly,
+];
 
 class DebrisClassificationPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: null,
-            targetsCompleted: 0,
-            targetUrls: [...Array(100).keys()].map(i => `https://picsum.photos/seed/${i + 1}/400`), // 100 random images. will eventually get from server
-            options: [
-                {
-                    id: 'loopy',
-                    label: 'Loopy',
-                    helpTextTitle: 'What is "Loopy"?',
-                    helpTextPrimary: 'Loopy things have circle shapes in them, like a rollercoaster!',
-                    helpTextSecondary: 'Loopy things are dangerous to marine animals because they can get stuck in the loops. Getting stuck can make it hard to move and hard to breath.',
-                    helpImageUrl: '/images/loopy-help-image.png',
-                    helpImageAlt: 'Comic of Strawberry saying "you can\'t grab that rope! It might get caught on your neck and hurt you.'
-                },
-                {
-                    id: 'crumbly',
-                    label: 'Crumbly',
-                    helpTextTitle: 'What is "Crumbly"?',
-                    helpTextPrimary: '...'
-                },
-                {
-                    id: 'sharp',
-                    label: 'Sharp',
-                    helpTextTitle: 'What is "Sharp"?',
-                    helpTextPrimary: '...'
-                },
-                {
-                    id: 'shiny',
-                    label: 'Shiny',
-                    helpTextTitle: 'What is "Shiny"?',
-                    helpTextPrimary: '...'
-                },
-            ],
-            facts: [
-                {
-                    title: 'A fact about plastic...',
-                    textPrimary: 'Did you know that about 10% of all plastic ends up in the oceans?',
-                    textSecondary: 'That means that 26 million tons of plastc goes to the ocean every year! Plastic is poisonous to marine life.'
-                },
-                {
-                    title: 'A fact about ropes...',
-                    textPrimary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                    textSecondary: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                },
-                {
-                    title: 'A fact about whales...',
-                    textPrimary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem.',
-                    textSecondary: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
-                },
-            ]
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentIntroPage: 0,
+      currentImageId: this.chooseRandomIdFromList(
+        DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
+        [],
+      ),
+      completeImages: [],
+      facts: [
+        {
+          title: 'A fact about plastic...',
+          textPrimary: 'Did you know that about 10% of all plastic ends up in the oceans?',
+          textSecondary: 'That means that 26 million tons of plastc goes to the ocean every year! Plastic is poisonous to marine life.'
+        },
+        {
+          title: 'A fact about ropes...',
+          textPrimary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          textSecondary: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        },
+        {
+          title: 'A fact about whales...',
+          textPrimary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem.',
+          textSecondary: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+        },
+      ]
+    };
+  }
+
+  prepareUrl(url) {
+    return `${URL_PREFIX}${url.replaceAll(' ', '+')}`;
+  }
+
+  getImageWithId(id) {
+    const image = DEBRIS_CLASSIFICATION_IMAGES.filter(image => image.id === id)[0];
+    return {
+      ...image,
+      url: this.prepareUrl(image.url),
+    };
+  }
+
+  getCurrentImage() {
+    return this.getImageWithId(this.state.currentImageId);
+  }
+
+  getOptionsForClassification(classification) {
+    return DEBRIS_CLASSIFICATION_OPTIONS[classification];
+  }
+
+  getCurrentOptions() {
+    return this.getOptionsForClassification(this.getCurrentImage().classification);
+  }
+
+  chooseRandomIdFromList(possibilities, completed) {
+    const noncompletedPossibilities = possibilities.filter(id => !completed.includes(id));
+    const result = noncompletedPossibilities[Math.floor(Math.random() * noncompletedPossibilities.length)];
+    return result;
+  }
+
+  onClassify(image, option) {
+    console.log(`classified ${image.id} as ${option.id}`)
+
+    const newCompleteImages = JSON.parse(JSON.stringify(this.state.completeImages));
+    newCompleteImages.push(option.id);
+
+    const newCurrentImageId = this.chooseRandomIdFromList(
+      DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
+      newCompleteImages
+    );
+
+    this.setState({
+      currentImageId: newCurrentImageId,
+      completeImages: newCompleteImages
+    });
+  }
+
+  recordClassification(image, option) {
+    const requestUrl = `${CLASSIFICATION_API_ENDPOINT}?image=${image.id}&class=${option.id}`;
+    console.log(`recording classification to ${requestUrl}`);
+
+    const requestOptions = {
+      method: 'PUT',
+      mode: 'cors',
+      cache: 'no-cache',
+      referrerPolicy: 'no-referrer',
     }
 
-    getCurrentTargetUrl() {
-        return this.state.targetUrls[this.state.targetsCompleted];
+    fetch(requestUrl, requestOptions)
+      .then(console.log)
+      .catch(console.error);
+  }
+
+  renderIntro() {
+    if (this.state.currentIntroPage < 0 || this.state.currentIntroPage >= INTRO_PAGES.length) {
+      return <></>;
     }
 
-    onClassify(targetUrl, classificationId) {
-        console.log(`Classified ${targetUrl} as ${classificationId}`);
-        console.log(this)
-        this.setState({
-            targetsCompleted: this.state.targetsCompleted + 1
-        });
-    }
+    const nextPageFn = () => this.setState({ currentIntroPage: this.state.currentIntroPage + 1 });
+    const skipFn = () => this.setState({ currentIntroPage: -1 });
 
-    render() {
-        return (
-            <div className="debris-classification-page">
-                <ClassificationView
-                    options={this.state.options}
-                    targetUrl={this.getCurrentTargetUrl()}
-                    onClassify={this.onClassify.bind(this)}
-                    facts={this.state.facts}
-                    factsProportion={0.25}
-                />
-            </div>
-        );
-    }
+    const currentPage = INTRO_PAGES[this.state.currentIntroPage];
+    const isPageOne = this.state.currentIntroPage === 0;
+    const isLastPage = this.state.currentIntroPage === INTRO_PAGES.length - 1;
+    return (
+      <Modal
+        {...currentPage}
+        show={true}
+        primaryButtonText="Play"
+        onClickPrimaryButton={skipFn}
+        secondaryButtonText={!isLastPage && (isPageOne ? 'Instructions' : 'More Instructions')}
+        onClickSecondaryButton={nextPageFn} />
+    )
+  }
+
+  render() {
+    return (
+      <div className="debris-classification-page">
+        <NavBar />
+        {this.renderIntro()}
+        <ClassificationView
+          options={this.getCurrentOptions()}
+          target={this.getCurrentImage()}
+          onClassify={this.onClassify.bind(this)}
+          recordClassification={this.recordClassification.bind(this)}
+          facts={this.state.facts}
+          factsProportion={0.25}
+        />
+      </div>
+    );
+  }
 }
 
 export default DebrisClassificationPage;
