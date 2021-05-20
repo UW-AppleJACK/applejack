@@ -5,6 +5,7 @@ const START_SCENE_MAP = {
   'strawberry': 'MeetStrawberry',
   'humphrey': 'MeetHumphrey',
   'jade': 'Jade Story',
+  'waveracer-test': 'waveracer-test',
 }
 
 class StorytellerPage extends React.Component {
