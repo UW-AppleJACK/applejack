@@ -1,4 +1,4 @@
-const journalData = [
+const JOURNAL_DATA = [
     {
         title: 'Squawky',
         category: 'Animals',
@@ -85,4 +85,4 @@ const journalData = [
     }
 ];
 
-export default journalData;
+export default JOURNAL_DATA;

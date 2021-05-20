@@ -2,10 +2,11 @@
 // See documentation in /docs/StorytellerDataFormat.md
 
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import ComicView from './ComicView';
 import minigames from './minigames';
-import storytellerData from '../storytellerData';
+import STORYTELLER_DATA from '../data/StorytellerData';
 import './Storyteller.scss';
 
 const STORYTELLER_COOKIE = 'storytellerCookie';
@@ -19,14 +20,14 @@ let cookies = null;
 class Storyteller extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.getDefaultState();
+        this.state = this.getDefaultState(props.startScene);
     }
 
     // Get default game state
-    getDefaultState() {
+    getDefaultState(startScene) {
         return {
             stateFormatVersion: 0,
-            currentScene: 'testScene/0',
+            currentScene: `${startScene || 'testScene'}/0`,
             sceneHistory: [],
             complete: [],
         };
@@ -77,20 +78,33 @@ class Storyteller extends React.Component {
             sceneHistory: [...this.state.sceneHistory, this.state.currentScene],
         });
 
-        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < storytellerData[oldSceneName].frames.length) {
+        if (this.getCurrentScene().type !== 'minigame' && oldSceneFrame + 1 < STORYTELLER_DATA[oldSceneName].frames.length) {
+            // Transition to new frame in same scene
             this.setState({
                 currentScene: `${oldSceneName}/${oldSceneFrame + 1}`,
             });
         }
         else {
-            newSceneName = storytellerData[oldSceneName].nextScene;
-            this.setState({
-                currentScene: `${newSceneName}/0`,
-            });
+            newSceneName = STORYTELLER_DATA[oldSceneName].nextScene;
+            console.log(newSceneName)
+            if (newSceneName.substring(0, 4) === 'GOTO') {
+                // Transition to another webpage
+                const destination =  newSceneName.split(' ')[1];
+                this.props.history.push(destination);
+                return;
+            }
+            else {
+                // Transition to a new scene
+                // Next line of code makes this case insensitive due to a bug in the editor
+                newSceneName = Object.keys(STORYTELLER_DATA).find(key => key.toLowerCase() === newSceneName.toLowerCase())
+                this.setState({
+                    currentScene: `${newSceneName}/0`,
+                });
+            }
         }
 
         // Clear history before and after minigames to avoid weird UX
-        if (storytellerData[oldSceneName].type === 'minigame' || (!!newSceneName && storytellerData[newSceneName].type === 'minigame')) {
+        if (STORYTELLER_DATA[oldSceneName].type === 'minigame' || (!!newSceneName && STORYTELLER_DATA[newSceneName].type === 'minigame')) {
             this.setState({
                 sceneHistory: [],
             });
@@ -100,7 +114,7 @@ class Storyteller extends React.Component {
     // Get current game scene
     getCurrentScene() {
         const [sceneName] = this.getParsedSceneAttrs();
-        return storytellerData[sceneName];
+        return STORYTELLER_DATA[sceneName];
     }
 
     // Get data about the current game state required for `ComicView`
@@ -190,4 +204,4 @@ class Storyteller extends React.Component {
     }
 }
 
-export default Storyteller;
+export default withRouter(Storyteller);

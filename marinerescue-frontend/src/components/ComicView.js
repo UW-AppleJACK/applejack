@@ -5,7 +5,7 @@ import {
     JOURNAL_ENTRY_VIEW,
 } from './Journal';
 
-import journalData from '../journalData';
+import JOURNAL_DATA from '../data/JournalData';
 
 const ELEMENT_TYPE_SPRITE = 'sprite';
 const ELEMENT_TYPE_JOURNAL = 'journal';
@@ -78,7 +78,7 @@ class ComicView extends React.Component {
                     top: element.y,
                     textAlign: 'left',
                 }}
-                data={journalData}
+                data={JOURNAL_DATA}
                 view={JOURNAL_ENTRY_VIEW}
                 page={element.title} 
                 onNavigate={() => {}}

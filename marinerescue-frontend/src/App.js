@@ -16,6 +16,7 @@ import ParentsPage from './pages/ParentsPage';
 import GameLandingPage from './pages/GameLandingPage';
 import CapstonePage from './pages/CapstonePage';
 import BadgesPage from './pages/BadgesPage';
+import StorytellerPage from "./pages/StorytellerPage";
 
 function App() {
     return (
@@ -38,6 +39,15 @@ function App() {
                 </Route>
                 <Route path="/storyteller-test">
                     <Storyteller />
+                </Route>
+                <Route path="/play/strawberry">
+                    <StorytellerPage startSceneLabel="strawberry" />
+                </Route>
+                <Route path="/play/humphrey">
+                    <StorytellerPage startSceneLabel="humphrey" />
+                </Route>
+                <Route path="/play/jade">
+                    <StorytellerPage startSceneLabel="jade" />
                 </Route>
                 <Route path="/play">
                     <GameLandingPage />
