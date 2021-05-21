@@ -10,19 +10,45 @@ footer {
         color: $grape;
     }
     
-    .footer-logo {
-        width: 45%;
+    .github-logo {
+        width: 50%;
         height: auto;
     }
 
-    .navbar-logo{ 
-        margin-bottom: -5px;
-    
-        img{
-           width: 50%;
-           height: auto; 
+    .footer-logo {
+        display: none;
+    }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    #title {
+        color: $white;
+    }
+
+    @media (min-width: $break-small) {
+        .footer-logo {
+            display: initial;
+            width: 45%;
+            height: auto;
+        }
+
+        .navbar-logo {
+            display: initial;
+            margin-bottom: -5px;
+
+            img {
+                width: 50%;
+                height: auto;
+            }
+        }
+
+        #title {
+            display: none;
         }
     }
+
 
     .row {
         display: flex;

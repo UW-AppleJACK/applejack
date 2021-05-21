@@ -12,6 +12,7 @@ import DebrisClassificationPage from './pages/DebrisClassificationPage';
 import HomePage from './pages/HomePage';
 import ParentsPage from './pages/ParentsPage';
 import CapstonePage from './pages/CapstonePage';
+import PrivacyPage from './pages/PrivacyPage';
 import BadgesPage from './pages/BadgesPage';
 
 
@@ -30,6 +31,9 @@ function App() {
                 </Route>
                 <Route path="/parents">
                     <ParentsPage />
+                </Route>
+                <Route path="/privacy">
+                    <PrivacyPage />
                 </Route>
                 <Route path="/classify">
                     <DebrisClassificationPage />

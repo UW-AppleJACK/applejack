@@ -27,7 +27,7 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $break-small) {
     .menu-icon {
         display: none;
     }
@@ -64,9 +64,6 @@
     }
 }
 
-@media (min-width: 992px) {
-
-}
 // @media screen and (max-width: 500px) {
 //     .navbar a {
 //       float: none;
