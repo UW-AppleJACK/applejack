@@ -31,14 +31,14 @@ const MODULES = [
         title: 'Debris Classification',
         tag: 'debris',
         subtitle: 'Practice contributing to citizen science by classifying images of marine debris!',
-        icon: null,
+        icon: '/sprites/sprite-blue-bag.png',
         target: '/play/classification',
     },
     {
         title: 'Go to the Beach!',
         tag: 'beach',
         subtitle: 'Learn to be safe when cleaning up the beach!',
-        icon: null,
+        icon: '/images/landing-page-modules/landing-page-safety.png',
         target: '/play/safety',
     },
 ];
