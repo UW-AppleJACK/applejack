@@ -5,6 +5,7 @@ const START_SCENE_MAP = {
   'strawberry': 'MeetStrawberry',
   'humphrey': 'MeetHumphrey',
   'jade': 'Jade Story',
+  'squawky': 'Squawky Scene 0',
   'waveracer-test': 'waveracer-test',
 }
 

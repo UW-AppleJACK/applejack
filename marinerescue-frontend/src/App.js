@@ -46,6 +46,9 @@ function App() {
                 <Route path="/play/strawberry">
                     <StorytellerPage startSceneLabel="strawberry" />
                 </Route>
+                <Route path="/play/squawky">
+                    <StorytellerPage startSceneLabel="squawky" />
+                </Route>
                 <Route path="/play/humphrey">
                     <StorytellerPage startSceneLabel="humphrey" />
                 </Route>

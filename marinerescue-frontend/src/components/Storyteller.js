@@ -197,7 +197,7 @@ class Storyteller extends React.Component {
                 <div id="storyteller-view">
                     {this.renderStorytellerView()}
                 </div>
-                {this.renderStateTools()}
+                {/* {this.renderStateTools()} */}
                 {this.renderNavigation()}
             </div>
         );

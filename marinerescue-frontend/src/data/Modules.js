@@ -32,7 +32,7 @@ const MODULES = [
         tag: 'debris',
         subtitle: 'Practice contributing to citizen science by classifying images of marine debris!',
         icon: null,
-        target: '/classify',
+        target: '/play/classification',
     },
     {
         title: 'Go to the Beach!',
