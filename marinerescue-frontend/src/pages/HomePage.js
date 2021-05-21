@@ -25,6 +25,7 @@ class HomePage extends React.Component {
                 <div class="section background-color-sand text-center">
                     <h1 class="color-blue">Your Journey So Far</h1>
                     <h2 class="color-grape">Earn points and badges while helping the Marine Rescue team learn more about their environment!</h2>
+                    <button>Play Now</button>
                     <div class="row">
                         <div class="column">
                             <img class="width-400px" src="images/strawberry-and-friends-icon.png" alt="Strawberry and friends icon" />
@@ -72,12 +73,15 @@ class HomePage extends React.Component {
                     </div>
                 </div>
 
-                <div class="section background-color-sand">
+                <div class="section background-color-sand text-center">
+                    <h1 class="color-blue">Parents of Marine Rescuers</h1>
+                    <h2 class="color-grape">Read more about our team and mission in educating young scientists through Marine Rescue, a citizen science project teaching debris’ impacts on marine wildlife.</h2>
                     <div class="parents-of-marine-rescuers-section">
                         <img src="images/two-jade-parents-background.png" alt="Image of Jade the turle with hearts" />
-                        <Link to="/parents" className="mega-button"><h1>Parents of Marine Rescuers</h1>Read more about our team and mission in educating young scientists through Marine Rescue, a citizen science project teaching debris’ impacts on marine wildlife.</Link>
+                        <Link to="/parents" className="mega-button"><h1>Read More</h1></Link>
                     </div>
-                </div>
+                </div> 
+ 
 
                 <div class="section section-footer">
                     <Footer></Footer>
