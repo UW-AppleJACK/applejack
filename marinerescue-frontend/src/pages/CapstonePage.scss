@@ -1,17 +1,17 @@
 @import '../styles/breaks';
 @import '../styles/colors';
 
-#problem-statement {
+.problem-statement {
   width: 100%;
   max-width: 1200px;
 }
 
-#topic-h2 {
+.topic-h2 {
   font-size: 50px;
   text-shadow: 2px 2px 5px $sunshine;
 }
 
-#topic-p {
+.topic-p {
   padding-left: 80px;
   padding-right: 80px;
 }
@@ -35,19 +35,19 @@ button.topic-button {
   border-bottom: 2px solid transparent;
 }
 
-#concepts {
+img.concepts {
   margin-bottom: 30px;
 }
 
-#width-30 {
+.column.width-30 {
   width: 30%
 }
 
-#width-60 {
+.column.width-60 {
   width: 60%
 }
 
-#caption {
+p.caption {
   font-size: 20px;
   margin-bottom: 40px;
 }

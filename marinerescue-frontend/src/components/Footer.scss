@@ -10,18 +10,49 @@ footer {
         color: $grape;
     }
     
-    #icon {
-        width: 100px;
+    .github-logo {
+        width: 50%;
+        height: auto;
     }
 
-    .navbar-logo{ 
-        margin-bottom: -5px;
-    
-        img{
-           width: 50%;
-           height: auto; 
+    .footer-logo {
+        display: none;
+    }
+
+    .column-navbar-logo {
+        overflow: visible;
+    }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    #title {
+        color: $white;
+    }
+
+    @media (min-width: $break-small) {
+        .footer-logo {
+            display: initial;
+            width: 45%;
+            height: auto;
+        }
+
+        .navbar-logo {
+            display: initial;
+            margin-bottom: -5px;
+
+            img {
+                width: 50%;
+                height: auto;
+            }
+        }
+
+        #title {
+            display: none;
         }
     }
+
 
     .row {
         display: flex;

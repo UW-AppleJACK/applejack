@@ -15,6 +15,7 @@ import JournalPage from './pages/JournalPage';
 import ParentsPage from './pages/ParentsPage';
 import GameLandingPage from './pages/GameLandingPage';
 import CapstonePage from './pages/CapstonePage';
+import PrivacyPage from './pages/PrivacyPage';
 import BadgesPage from './pages/BadgesPage';
 import StorytellerPage from "./pages/StorytellerPage";
 
@@ -33,6 +34,9 @@ function App() {
                 </Route>
                 <Route path="/parents">
                     <ParentsPage />
+                </Route>
+                <Route path="/privacy">
+                    <PrivacyPage />
                 </Route>
                 <Route path="/play/classification">
                     <DebrisClassificationPage />
