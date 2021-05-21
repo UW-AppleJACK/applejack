@@ -7,7 +7,7 @@ class Footer extends React.Component {
         return (
             <footer>
                 <div class="row">
-                    <div class="column">
+                    <div class="column column-navbar-logo">
                         <div class="navbar-logo">
                             <img src="images/logo.png" />
                         </div>                            
