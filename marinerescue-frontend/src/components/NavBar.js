@@ -9,7 +9,7 @@ class NavBar extends React.Component {
             <div class="navbar">
                     <Link to= "/">
                     <div class="navbar-logo">
-                        <img src="images/logo.png" alt="Marine Rescue logo" />
+                        <img src="images/logo-hires.png" alt="Marine Rescue logo" />
                     </div>
                     </Link>
                     <div class="nav-links">
