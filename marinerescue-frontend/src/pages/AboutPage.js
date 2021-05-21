@@ -12,8 +12,9 @@ class AboutPage extends React.Component {
                     <div class="row">
                         <div class="column">
                             <h1 class="color-sunshine">- Our Goal - </h1>
-                            <p class="color-sand">Marine Rescue is a platform for elementary students to learn about debris' impacts on marine wildlife.</p>
-                            <p class="color-sand">Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research. From our user research when developing this project, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. <Link to="/capstone">Read more</Link>  about our capstone project.</p>
+                            <p class="color-sand content-no-margin">Marine Rescue is a platform for elementary students to learn about debris' impacts on marine wildlife.</p>
+                            <p class="color-sand content-no-margin">Through interactive educational stories and activities, students contribute to citizen science projects so that they can develop a sense of connection to the natural world through active learning while meaningfully contributing to science research.</p> 
+                            <p class="color-sand content-no-margin">While conducting user research, we found a lack of designated science class time in schools and a lack of curriculum for parents teaching science at home. This inspired us to create Marine Rescue as an accessible and hands-on learning experience for students to learn marine science outside of the classroom. <Link to="/capstone">Read more</Link>  about our capstone project.</p>
                         </div>
                     </div>
                 </div>
@@ -59,8 +60,8 @@ class AboutPage extends React.Component {
                     <div class="row">
                         <div class="column">
                             <h1 class="color-sunshine">- Acknowledgements - </h1>
-                            <p class="color-sand">Our team is grateful for the support from our mentors and peers at the University of Washington’s Information School for their advice through each iteration of our project. Throughout the development of this project, we have worked with the Coastal Observation and Seabird Survey Team (COASST). The team at COASST has helped ensure the validity of our content and provided materials such as photos and informational handouts from their Marine Debris program which are incorporated in our educational activities. Our team would like to thank COASST for their incredible support through this development process.  </p>
-                            <p class="color-sand">COASST is a citizen science program housed at the University of Washington with more than 20 years of history. The program’s goal is to focus on beach environment, specifically marine debris and beached birds in the northeast Pacific area. To learn more about COASST, visit their <a href="https://coasst.org/" target="_blank">website</a>.</p>
+                            <p class="color-sand content-no-margin">Our team is grateful for the support from our mentors and peers at the University of Washington’s Information School for their advice through each iteration of our project. Throughout the development of this project, we have worked with the Coastal Observation and Seabird Survey Team (COASST). The team at COASST has helped ensure the validity of our content and provided materials such as photos and informational handouts from their Marine Debris program which are incorporated in our educational activities. Our team would like to thank COASST for their incredible support through this development process.  </p>
+                            <p class="color-sand content-no-margin">COASST is a citizen science program housed at the University of Washington with more than 20 years of history. The program’s goal is to focus on beach environment, specifically marine debris and beached birds in the northeast Pacific area. To learn more about COASST, visit their <a href="https://coasst.org/" target="_blank">website</a>.</p>
                         </div>
                     </div>
                 </div>

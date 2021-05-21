@@ -13,14 +13,11 @@ class HomePage extends React.Component {
                     <div class="row">
                         <div class="column">
                             <h1 class="color-sunshine">Join the Adventure</h1>
-                            <p class="color-sand">Join the Marine Rescue team in <br />
-                                                        learning about how marine debris <br />
-                                                        affects ocean life and what you can do <br />
-                                                        to help in this citizen science journey!</p>
+                            <p class="text-center color-sand">Join the Marine Rescue team in learning about how marine debris affects ocean life and what you can do to help in this citizen science journey!</p>
                             <button>Play Now</button>
                         </div>
                         <div class="column">
-                            <img id="strawberry-welcome" src="images/section-1-strawberry-welcome.png" alt="Strawberry giving a welcoem to the Marine Rescuers" />
+                            <img class="responsive strawberry" src="images/section-1-strawberry-welcome.png" alt="Strawberry giving a welcome to the Marine Rescuers" />
                         </div>
                     </div>
                 </div>
