@@ -13,7 +13,7 @@ class NavBar extends React.Component {
                     </div>
                     </Link>
                     <div class="nav-links">
-                        <Link class="tab-option" to="/adventures">Adventures</Link>
+                        <Link class="tab-option" to="/play">Adventures</Link>
                         <Link class="tab-option" to="/about">About</Link>
                         <Link class="tab-option" to="/parents">Parents</Link>
                         <Link class="tab-option" to="/badges">Badges</Link>
