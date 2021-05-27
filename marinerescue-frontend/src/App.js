@@ -47,6 +47,9 @@ function App() {
                 <Route path="/waveracer-test">
                     <StorytellerPage startSceneLabel="waveracer-test" />
                 </Route>
+                <Route path="/play/beach">
+                    <StorytellerPage startSceneLabel="beach" />
+                </Route>
                 <Route path="/play/strawberry">
                     <StorytellerPage startSceneLabel="strawberry" />
                 </Route>

@@ -39,7 +39,7 @@ const MODULES = [
         tag: 'beach',
         subtitle: 'Learn to be safe when cleaning up the beach!',
         icon: '/images/landing-page-modules/landing-page-safety.png',
-        target: '/play/safety',
+        target: '/play/beach',
     },
 ];
 
