@@ -1,5 +1,6 @@
 import {
     BrowserRouter as Router,
+    Redirect,
     Switch,
     Route
 } from "react-router-dom";
@@ -24,6 +25,9 @@ function App() {
         <Router>
             <Switch>
                 <Route path="/capstone">
+                    <Redirect to="/about/process" />
+                </Route>
+                <Route path="/about/process">
                     <CapstonePage />
                 </Route>
                 <Route path="/badges">
