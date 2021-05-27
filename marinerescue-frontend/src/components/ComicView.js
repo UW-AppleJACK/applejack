@@ -82,6 +82,8 @@ class ComicView extends React.Component {
                 view={JOURNAL_ENTRY_VIEW}
                 page={element.title} 
                 onNavigate={() => {}}
+                maxInfoBoxFacts={element.maxInfoBoxFacts}
+                maxFunFacts={element.maxFunFacts}
                 key={idx} />
         );
     }

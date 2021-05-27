@@ -400,7 +400,7 @@ const MEET_HUMPHREY = {
   "MeetHumphrey-afterdecision": {
     "type": "comic",
     "background": "sea-mountains",
-    "nextScene": "testScene2",
+    "nextScene": "MeetHumphrey-journal",
     "baseFrame": [],
     "frames": [
       [
@@ -486,6 +486,337 @@ const MEET_HUMPHREY = {
         "message": "I do wonder where this big net came from! Let’s take it back to shore so we can dispose of it properly, and we can try to figure out this mystery along the way.",
         "type": "left"
       }
+    ]
+  },
+  "MeetHumphrey-journal": {
+    "type": "comic",
+    "background": "sea-mountains",
+    "nextScene": "GOTO /play?next=jade",
+    "baseFrame": [
+    ],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Humphrey',
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 4,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Loopy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 5,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+    ],
+    "dialogue": [
+      {
+        "speaker": "Strawberry",
+        "message": "That was wild! Let’s get out our Marine Rescue journal to jot down what we learned.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "I'm glad that we met Humphrey today! He's a great friend.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Humphrey is a humpback whale who travels all around the world's oceans!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Humpback whales love to travel! They make some of the longest migrations of any other whale, travelling thousands of miles per year.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "These whales can grow up to the size of a school bus (60 feet) and weigh 40 tons.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Even though they are called \"humpback whales\", they don’t usually have a hump on their back. The name comes from how they make a large hump with their body when arching their back before diving into the ocean.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "We've finished our journal entry for Humphrey. Now, let's create a journal entry about loopy debris",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Loopy things like rope and nets can cause a lot of harm to animals.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "They can get caught around their body parts. With Humphrey, he got caught with his tail.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Usually, these loopy things are left behind by humans. Humphrey’s net was probably left behind by fishermen.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "To prevent further harm to animals, please make sure that you clean up after yourself and throw away trash where they’re supposed to go!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "A lot of times, nets are lost in the water and can cause harm. These are called \"Ghost Nets\".",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Ghost nets can still trap large animals like whales, sharks, and human divers even though the nets are unmanned.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Now that we've met Humphrey and created our journal entries, let's go meet another friend!",
+        "type": "left"
+      },
     ]
   },
 };
