@@ -2,7 +2,7 @@ const WAVERACER_TEST = {
   'waveracer-test': {
     type: 'minigame',
     nextScene: 'testScene',
-    minigame: 'WaveRacer',
+    minigame: 'HumphreyNet',
   },
 }
 

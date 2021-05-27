@@ -82,7 +82,9 @@ const MEET_HUMPHREY = {
         "flipX": false
       }
     ],
-    "frames": []
+    "frames": [
+      [],
+    ]
   },
   "MeetHumphrey-inwater": {
     "type": "comic",
@@ -201,7 +203,7 @@ const MEET_HUMPHREY = {
     "nextScene": "meethumphrey-afterminigame",
     "baseFrame": [],
     "frames": [],
-    "minigame": "DemoMinigame"
+    "minigame": "HumphreyNet"
   },
   "MeetHumphrey-afterminigame": {
     "type": "comic",
