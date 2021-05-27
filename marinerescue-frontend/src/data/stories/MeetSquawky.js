@@ -392,7 +392,7 @@ const MEET_SQUAWKY = {
   "Squawky Scene 16-18": {
     "type": "comic",
     "background": "sea-mountains",
-    "nextScene": "GOTO /play?next=debris",
+    "nextScene": "MeetSquawky-journal",
     "baseFrame": [],
     "frames": [
       [
@@ -490,6 +490,316 @@ const MEET_SQUAWKY = {
         "message": "Let’s dispose of this properly before anyone else gets tricked.",
         "type": "right"
       }
+    ]
+  },
+  "MeetSquawky-journal": {
+    "type": "comic",
+    "background": "sea-mountains",
+    "nextScene": "GOTO /play?next=humphrey",
+    "baseFrame": [
+    ],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 3,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 3,
+          maxFunFacts: 4,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 4,
+          maxFunFacts: 4,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 4,
+          maxFunFacts: 4,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Squawky',
+          maxInfoBoxFacts: 4,
+          maxFunFacts: 4,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Color',
+          maxInfoBoxFacts: 1,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Color',
+          maxInfoBoxFacts: 1,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Color',
+          maxInfoBoxFacts: 1,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+    ],
+    "dialogue": [
+      {
+        "speaker": "Strawberry",
+        "message": "What an adventure! Now, let’s get out our Marine Rescue journal to jot down what we learned.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "In our first adventure, we met Squawky who is an albatross which is a large sea bird that flies in the Pacific Ocean.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Did you know that albatrosses like Squawky can have a wingspan of up to 11 feet long? That’s the longest wingspan of any bird!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Albatrosses are also one of the most efficient travelers on Earth as they can use the wind to glide hundreds of miles without needing to flap their wings.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "We learned that Squawky loves to eat squid! Some of his other favorite foods are fish and krill.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Another cool fact about albatrosses is they breed on islands in the ocean, but spend most of their lives miles from shore.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Unfortunately, birds like Squawky are endangered. One of the threats to their survival is pollution because they eat near the surface of the ocean and may pick up floating marine debris in addition to food.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Debris that are brightly colored such as pink, orange, and red attracts these albatrosses because it looks similar to their food.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "We\'ve finished our journal entry for Squawky. Now, let\'s create a journal entry about colors of debris.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Sometimes, identifying colors can be a difficult task so using a color guide can help us!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "The color of an object can make animals mistake plastic for prey. Certain colors signal “food!” to marine wildlife.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "If you remember from our story, Squawky the albatross thought that a pink lighter was a tasty squid because they shared the same color. ",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Now that we've met Squawky and created our journal entries, let's go meet another friend!",
+        "type": "left"
+      },
     ]
   },
 }
