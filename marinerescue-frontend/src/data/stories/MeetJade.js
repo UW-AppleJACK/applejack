@@ -2,7 +2,10 @@ const MEET_JADE = {
   "Jade Story": {
     "type": "comic",
     "background": "beach-rocks-2",
-    "nextScene": "testScene2",
+    "nextScene": {
+      "You're already pretty, Strawberry!": "Jade Story-kind",
+      "Keep on dreaming": "Jade Story-mean",
+    },
     "baseFrame": [],
     "frames": [
       [
@@ -25,26 +28,25 @@ const MEET_JADE = {
           "flipX": false
         }
       ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry-love",
-          "x": "01",
-          "y": "035",
-          "size": "040",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry-sad",
-          "x": "01",
-          "y": "35",
-          "size": "035",
-          "flipX": false
-        }
-      ],
+    ],
+    "dialogue": [
+      {
+        "speaker": "Strawberry",
+        "message": "Let’s meet my friend Jade the Green Sea Turtle. She’s such a pretty color, I hope to be as good looking as her when I grow up!",
+        "type": "right"
+      },
+      null,
+    ]
+  },
+  "Jade Story-afterdecision": {
+    "type": "comic",
+    "background": "beach-rocks-2",
+    "nextScene": {
+      "That sounds delicious! Let's go!": "Jade Story-minigame",
+      "I'll help you! You can keep the extra jellyfish though.": "Jade Story-minigame"
+    },
+    "baseFrame": [],
+    "frames": [
       [
         {
           "type": "sprite",
@@ -292,31 +294,15 @@ const MEET_JADE = {
         },
         {
           "type": "sprite",
-          "image": "jade-happy",
+          "image": "jade-sad",
           "x": "055",
           "y": "31",
           "size": "22",
           "flipX": true
         }
-      ]
+      ],
     ],
     "dialogue": [
-      {
-        "speaker": "Strawberry",
-        "message": "Let’s meet my friend Jade the Green Sea Turtle. She’s such a pretty color, I hope to be as good looking as her when I grow up!”",
-        "type": "right"
-      },
-      null,
-      {
-        "speaker": "Strawberry",
-        "message": "Thank you! ",
-        "type": "right"
-      },
-      {
-        "speaker": "Strawberry",
-        "message": "Oh. Okay. ",
-        "type": "right"
-      },
       {
         "speaker": "Jade",
         "message": "Hello there! ",
@@ -334,7 +320,7 @@ const MEET_JADE = {
       },
       {
         "speaker": "Strawberry",
-        "message": "This is my friend [NAME]! We’re here to check up on you!",
+        "message": "This is my friend and the newest member of the Marine Rescue team! We’re here to check up on you!",
         "type": "right"
       },
       {
@@ -364,572 +350,397 @@ const MEET_JADE = {
       },
       {
         "speaker": "Jade",
-        "message": "Now I need to get some new lunch. \nStrawberry, would you and [NAME] mind helping me catch some new food? I’ll share with you any leftovers I get!\n",
+        "message": "Now I need to get some new lunch. \nStrawberry, would you and your friend mind helping me catch some new food? I’ll share with you any leftovers I get!\n",
         "type": "left"
       },
       null
     ]
   },
-  "Jade Journal": {
+  "Jade Story-kind": {
     "type": "comic",
-    "background": "beige",
-    "nextScene": "testScene2",
+    "background": "beach-rocks-2",
+    "nextScene": "Jade Story-afterdecision",
     "baseFrame": [],
     "frames": [
       [
         {
           "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "060",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "015",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-circle",
-          "x": "051",
-          "y": "028",
-          "size": "012",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "jade-happy",
-          "x": "050",
-          "y": "029",
-          "size": "015",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-bag",
-          "x": "048",
-          "y": "030",
-          "size": "018",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "15",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-bag",
-          "x": "048",
-          "y": "030",
-          "size": "018",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "15",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-bag",
-          "x": "048",
-          "y": "030",
-          "size": "018",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "15",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-bag",
-          "x": "048",
-          "y": "030",
-          "size": "018",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "15",
-          "flipX": false
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
-          "x": "02",
-          "y": "35",
-          "size": "38",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-open",
-          "x": "040",
-          "y": "15",
-          "size": "60",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "blue-bag",
-          "x": "048",
-          "y": "030",
-          "size": "018",
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "journal-closed",
-          "x": 0,
-          "y": "02",
-          "size": "15",
-          "flipX": false
-        }
-      ]
-    ]
-  },
-  "Squawky Story": {
-    "type": "comic",
-    "background": "beach-big",
-    "nextScene": "testScene2",
-    "baseFrame": [],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "strawberry",
+          "image": "strawberry-love",
           "x": "01",
-          "y": "30",
+          "y": "035",
           "size": "035",
           "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "sqwackyv2-BELLY",
-          "x": "080",
-          "y": "018",
-          "size": "14",
-          "flipX": true
         }
       ],
-      [],
-      []
     ],
     "dialogue": [
       {
         "speaker": "Strawberry",
-        "message": "Do you see my friend Squawky over there in the water?\nSquawky is an albatross! Let’s go say hi.",
+        "message": "Thank you! ",
         "type": "right"
       },
-      null
+    ]
+  },
+  "Jade Story-mean": {
+    "type": "comic",
+    "background": "beach-rocks-2",
+    "nextScene": "Jade Story-afterdecision",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry-sad",
+          "x": "01",
+          "y": "035",
+          "size": "035",
+          "flipX": false
+        }
+      ],
+    ],
+    "dialogue": [
+      {
+        "speaker": "Strawberry",
+        "message": "Oh. Okay.",
+        "type": "right"
+      },
+    ]
+  },
+  "Jade Story-minigame": {
+    type: 'minigame',
+    nextScene: 'Jade Journal',
+    minigame: 'DemoMinigame',
+  },
+  "Jade Journal": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "GOTO /play?next=debris",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 2,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 3,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 3,
+          maxFunFacts: 2,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 4,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Jade',
+          maxInfoBoxFacts: 4,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Floppy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: -1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Floppy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 1,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Floppy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Floppy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "-20.5",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "journal",
+          title: 'Floppy',
+          maxInfoBoxFacts: -1,
+          maxFunFacts: 3,
+          "x": "20",
+          "y": "15",
+        },
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "strawberry",
+          "x": "02",
+          "y": "35",
+          "size": "38",
+          "flipX": false
+        },
+        {
+          "type": "sprite",
+          "image": "journal-closed",
+          "x": "040",
+          "y": "15",
+          "size": "60",
+          "flipX": false
+        },
+      ],
+    ],
+    "dialogue": [
+      {
+        "speaker": "Strawberry",
+        "message": "What an adventure! Let’s get out our Marine Rescue journal to jot down what we learned.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "I’m glad that we met Jade today! She’s such a kind friend.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Jade is a green sea turtle who swims in the subtropical and tropical ocean waters! ",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Green sea turtles are the largest species of hard-shelled turtles weighing in between 300 to 350 pounds!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "These turtles are named after the color of their fat, which is from their diet of seagrass and algae. Young green sea turtles are omnivores, meaning that they eat both plants and other animals.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "However, adult green sea turtles are mostly herbivores. There are some adult rebel turtles that like to eat jellyfish!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Currently, green sea turtles are endangered. This means that there are few of them left on our planet and can be gone forever. That’s why we need to properly dispose of our trash and do not overharvest their eggs to keep them safe.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "We’ve finished our journal entry for Jade. Let's start our journal entry about floppy debris.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Floppy is a characteristic that describes how an object moves or acts.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Objects that are floppy tend to move loosely and fall over easily.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "This can be an indication for animals that something that flops over is their food. For example, a wet plastic bag acts floppy since it’s hanging in a loose way.",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "This can be mistaken for a jellyfish! ",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Whenever you see marine debris such as plastic bags on the sandy beach, make sure to dispose of it properly so animals don’t mistaken it for food!",
+        "type": "left"
+      },
+      {
+        "speaker": "Strawberry",
+        "message": "Now that we've met Jade and created our journal entries, let's go put our characteristics knowledge to the test!",
+        "type": "left"
+      },
     ]
   },
 }
