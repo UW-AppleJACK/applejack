@@ -3,6 +3,8 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    background-image: url('../srcImages/bg-sea.png');
+    background-size: cover;
 
     #journal-reset-btn {
         display: flex;
@@ -12,6 +14,8 @@
         border-radius: 16px;
         padding: 16px;
         align-self: flex-start;
+        margin: 16px;
+        background-color: white;
     
         img {
             width: 80px;
@@ -28,6 +32,5 @@
         flex: 1;
         display: flex;
         justify-content: center;
-        align-items: center;
     }
 }

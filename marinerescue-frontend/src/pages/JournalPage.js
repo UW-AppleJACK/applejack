@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../components/NavBar';
 import {
     Journal,
     JOURNAL_TOC_VIEW,
@@ -29,6 +30,7 @@ class JournalPage extends React.Component {
     render() {
         return (
             <div id="journal-page">
+                <NavBar></NavBar>
                 <button onClick={this.resetNavigation.bind(this)} id="journal-reset-btn">
                     <img src="/sprites/sprite-journal-closed.png" alt="Journal Icon" />
                     <span>View Directory</span>
