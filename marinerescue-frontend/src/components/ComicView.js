@@ -115,9 +115,10 @@ class ComicView extends React.Component {
 
     // Render decision
     renderDecision(decision) {
+        const onDecisionClickListener = this.props.onDecisionClickListener || (() => {});
         return <div id="decision">
             {Object.keys(decision).map(label => {
-                return (<button>{label}</button>)
+                return (<button onClick={() => onDecisionClickListener(decision[label])}>{label}</button>)
             })}
         </div>;
     }

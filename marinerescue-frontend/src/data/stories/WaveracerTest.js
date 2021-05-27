@@ -1,7 +1,7 @@
 const WAVERACER_TEST = {
   'waveracer-test': {
     type: 'minigame',
-    nextScene: 'testScene',
+    nextScene: 'meethumphrey-afterminigame',
     minigame: 'HumphreyNet',
   },
 }
