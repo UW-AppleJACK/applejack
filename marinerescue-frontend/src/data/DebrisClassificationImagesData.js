@@ -212,262 +212,262 @@ const DEBRIS_CLASSIFICATION_IMAGES = [
     {
         "id": 42,
         "url": "floppy - Floppy Balloon.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 43,
         "url": "floppy - Floppy Bandange.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 44,
         "url": "floppy - Floppy Blanket.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 45,
         "url": "floppy - Floppy Bubble Wrap.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 46,
         "url": "floppy - Floppy Garbage Bag.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 47,
         "url": "floppy - Floppy Leather Strap.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 48,
         "url": "floppy - Floppy Napkin.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 49,
         "url": "floppy - Floppy Ribbon(1).png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 50,
         "url": "floppy - Floppy Ribbon.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 51,
         "url": "floppy - Floppy Shirt.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 52,
         "url": "floppy - Floppy Sock.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 53,
         "url": "floppy - Floppy Strap.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 54,
         "url": "floppy - Floppy Straw.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 55,
         "url": "floppy - Floppy Yellow Rope.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 56,
         "url": "floppy - Floppy tape.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 57,
         "url": "floppy - floppy 1.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 58,
         "url": "floppy - floppy 10.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 59,
         "url": "floppy - floppy 11.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 60,
         "url": "floppy - floppy 12.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 61,
         "url": "floppy - floppy 13.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 62,
         "url": "floppy - floppy 14.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 63,
         "url": "floppy - floppy 15.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 64,
         "url": "floppy - floppy 16.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 65,
         "url": "floppy - floppy 18.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 66,
         "url": "floppy - floppy 19.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 67,
         "url": "floppy - floppy 2.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 68,
         "url": "floppy - floppy 20.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 69,
         "url": "floppy - floppy 21.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 70,
         "url": "floppy - floppy 22.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 71,
         "url": "floppy - floppy 23.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 72,
         "url": "floppy - floppy 25.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 73,
         "url": "floppy - floppy 26.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 74,
         "url": "floppy - floppy 27.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 75,
         "url": "floppy - floppy 28.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 76,
         "url": "floppy - floppy 29.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 77,
         "url": "floppy - floppy 3.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 78,
         "url": "floppy - floppy 30.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 79,
         "url": "floppy - floppy 31.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 80,
         "url": "floppy - floppy 32.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 81,
         "url": "floppy - floppy 33.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 82,
         "url": "floppy - floppy 35.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 83,
         "url": "floppy - floppy 36.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 84,
         "url": "floppy - floppy 37.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 85,
         "url": "floppy - floppy 38.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 86,
         "url": "floppy - floppy 4.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 87,
         "url": "floppy - floppy 40.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 88,
         "url": "floppy - floppy 46.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 89,
         "url": "floppy - floppy 5.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 90,
         "url": "floppy - floppy 50.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 91,
         "url": "floppy - floppy 6.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 92,
         "url": "floppy - loopy 1.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 93,
         "url": "floppy - loopy 48.png",
-        "classification": "floppy"
+        "classification": "loopyfloppy"
     },
     {
         "id": 94,

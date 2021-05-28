@@ -22,29 +22,30 @@ const INTRO_PAGES = [
 class DebrisClassificationPage extends React.Component {
   constructor(props) {
     super(props);
+    const disabledIndices = DEBRIS_CLASSIFICATION_IMAGES.map(image => image.classification).map((classification, idx) => classification === 'clear' ? idx : false).filter(val => val !== false);
     this.state = {
       currentIntroPage: 0,
       currentImageId: this.chooseRandomIdFromList(
         DEBRIS_CLASSIFICATION_IMAGES.map(image => image.id),
-        [],
+        [...disabledIndices],
       ),
-      completeImages: [],
+      completeImages: [...disabledIndices],
       facts: [
         {
           title: 'A fact about plastic...',
           textPrimary: 'Did you know that about 10% of all plastic ends up in the oceans?',
           textSecondary: 'That means that 26 million tons of plastc goes to the ocean every year! Plastic is poisonous to marine life.'
         },
-        {
-          title: 'A fact about ropes...',
-          textPrimary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          textSecondary: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-        },
-        {
-          title: 'A fact about whales...',
-          textPrimary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem.',
-          textSecondary: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
-        },
+        // {
+        //   title: 'A fact about ropes...',
+        //   textPrimary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        //   textSecondary: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        // },
+        // {
+        //   title: 'A fact about whales...',
+        //   textPrimary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem.',
+        //   textSecondary: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+        // },
       ]
     };
   }

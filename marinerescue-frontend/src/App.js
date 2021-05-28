@@ -1,5 +1,6 @@
 import {
     BrowserRouter as Router,
+    Redirect,
     Switch,
     Route
 } from "react-router-dom";
@@ -24,6 +25,9 @@ function App() {
         <Router>
             <Switch>
                 <Route path="/capstone">
+                    <Redirect to="/about/process" />
+                </Route>
+                <Route path="/about/process">
                     <CapstonePage />
                 </Route>
                 <Route path="/badges">
@@ -44,8 +48,17 @@ function App() {
                 <Route path="/storyteller-test">
                     <Storyteller />
                 </Route>
+                <Route path="/waveracer-test">
+                    <StorytellerPage startSceneLabel="waveracer-test" />
+                </Route>
+                <Route path="/play/beach">
+                    <StorytellerPage startSceneLabel="beach" />
+                </Route>
                 <Route path="/play/strawberry">
                     <StorytellerPage startSceneLabel="strawberry" />
+                </Route>
+                <Route path="/play/squawky">
+                    <StorytellerPage startSceneLabel="squawky" />
                 </Route>
                 <Route path="/play/humphrey">
                     <StorytellerPage startSceneLabel="humphrey" />

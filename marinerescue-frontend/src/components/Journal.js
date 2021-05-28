@@ -51,6 +51,8 @@ class Journal extends React.Component {
 
     // Render an entry view
     renderEntry(entry) {
+        const maxInfoBoxFacts = this.props.maxInfoBoxFacts || entry.infoboxFacts.length;
+        const maxFunFacts = this.props.maxFunFacts || entry.funFacts.length;
         return (
             <>
                 <div className="page page-infobox">
@@ -58,11 +60,11 @@ class Journal extends React.Component {
                     <img
                         alt={`Icon for ${entry.title}`}
                         src={`/sprites/journal-${entry.image}.png`} />
-                    { this.renderFacts(entry.infoboxFacts) }
+                    { this.renderFacts(entry.infoboxFacts.filter((f, idx) => idx < maxInfoBoxFacts)) }
                 </div>
                 <div className="page">
                     <h2>Facts</h2>
-                    { this.renderFacts(entry.funFacts) }
+                    { this.renderFacts(entry.funFacts.filter((f, idx) => idx < maxFunFacts)) }
                 </div>
             </>
         );

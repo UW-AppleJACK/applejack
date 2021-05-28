@@ -15,7 +15,7 @@ class GameLandingPage extends React.Component {
         {
           MODULES.map((module, idx) => {
             const isAlt = idx % 2 !== 0;
-            const isLocked = idx > 3 || idx === 1;
+            const isLocked = false;
             const isNext = module.tag === next;
 
             let classes = 'game-module-section';
@@ -71,6 +71,18 @@ class GameLandingPage extends React.Component {
         <main id="game-map-container">
           <div id="game-map">
             {this.renderModules()}
+            <div className="game-module-section game-module-section-alt">
+              <a id="more" class="anchor" />
+              <div className="module-deco">
+              </div>
+              <div className="module-box-container">
+                <div className="module-box">
+                  <h2>More...</h2>
+                  <p></p>
+                  <Link className="std-btn sunshine" to="/journal">See your Journal</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
 

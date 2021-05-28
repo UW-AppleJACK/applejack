@@ -82,6 +82,8 @@ class ComicView extends React.Component {
                 view={JOURNAL_ENTRY_VIEW}
                 page={element.title} 
                 onNavigate={() => {}}
+                maxInfoBoxFacts={element.maxInfoBoxFacts}
+                maxFunFacts={element.maxFunFacts}
                 key={idx} />
         );
     }
@@ -115,9 +117,10 @@ class ComicView extends React.Component {
 
     // Render decision
     renderDecision(decision) {
+        const onDecisionClickListener = this.props.onDecisionClickListener || (() => {});
         return <div id="decision">
             {Object.keys(decision).map(label => {
-                return (<button>{label}</button>)
+                return (<button onClick={() => onDecisionClickListener(decision[label])}>{label}</button>)
             })}
         </div>;
     }

@@ -111,6 +111,17 @@ class Storyteller extends React.Component {
         }
     }
 
+    // Go to the next scene after a decision
+    toNextByDecision(newSceneName) {
+        // Transition to a new scene
+        // Next line of code makes this case insensitive due to a bug in the editor
+        const correctedNewSceneName = Object.keys(STORYTELLER_DATA).find(key => key.toLowerCase() === newSceneName.toLowerCase());
+        this.setState({
+            currentScene: `${correctedNewSceneName}/0`,
+            sceneHistory: [],
+        });
+    }
+
     // Get current game scene
     getCurrentScene() {
         const [sceneName] = this.getParsedSceneAttrs();
@@ -121,10 +132,17 @@ class Storyteller extends React.Component {
     getCurrentComicViewData() {
         const [sceneName, sceneFrame] = this.getParsedSceneAttrs();
         const currentScene = this.getCurrentScene();
+
         let currentDialogue = null;
         if (sceneFrame !== -1 && 'dialogue' in currentScene) {
             currentDialogue = currentScene.dialogue[sceneFrame];
         }
+
+        let currentDecision = null;
+        if (sceneFrame === currentScene.frames.length - 1 && typeof(currentScene.nextScene) !== 'string') {
+            currentDecision = currentScene.nextScene;
+        }
+
         return {
             sceneName,
             background: currentScene.background,
@@ -133,6 +151,7 @@ class Storyteller extends React.Component {
                 ...currentScene.frames[sceneFrame]
             ],
             dialogue: currentDialogue,
+            decision: currentDecision,
         };
     }
 
@@ -145,7 +164,9 @@ class Storyteller extends React.Component {
                     sceneName={this.getCurrentComicViewData().sceneName}
                     background={this.getCurrentComicViewData().background}
                     frame={this.getCurrentComicViewData().frame}
-                    dialogue={this.getCurrentComicViewData().dialogue} />
+                    dialogue={this.getCurrentComicViewData().dialogue}
+                    decision={this.getCurrentComicViewData().decision}
+                    onDecisionClickListener={this.toNextByDecision.bind(this)} />
             );
         }
         else if (currentScene.type === 'minigame') {
@@ -182,7 +203,7 @@ class Storyteller extends React.Component {
                     </button>
                 }
                 {
-                    this.getCurrentScene().type !== 'minigame' &&
+                    this.getCurrentScene().type !== 'minigame' && this.getCurrentComicViewData().decision === null && 
                     <button className="storyteller-page-turn storyteller-page-next" onClick={this.toNext.bind(this)}>
                         <span className="material-icons-outlined">east</span>
                     </button>
@@ -197,7 +218,7 @@ class Storyteller extends React.Component {
                 <div id="storyteller-view">
                     {this.renderStorytellerView()}
                 </div>
-                {this.renderStateTools()}
+                {/* {this.renderStateTools()} */}
                 {this.renderNavigation()}
             </div>
         );
